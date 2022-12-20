@@ -21,6 +21,39 @@ module.exports = {
       '2xl': '1536px'
     },
     colors: ({ colors }) => ({
+      primary: {
+        100: '#d0edec',
+        200: '#a2dcd8',
+        300: '#73cac5',
+        400: '#45b9b1',
+        500: '#16a79e',
+        600: '#12867e',
+        700: '#0d645f',
+        800: '#09433f',
+        900: '#042120'
+      },
+      secondary: {
+        100: '#d7dbdf',
+        200: '#aeb6bf',
+        300: '#86929e',
+        400: '#5d6d7e',
+        500: '#35495e',
+        600: '#2a3a4b',
+        700: '#202c38',
+        800: '#151d26',
+        900: '#0b0f13'
+      },
+      tertiary: {
+        100: '#d8e6e2',
+        200: '#b1ccc6',
+        300: '#89b3a9',
+        400: '#62998d',
+        500: '#3b8070',
+        600: '#2f665a',
+        700: '#234d43',
+        800: '#18332d',
+        900: '#0c1a16'
+      },
       inherit: colors.inherit,
       current: colors.current,
       transparent: colors.transparent,

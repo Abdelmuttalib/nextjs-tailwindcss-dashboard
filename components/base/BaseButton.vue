@@ -5,19 +5,21 @@
        items-center
        px-4
        py-2
-       border
-       border-transparent
+       transition
        text-sm
+       md:text-base
        font-medium
        rounded-md
-       shadow-sm
+       shadow-xl
+       hover:shadow-primary-500/60
        text-white
-       bg-indigo-600
-       hover:bg-indigo-700
+       bg-secondary-600
+       dark:bg-primary-500
+        hover:bg-secondary-500
+        dark:hover:bg-primary-500/90
        focus:outline-none
-       focus:ring-2
-       focus:ring-offset-2
-       focus:ring-indigo-500
+       focus:bg-secondary-600
+       dark:focus:bg-primary-500/95
     "
   >
     <slot />

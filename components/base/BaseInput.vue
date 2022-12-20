@@ -17,7 +17,7 @@ function updateModalValue (event: Event) {
 <template>
   <input
     ref="input"
-    class="block w-full max-w-xs mx-auto shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md text-gray-700"
+    class="block w-full max-w-xs mx-auto shadow-sm focus:ring-secondary-500 focus:border-secondary-500 border-gray-300 rounded-md text-secondary-700 focus:outline-none dark:focus:ring-primary-500 dark:focus:border-primary-500"
     :value="props.modelValue"
     @input="updateModalValue"
   >
