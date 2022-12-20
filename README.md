@@ -2,15 +2,6 @@
     Nuxt 3 With Tailwindcss 3
 </h2>
 
-<pre align="center">
-🔥 If We need anything, I will add it.
-</pre>
-
-<p align="center">
-The project was created under the impression of Antfu's <a href="https://github.com/antfu/vitesse-nuxt3" target="_blank">vitesse-nuxt3</a>
-<br>
-Thank you for your efforts for open source.
-</p>
 
 ## Features
 - 💚 [Nuxt 3](https://v3.nuxtjs.org) - SSR, ESR, File-based routing, components auto importing, modules, etc.
@@ -36,18 +27,3 @@ Thank you for your efforts for open source.
 - [Tailwindcss-Intellisense](https://github.com/tailwindlabs/tailwindcss-intellisense)
 - [Iconify IntelliSense](https://github.com/antfu/vscode-iconify)
 
-## Try it now!
-
-### GitHub Template
-
-[Create a repo from this template on GitHub](https://github.com/initred/nuxt3-tailwindcss3-starter-kit/generate).
-
-### Clone to local
-
-If you prefer to do it manually with the cleaner git history
-
-```bash
-npx degit initred/nuxt3-tailwindcss3-starter-kit my-nuxt3-app
-cd my-nuxt3-app
-pnpm i # If you don't have pnpm installed, run: npm install -g pnpm
-```
