@@ -5,7 +5,9 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxtjs/color-mode',
     'nuxt-icon',
-    'nuxt-headlessui'
+    'nuxt-headlessui',
+    ['@nuxtjs/i18n',
+      { /* module options */ }]
   ],
   components: {
     global: true,
@@ -20,8 +22,8 @@ export default defineNuxtConfig({
   postcss: {
     plugins: {
       tailwindcss: {},
-      autoprefixer: {},
-    },
+      autoprefixer: {}
+    }
   },
   colorMode: {
     classSuffix: ''

@@ -7,7 +7,7 @@ const go = () => {
 </script>
 
 <template>
-  <div class="max-w-xs space-y-4 mx-auto mt-4">
+  <div class="max-w-xs space-y-4 mt-4">
     <BaseInput
       id="input"
       v-model="name"

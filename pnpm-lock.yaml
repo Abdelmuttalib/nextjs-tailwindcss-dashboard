@@ -4,6 +4,7 @@ specifiers:
   '@headlessui/vue': ^1.7.7
   '@nuxtjs/color-mode': ^3.2.0
   '@nuxtjs/eslint-config-typescript': ^12.0.0
+  '@nuxtjs/i18n': 8.0.0-beta.7
   '@pinia/nuxt': ^0.4.6
   '@tailwindcss/aspect-ratio': ^0.4.2
   '@tailwindcss/container-queries': ^0.1.0
@@ -23,6 +24,7 @@ devDependencies:
   '@headlessui/vue': 1.7.7
   '@nuxtjs/color-mode': 3.2.0
   '@nuxtjs/eslint-config-typescript': 12.0.0_lzzuuodtsqwxnvqeq4g4likcqa
+  '@nuxtjs/i18n': 8.0.0-beta.7
   '@pinia/nuxt': 0.4.6_typescript@4.9.4
   '@tailwindcss/aspect-ratio': 0.4.2_tailwindcss@3.2.4
   '@tailwindcss/container-queries': 0.1.0_tailwindcss@3.2.4
@@ -417,6 +419,135 @@ packages:
       '@iconify/types': 2.0.0
     dev: true
 
+  /@intlify/bundle-utils/3.4.0_vue-i18n@9.3.0-beta.10:
+    resolution: {integrity: sha512-2UQkqiSAOSPEHMGWlybqWm4G2K0X+FyYho5AwXz6QklSX1EY5EDmOSxZmwscn2qmKBnp6OYsme5kUrnN9xrWzQ==}
+    engines: {node: '>= 12'}
+    peerDependencies:
+      petite-vue-i18n: '*'
+      vue-i18n: '*'
+    peerDependenciesMeta:
+      petite-vue-i18n:
+        optional: true
+      vue-i18n:
+        optional: true
+    dependencies:
+      '@intlify/message-compiler': 9.3.0-beta.10
+      '@intlify/shared': 9.3.0-beta.10
+      jsonc-eslint-parser: 1.4.1
+      source-map: 0.6.1
+      vue-i18n: 9.3.0-beta.10
+      yaml-eslint-parser: 0.3.2
+    dev: true
+
+  /@intlify/core-base/9.3.0-beta.10:
+    resolution: {integrity: sha512-WJhjzR6fxoSSdOnQHEAqEAQiXsF38YXbw5asveAirjE2H+75CLZyNwEXaJzNBylrDgTrfWjoAyBuBde7TaooRA==}
+    engines: {node: '>= 14'}
+    dependencies:
+      '@intlify/devtools-if': 9.3.0-beta.10
+      '@intlify/message-compiler': 9.3.0-beta.10
+      '@intlify/shared': 9.3.0-beta.10
+      '@intlify/vue-devtools': 9.3.0-beta.10
+    dev: true
+
+  /@intlify/devtools-if/9.3.0-beta.10:
+    resolution: {integrity: sha512-9kRiLK57MDogzjPElQhvd+K/s61MZE0TCHJAD+5zw+e3Vxie+xBCSa27mJB3jBuHC/QyMqIdrfyM6rmPtm22Rg==}
+    engines: {node: '>= 14'}
+    dependencies:
+      '@intlify/shared': 9.3.0-beta.10
+    dev: true
+
+  /@intlify/message-compiler/9.3.0-beta.10:
+    resolution: {integrity: sha512-RoOC6yceOykLRhN0NlbkNOBUx1el6iphx3W8NfOx3jHVNtfT1FYokx14/5sU3F1F0uxeG4sp6q+ppKvaF8o+ww==}
+    engines: {node: '>= 14'}
+    dependencies:
+      '@intlify/shared': 9.3.0-beta.10
+      source-map: 0.6.1
+    dev: true
+
+  /@intlify/shared/9.3.0-beta.10:
+    resolution: {integrity: sha512-h93uAanbAt/XgjDHclrVB7xix6r7Uz11wx0iGNOCdHP7aA2LCJjUT3uNbekJjjbo+Fl5jzTSJZdm2SexzoqhRA==}
+    engines: {node: '>= 14'}
+    dev: true
+
+  /@intlify/unplugin-vue-i18n/0.8.1_vue-i18n@9.3.0-beta.10:
+    resolution: {integrity: sha512-BhigujPmP6JL1FSxmpogCaL+REozncHCVkJuUnefz4GWBu3X+pRe5O7PeJn8/g+Iml2ieQJz4ISPMmEbuGQjqQ==}
+    engines: {node: '>= 14.16'}
+    peerDependencies:
+      petite-vue-i18n: '*'
+      vue-i18n: '*'
+      vue-i18n-bridge: '*'
+    peerDependenciesMeta:
+      petite-vue-i18n:
+        optional: true
+      vue-i18n:
+        optional: true
+      vue-i18n-bridge:
+        optional: true
+    dependencies:
+      '@intlify/bundle-utils': 3.4.0_vue-i18n@9.3.0-beta.10
+      '@intlify/shared': 9.3.0-beta.10
+      '@rollup/pluginutils': 4.2.1
+      '@vue/compiler-sfc': 3.2.45
+      debug: 4.3.4
+      fast-glob: 3.2.12
+      js-yaml: 4.1.0
+      json5: 2.2.2
+      pathe: 1.0.0
+      picocolors: 1.0.0
+      source-map: 0.6.1
+      unplugin: 1.0.1
+      vue-i18n: 9.3.0-beta.10
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  /@intlify/vue-devtools/9.3.0-beta.10:
+    resolution: {integrity: sha512-SSA2zk+Mn+idJHaIaKeGmuvY3EwxDUUvniecZ7S66KkrUomMDyEq/+WJYlF3+aslLL7vxnRVN2y+sXB+0NI2WQ==}
+    engines: {node: '>= 14'}
+    dependencies:
+      '@intlify/core-base': 9.3.0-beta.10
+      '@intlify/shared': 9.3.0-beta.10
+    dev: true
+
+  /@intlify/vue-i18n-bridge/0.8.0_vue-i18n@9.3.0-beta.10:
+    resolution: {integrity: sha512-wQ18fSccm9QaWpUW2vq2QHvojgKIog7s+UMj9LeY3pUV3yD9bU4YZI+1PTNoX3tOA+BE71gQyqVGox/TVQKP6Q==}
+    engines: {node: '>= 12'}
+    hasBin: true
+    requiresBuild: true
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0-rc.1
+      vue-i18n: ^8.26.1 || ^9.2.0-beta.25 || ^9.3.0-beta.5
+      vue-i18n-bridge: ^9.2.0-beta.25 || ^9.3.0-beta.5
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+      vue-i18n:
+        optional: true
+      vue-i18n-bridge:
+        optional: true
+    dependencies:
+      vue-i18n: 9.3.0-beta.10
+    dev: true
+
+  /@intlify/vue-router-bridge/0.8.0:
+    resolution: {integrity: sha512-CNxOgvyQcRhtGmRrksicL+HGjDijXtz+J/x04C/RslZ74CFdZkxjCe8MABkeD3xr+ry8G8tCm2nV2hLjZbynQw==}
+    engines: {node: '>= 12'}
+    hasBin: true
+    requiresBuild: true
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0-rc.1
+      vue-router: ^4.0.0-0 || ^3.0.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+      vue-router:
+        optional: true
+    dependencies:
+      vue-demi: 0.13.11
+    transitivePeerDependencies:
+      - vue
+    dev: true
+
   /@ioredis/commands/1.2.0:
     resolution: {integrity: sha512-Sx1pU8EM64o2BrqNpEO1CNLtKQwyhuXuqyfH7oGKCk+1a33d2r5saW8zNwm3j6BTExtjrv2BxTgzzkMwts6vGg==}
     dev: true
@@ -750,6 +881,39 @@ packages:
       - eslint-import-resolver-typescript
       - eslint-import-resolver-webpack
       - supports-color
+    dev: true
+
+  /@nuxtjs/i18n/8.0.0-beta.7:
+    resolution: {integrity: sha512-TH0cQz2XDSOdBsO3ZBjWC107IaPNTezPwDFPdUwCU0wCP7JfB1kwke4mkCLeizUijFbKTTlAsFnGkyyvQe7UmQ==}
+    engines: {node: ^14.16.0 || ^16.11.0 || ^17.0.0 || ^18.0.0 || ^19.0.0}
+    dependencies:
+      '@intlify/bundle-utils': 3.4.0_vue-i18n@9.3.0-beta.10
+      '@intlify/shared': 9.3.0-beta.10
+      '@intlify/unplugin-vue-i18n': 0.8.1_vue-i18n@9.3.0-beta.10
+      '@nuxt/kit': 3.0.0
+      '@vue/compiler-sfc': 3.2.45
+      cookie-es: 0.5.0
+      debug: 4.3.4
+      estree-walker: 3.0.1
+      is-https: 4.0.0
+      js-cookie: 3.0.1
+      knitwork: 1.0.0
+      magic-string: 0.26.7
+      mlly: 1.0.0
+      pathe: 1.0.0
+      pkg-types: 1.0.1
+      ufo: 1.0.1
+      unplugin: 1.0.1
+      vue-i18n: 9.3.0-beta.10
+      vue-i18n-routing: 0.10.2_vue-i18n@9.3.0-beta.10
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - petite-vue-i18n
+      - rollup
+      - supports-color
+      - vue
+      - vue-i18n-bridge
+      - vue-router
     dev: true
 
   /@pinia/nuxt/0.4.6_typescript@4.9.4:
@@ -1374,6 +1538,14 @@ packages:
 
   /abbrev/1.1.1:
     resolution: {integrity: sha512-nne9/IiQ/hzIhY6pdDnbBtz7DjPTKrY00P/zvPSm5pOFkl6xuGrGnXn/VtTNNfNtAfZ9/1RtehkszU9qcTii0Q==}
+    dev: true
+
+  /acorn-jsx/5.3.2_acorn@7.4.1:
+    resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
+    peerDependencies:
+      acorn: ^6.0.0 || ^7.0.0 || ^8.0.0
+    dependencies:
+      acorn: 7.4.1
     dev: true
 
   /acorn-jsx/5.3.2_acorn@8.8.1:
@@ -2903,6 +3075,15 @@ packages:
       - supports-color
     dev: true
 
+  /espree/6.2.1:
+    resolution: {integrity: sha512-ysCxRQY3WaXJz9tdbWOwuWr5Y/XrPTGX9Kiz3yoUXwW0VZ4w30HTkQLaGx/+ttFjF8i+ACbArnB4ce68a9m5hw==}
+    engines: {node: '>=6.0.0'}
+    dependencies:
+      acorn: 7.4.1
+      acorn-jsx: 5.3.2_acorn@7.4.1
+      eslint-visitor-keys: 1.3.0
+    dev: true
+
   /espree/9.4.1:
     resolution: {integrity: sha512-XwctdmTO6SIvCzd9810yyNzIrOrqNYV9Koizx4C/mRhf9uq0o4yHoCEU/670pOxOL/MSraektvSAji79kX90Vg==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
@@ -3647,6 +3828,10 @@ packages:
       is-extglob: 2.1.1
     dev: true
 
+  /is-https/4.0.0:
+    resolution: {integrity: sha512-FeMLiqf8E5g6SdiVJsPcNZX8k4h2fBs1wp5Bb6uaNxn58ufK1axBqQZdmAQsqh0t9BuwFObybrdVJh6MKyPlyg==}
+    dev: true
+
   /is-interactive/2.0.0:
     resolution: {integrity: sha512-qP1vozQRI+BMOPcjFzrjXuQvdak2pHNUMZoeG2eRbiSqyvbEf/wQtEOTOX1guk6E3t36RkaqiSt8A/6YElNxLQ==}
     engines: {node: '>=12'}
@@ -3772,6 +3957,11 @@ packages:
     hasBin: true
     dev: true
 
+  /js-cookie/3.0.1:
+    resolution: {integrity: sha512-+0rgsUXZu4ncpPxRL+lNEptWMOWl9etvPHc/koSRp6MPwpRYAhmk0dUG00J4bxVV3r9uUzfo24wW0knS07SKSw==}
+    engines: {node: '>=12'}
+    dev: true
+
   /js-sdsl/4.2.0:
     resolution: {integrity: sha512-dyBIzQBDkCqCu+0upx25Y2jGdbTGxE9fshMsCdK0ViOongpV+n5tXRcZY9v7CaVQ79AGS9KA1KHtojxiM7aXSQ==}
     dev: true
@@ -3816,6 +4006,17 @@ packages:
     resolution: {integrity: sha512-46Tk9JiOL2z7ytNQWFLpj99RZkVgeHf87yGQKsIkaPz1qSH9UczKH1rO7K3wgRselo0tYMUNfecYpm/p1vC7tQ==}
     engines: {node: '>=6'}
     hasBin: true
+    dev: true
+
+  /jsonc-eslint-parser/1.4.1:
+    resolution: {integrity: sha512-hXBrvsR1rdjmB2kQmUjf1rEIa+TqHBGMge8pwi++C+Si1ad7EjZrJcpgwym+QGK/pqTx+K7keFAtLlVNdLRJOg==}
+    engines: {node: '>=8.10.0'}
+    dependencies:
+      acorn: 7.4.1
+      eslint-utils: 2.1.0
+      eslint-visitor-keys: 1.3.0
+      espree: 6.2.1
+      semver: 6.3.0
     dev: true
 
   /jsonc-parser/3.2.0:
@@ -6256,6 +6457,47 @@ packages:
       - supports-color
     dev: true
 
+  /vue-i18n-routing/0.10.2_vue-i18n@9.3.0-beta.10:
+    resolution: {integrity: sha512-TnGUmRsciC/SJSysOAeoY0BBp3S35LFF1EfvPCybd8vU/vsOwHIyJF/Z5tPlAo4I0Y5AyJSa5WMaqpXs8F9DdQ==}
+    engines: {node: '>= 14.6'}
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0-rc.1
+      vue: ^2.6.14 || ^2.7.0 || ^3.2.0
+      vue-i18n: ^8.26.1 || ^9.2.0 || ^9.3.0-beta.10
+      vue-i18n-bridge: ^9.2.0 || ^9.3.0-beta.10
+      vue-router: ^3.5.3 || ^3.6.0 || ^4.0.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+      vue:
+        optional: true
+      vue-i18n:
+        optional: true
+      vue-i18n-bridge:
+        optional: true
+      vue-router:
+        optional: true
+    dependencies:
+      '@intlify/shared': 9.3.0-beta.10
+      '@intlify/vue-i18n-bridge': 0.8.0_vue-i18n@9.3.0-beta.10
+      '@intlify/vue-router-bridge': 0.8.0
+      ufo: 1.0.1
+      vue-demi: 0.13.11
+      vue-i18n: 9.3.0-beta.10
+    dev: true
+
+  /vue-i18n/9.3.0-beta.10:
+    resolution: {integrity: sha512-w8ANcayAbF7ZxsSdnv0KwNViel1j6FqRJH3If+2gZgvERMOrKIz6oFQEQwEyiDl3W1DLITMvbgBQpwfUo7YU1Q==}
+    engines: {node: '>= 14'}
+    peerDependencies:
+      vue: ^3.0.0
+    dependencies:
+      '@intlify/core-base': 9.3.0-beta.10
+      '@intlify/shared': 9.3.0-beta.10
+      '@intlify/vue-devtools': 9.3.0-beta.10
+      '@vue/devtools-api': 6.4.5
+    dev: true
+
   /vue-router/4.1.6_vue@3.2.45:
     resolution: {integrity: sha512-DYWYwsG6xNPmLq/FmZn8Ip+qrhFEzA14EI12MsMgVxvHFDYvlr4NXpVF5hrRH1wVcDP8fGi5F4rxuJSl8/r+EQ==}
     peerDependencies:
@@ -6393,6 +6635,14 @@ packages:
 
   /yallist/4.0.0:
     resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
+    dev: true
+
+  /yaml-eslint-parser/0.3.2:
+    resolution: {integrity: sha512-32kYO6kJUuZzqte82t4M/gB6/+11WAuHiEnK7FreMo20xsCKPeFH5tDBU7iWxR7zeJpNnMXfJyXwne48D0hGrg==}
+    dependencies:
+      eslint-visitor-keys: 1.3.0
+      lodash: 4.17.21
+      yaml: 1.10.2
     dev: true
 
   /yaml/1.10.2:

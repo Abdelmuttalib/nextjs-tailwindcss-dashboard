@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 html.dark {
     @apply bg-secondary-800 text-gray-100
 }

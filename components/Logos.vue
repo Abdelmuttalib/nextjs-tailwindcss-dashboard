@@ -2,7 +2,7 @@
   <h1 class="text-3xl md:text-5xl font-semibold text-secondary-600 mb-5 tracking-tight dark:text-gray-100">
     InView Maintenance Dashboard
   </h1>
-  <div class="inline-flex flex-col sm:flex-row text-2xl cursor-default">
+  <div class="flex flex-col sm:flex-row text-2xl cursor-default">
     <div class="flex flex-col">
       <div>
         <img class="w-16 h-16 inline-block" src="/nuxt.png">
