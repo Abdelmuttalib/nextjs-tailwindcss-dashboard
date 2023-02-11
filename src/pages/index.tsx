@@ -1,27 +1,50 @@
+import { ArrowRightIcon } from '@heroicons/react/24/outline';
+import { GetStaticProps } from 'next';
+import Link from 'next/link';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+
 import { Layout } from '@/components/layout';
-import { ButtonLink } from '@/components/links';
+import { dashboardLinks } from '@/components/layout/SideBar';
 import Seo from '@/components/Seo';
 
-import Vercel from '~/svg/Vercel.svg';
-
 export default function HomePage() {
+  const { t } = useTranslation();
   return (
-    <Layout>
+    <Layout pageTitle={t('app.description')}>
       {/* <Seo templateTitle='Home' /> */}
       <Seo />
 
       <main>
         <section className='bg-white'>
-          <div className='layout flex min-h-screen flex-col items-center justify-center text-center'>
-            <Vercel className='text-7xl' />
-            <h1 className='mt-6 text-7xl'>Next.js Starter</h1>
-
-            <ButtonLink className='mt-8' href='/components' variant='light'>
-              See all components
-            </ButtonLink>
+          <div className='flex min-h-screen flex-col'>
+            <div className='grid md:grid-cols-2 gap-y-4'>
+              {' '}
+              {dashboardLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className='h3 text-primary hover:text-primary-400 focus:text-primary-600 inline-flex items-center gap-2 first-letter:uppercase'
+                >
+                  <p className='first-letter:uppercase'>
+                    {t(`pages.dashboard.${link.text}.title`)}
+                  </p>
+                  <ArrowRightIcon className='w-7' />
+                </Link>
+              ))}
+            </div>
           </div>
         </section>
       </main>
     </Layout>
   );
 }
+
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['common'])),
+      // Will be passed to the page component as props
+    },
+  };
+};

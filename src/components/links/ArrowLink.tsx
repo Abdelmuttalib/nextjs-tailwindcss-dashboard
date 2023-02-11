@@ -1,7 +1,7 @@
 import { ChevronRightIcon } from '@heroicons/react/20/solid';
 import * as React from 'react';
 
-import clsxm from '@/lib/clsxm';
+import cn from '@/lib/cn';
 
 import UnderlineLink from '@/components/links/UnderlineLink';
 import { UnstyledLinkProps } from '@/components/links/UnstyledLink';
@@ -24,7 +24,7 @@ export default function ArrowLink<C extends React.ElementType>({
   return (
     <Component
       {...rest}
-      className={clsxm(
+      className={cn(
         'group gap-[0.25em]',
         direction === 'left' && 'flex-row-reverse',
         className
@@ -33,7 +33,7 @@ export default function ArrowLink<C extends React.ElementType>({
       <span>{children}</span>
 
       <ChevronRightIcon
-        className={clsxm(
+        className={cn(
           'relative',
           'w-6',
           'transition-transform duration-200',

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ImSpinner2 } from 'react-icons/im';
 
-import clsxm from '@/lib/clsxm';
+import cn from '@/lib/cn';
 
 enum ButtonVariant {
   'primary',
@@ -37,7 +37,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         type='button'
         disabled={disabled}
-        className={clsxm(
+        className={cn(
           'p inline-flex items-center rounded-lg px-6 py-2 font-medium',
           'focus:outline-none focus-visible:ring focus-visible:ring-primary-600',
           'shadow-xl',
@@ -92,7 +92,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       >
         {isLoading && (
           <div
-            className={clsxm(
+            className={cn(
               'absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2',
               {
                 'text-white': ['primary', 'dark'].includes(variant),

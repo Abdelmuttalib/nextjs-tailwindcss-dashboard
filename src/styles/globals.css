@@ -1,32 +1,11 @@
+/* General Sans font */
+@import url('https://api.fontshare.com/v2/css?f[]=general-sans@701,200,500,301,201,300,601,600,401,501,400,700&display=swap');
+/* Inter font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-:root {
-  /* #region  /**=========== Primary Color =========== */
-
-  --tw-color-primary-50: 240 246 253;
-  --tw-color-primary-100: 204 224 250;
-  --tw-color-primary-200: 169 202 246;
-  --tw-color-primary-300: 133 180 243;
-  --tw-color-primary-400: 97 159 239;
-  --tw-color-primary-500: 62 137 236;
-  --tw-color-primary-600: 26 115 232;
-  --tw-color-primary-700: 20 97 199;
-  --tw-color-primary-800: 16 80 163;
-  --tw-color-primary-900: 13 62 128;
-  --color-primary-50: rgb(var(--tw-color-primary-50)); /* #f0f6fd */
-  --color-primary-100: rgb(var(--tw-color-primary-100)); /* #cce0fa */
-  --color-primary-200: rgb(var(--tw-color-primary-200)); /* #a9caf6 */
-  --color-primary-300: rgb(var(--tw-color-primary-300)); /* #85b4f3 */
-  --color-primary-400: rgb(var(--tw-color-primary-400)); /* #619fef */
-  --color-primary-500: rgb(var(--tw-color-primary-500)); /* #3e89ec */
-  --color-primary-600: rgb(var(--tw-color-primary-600)); /* #1a73e8 */
-  --color-primary-700: rgb(var(--tw-color-primary-700)); /* #1461c7 */
-  --color-primary-800: rgb(var(--tw-color-primary-800)); /* #1050a3 */
-  --color-primary-900: rgb(var(--tw-color-primary-900)); /* #0d3e80 */
-  /* #endregion  /**======== Primary Color =========== */
-}
 
 @layer base {
   /* inter var - latin */
@@ -41,69 +20,161 @@
       U+2215, U+FEFF, U+FFFD;
   }
 
-  /* Typography styles */
-  /* #region  /**=========== Typography =========== */
-  .h0 {
-    @apply font-primary text-3xl font-bold tracking-tight lg:text-5xl;
-  }
-
-  h1,
-  .h1 {
-    @apply font-primary text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl;
-  }
-
-  h2,
-  .h2 {
-    @apply font-primary text-2xl font-bold tracking-tight sm:text-3xl lg:text-4xl;
-  }
-
-  h3,
-  .h3 {
-    @apply font-primary text-xl font-bold tracking-tight sm:text-2xl lg:text-3xl;
-  }
-
-  h4,
-  .h4 {
-    @apply font-primary text-lg font-bold tracking-tight sm:text-xl lg:text-2xl;
-  }
-
-  h5,
-  .h5 {
-    @apply font-primary text-base font-bold tracking-tight sm:text-lg lg:text-xl;
-  }
-
-  h6,
-  .h6 {
-    @apply font-primary font-bold tracking-tight;
-  }
-
-  p,
-  .p {
-    @apply font-primary text-base;
-  }
-
   body {
-    @apply font-primary text-base;
+    @apply font-general-sans antialiased;
   }
-  /* #endregion  /**======== Typography =========== */
 
   .layout {
     /* 1100px */
     max-width: 68.75rem;
     @apply mx-auto w-11/12;
   }
-
-  .bg-dark a.custom-link {
-    @apply border-gray-200 hover:border-gray-200/0;
-  }
-
-  /* Class to adjust with sticky footer */
-  .min-h-main {
-    @apply min-h-[calc(100vh-56px)];
-  }
 }
 
 @layer utilities {
+  .display-lg {
+    font-size: 6rem;
+    line-height: 120%;
+    font-weight: 600;
+  }
+  .display-md {
+    font-size: 5.334rem;
+    line-height: 120%;
+    font-weight: 600;
+  }
+  .display-sm {
+    font-size: 4.5rem;
+    line-height: 120%;
+    font-weight: 600;
+  }
+
+  /* Md */
+  .display-lg-light {
+    font-size: 6rem;
+    line-height: 120%;
+    font-weight: 500;
+  }
+  .display-md-light {
+    font-size: 5.334rem;
+    line-height: 120%;
+    font-weight: 500;
+  }
+  .display-sm-light {
+    font-size: 4.5rem;
+    line-height: 120%;
+    font-weight: 500;
+  }
+
+  /* Headings */
+  .h1 {
+    font-size: 3.5rem;
+    line-height: 120%;
+    font-weight: 600;
+  }
+  .h1-light {
+    font-size: 3.5rem;
+    line-height: 120%;
+    font-weight: 500;
+  }
+
+  .h2 {
+    font-size: 3rem;
+    line-height: 120%;
+    font-weight: 600;
+  }
+  .h2-light {
+    font-size: 3rem;
+    line-height: 120%;
+    font-weight: 500;
+  }
+
+  .h3 {
+    font-size: 2.3331rem;
+    line-height: 120%;
+    font-weight: 600;
+  }
+  .h3-light {
+    font-size: 2.3331rem;
+    line-height: 120%;
+    font-weight: 500;
+  }
+
+  .h4 {
+    font-size: 2rem;
+    line-height: 150%;
+    font-weight: 600;
+  }
+  .h4-light {
+    font-size: 2rem;
+    line-height: 150%;
+    font-weight: 500;
+  }
+
+  .h5 {
+    font-size: 1.5rem;
+    line-height: 150%;
+    font-weight: 600;
+  }
+  .h5-light {
+    font-size: 1.5rem;
+    line-height: 150%;
+    font-weight: 500;
+  }
+
+  .h6 {
+    font-size: 1.3331rem;
+    line-height: 150%;
+    font-weight: 600;
+  }
+  .h6-light {
+    font-size: 1.3331rem;
+    line-height: 150%;
+    font-weight: 500;
+  }
+
+  /* Body/Paragraph */
+  .body-lg {
+    font-size: 1.3331rem;
+    line-height: 150%;
+  }
+
+  .body-md {
+    font-size: 1.1669rem;
+    line-height: 150%;
+  }
+
+  .body-sm {
+    font-size: 1rem;
+    line-height: 150%;
+  }
+
+  /* Caption/Label Text */
+
+  .label-lg {
+    font-size: 1.3331rem;
+    line-height: 100%;
+    font-weight: 500;
+  }
+
+  .label-md {
+    font-size: 1.1669rem;
+    line-height: 100%;
+    font-weight: 500;
+  }
+
+  .label-sm {
+    font-size: 1rem;
+    line-height: 100%;
+    font-weight: 500;
+  }
+
+  /* Block Quote */
+  .block-quote {
+    font-size: 1.5rem;
+    line-height: 150%;
+    font-weight: 500;
+  }
+  ,
   .animated-underline {
     background-image: linear-gradient(#33333300, #33333300),
       linear-gradient(
@@ -126,4 +197,18 @@
   .animated-underline:focus-visible {
     background-size: 0 2px, 100% 2px;
   }
+}
+
+/* text select color */
+::-moz-selection {
+  /* Code for Firefox */
+  @apply text-white bg-primary;
+}
+
+::selection {
+  @apply text-white bg-primary;
+}
+
+.input {
+  @apply label-sm md:label-md w-full placeholder-gray-400 bg-white hover:bg-gray-50 transition duration-200 rounded-md px-3 py-2 md:px-5 md:py-3 border-[2px] border-gray-300 focus:outline-none focus:bg-white focus:border-primary text-gray-800 flex-1 bg-transparent outline-none;
 }
