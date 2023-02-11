@@ -154,7 +154,7 @@ const LogQueryTable = ({
   };
 
   return (
-    <div className='rounded-md w-full'>
+    <div className='w-full rounded-md'>
       {selectedLog && (
         <LogQueryDetailsDialog
           isOpen={logQueryDialogOpen}
@@ -163,10 +163,10 @@ const LogQueryTable = ({
         />
       )}
 
-      <div className='flex flex-col max-w-md gap-2 mb-4'>
+      <div className='mb-4 flex max-w-md flex-col gap-2'>
         <h5 className='h5'>{t('pages.dashboard.log_query.filter_by_date')}</h5>
         <div className='flex flex-col gap-3'>
-          <div className='flex flex-col sm:flex-row gap-3 items-center'>
+          <div className='flex flex-col items-center gap-3 sm:flex-row'>
             <div className='w-full'>
               <label htmlFor='startDate' className='label-sm'>
                 {t('pages.dashboard.log_query.start_date')}
@@ -176,7 +176,7 @@ const LogQueryTable = ({
                 name='startDate'
                 value={startDate}
                 onChange={(e) => setStartDate(e.target.value)}
-                className='w-full input'
+                className='input w-full'
                 placeholder={`${t('pages.dashboard.source_query.inquire')}`}
                 type='date'
               />
@@ -190,14 +190,14 @@ const LogQueryTable = ({
                 name='endDate'
                 value={endDate}
                 onChange={(e) => setEndDate(e.target.value)}
-                className='w-full input'
+                className='input w-full'
                 placeholder={`${t('pages.dashboard.source_query.inquire')}`}
                 type='date'
               />
             </div>
             <Button
               variant='secondary'
-              className='flex-none border-2 border-gray-200 inline-flex gap-1 w-full h-fit sm:w-fit self-end mt-2 sm:mt-0 sm:mb-1'
+              className='mt-2 inline-flex h-fit w-full flex-none gap-1 self-end border-2 border-gray-200 sm:mt-0 sm:mb-1 sm:w-fit'
               disabled={!startDate && !endDate}
               onClick={() => clearFilters()}
             >
@@ -206,10 +206,10 @@ const LogQueryTable = ({
             </Button>
           </div>
 
-          <div className='flex gap-3'>
+          <div className='flex flex-col gap-3 sm:flex-row'>
             {' '}
             <Button
-              className='flex-none inline-flex gap-1 w-full h-fit sm:w-fit self-end mt-2 sm:mt-0 sm:mb-1'
+              className='mt-2 inline-flex h-fit w-full flex-none gap-1 self-end sm:mt-0 sm:mb-1 sm:w-fit md:px-16'
               disabled={!startDate || !endDate}
               onClick={() => getFilteredLogsByDate()}
             >
@@ -217,7 +217,7 @@ const LogQueryTable = ({
               {t('pages.dashboard.log_query.filter')}
             </Button>
             <Button
-              className='flex-none inline-flex gap-1 w-full h-fit sm:w-fit self-end mt-2 sm:mt-0 sm:mb-1'
+              className='mt-2 inline-flex h-fit w-full flex-none gap-1 self-end sm:mt-0 sm:mb-1 sm:w-fit'
               disabled={!fetchedFilteredLogs || filteredLogs.length === 0}
               onClick={() => downloadLogs()}
             >
@@ -228,30 +228,30 @@ const LogQueryTable = ({
         </div>
       </div>
       <div className=''>
-        <div className='-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto'>
+        <div className='-mx-4 overflow-x-auto px-4 py-4 sm:-mx-8 sm:px-8'>
           <LogQueryTabs logsTypes={logsTypes} setSelectedTab={setSelectedTab} />
 
-          <div className='inline-block min-w-full shadow rounded-lg overflow-hidden'>
+          <div className='inline-block min-w-full overflow-hidden rounded-lg shadow'>
             <table className='min-w-full'>
               <thead className='bg-gray-50'>
-                <tr className='border-b-2 border-gray-200 text-gray-600 text-left'>
-                  <th className='label-sm px-5 py-4 whitespace-nowrap'>
+                <tr className='border-b-2 border-gray-200 text-left text-gray-600'>
+                  <th className='label-sm whitespace-nowrap px-5 py-4'>
                     <span>{t('pages.dashboard.log_query.project_id')}</span>
                   </th>
-                  <th className='label-sm px-5 py-4 whitespace-nowrap'>
+                  <th className='label-sm whitespace-nowrap px-5 py-4'>
                     <span>{t('pages.dashboard.log_query.device_id')}</span>
                   </th>
-                  <th className='label-sm px-5 py-4 whitespace-nowrap'>
+                  <th className='label-sm whitespace-nowrap px-5 py-4'>
                     <span>{t('pages.dashboard.log_query.info')}</span>
                   </th>
-                  <th className='label-sm px-5 py-4 whitespace-nowrap'>
+                  <th className='label-sm whitespace-nowrap px-5 py-4'>
                     <span>{t('pages.dashboard.log_query.type')}</span>
                   </th>
-                  <th className='label-sm px-5 py-4 whitespace-nowrap'>
+                  <th className='label-sm whitespace-nowrap px-5 py-4'>
                     <span>{t('pages.dashboard.log_query.date')}</span>
                   </th>
 
-                  <th className='label-sm px-5 py-4 whitespace-nowrap'>
+                  <th className='label-sm whitespace-nowrap px-5 py-4'>
                     <span>
                       {t('pages.dashboard.log_query.log_query_details')}
                     </span>
@@ -267,7 +267,7 @@ const LogQueryTable = ({
                     <tr
                       v-for='log in logs'
                       key={log._id}
-                      className='body-medium text-gray-900 whitespace-nowrap border-b border-gray-200 bg-white'
+                      className='body-medium whitespace-nowrap border-b border-gray-200 bg-white text-gray-900'
                     >
                       <td className='px-5 py-5'>
                         <p>{log.projectId ?? '-'}</p>
@@ -275,10 +275,10 @@ const LogQueryTable = ({
                       <td className='px-5 py-5'>
                         <p>{log.deviceId ?? '-'}</p>
                       </td>
-                      <td className='px-5 py-5 max-w-[150px]'>
+                      <td className='max-w-[150px] px-5 py-5'>
                         <div className='flex flex-col gap-1 truncate'>
                           <p className='truncate'>{log.info ?? '-'}</p>
-                          <p className='truncate max-w-sm'>
+                          <p className='max-w-sm truncate'>
                             {log.description ?? '-'}
                           </p>
                         </div>
@@ -311,14 +311,14 @@ const LogQueryTable = ({
                 {filteredLogs &&
                   fetchedFilteredLogs &&
                   filteredLogs.length === 0 && (
-                    <tr className='body-medium text-gray-900 whitespace-nowrap border-b border-gray-200 bg-white'>
+                    <tr className='body-medium whitespace-nowrap border-b border-gray-200 bg-white text-gray-900'>
                       <td className='px-16 py-10'>
                         <span className='label-md italic text-gray-500'>
                           {t('pages.dashboard.log_query.no_logs_found')}
                         </span>
                       </td>
                       <td className='px-5 py-10'></td>
-                      <td className='px-5 py-10 max-w-[150px]'></td>
+                      <td className='max-w-[150px] px-5 py-10'></td>
                       <td className='px-5 py-10'></td>
                       <td className='px-5 py-10'></td>
                       <td></td>
@@ -332,7 +332,7 @@ const LogQueryTable = ({
                     <tr
                       v-for='filteredLog in filteredLogs'
                       key={filteredLog._id}
-                      className='body-medium text-gray-900 whitespace-nowrap border-b border-gray-200 bg-white'
+                      className='body-medium whitespace-nowrap border-b border-gray-200 bg-white text-gray-900'
                     >
                       <td className='px-5 py-5'>
                         <p>{filteredLog.projectId ?? '-'}</p>
@@ -340,10 +340,10 @@ const LogQueryTable = ({
                       <td className='px-5 py-5'>
                         <p>{filteredLog.deviceId ?? '-'}</p>
                       </td>
-                      <td className='px-5 py-5 max-w-[150px]'>
+                      <td className='max-w-[150px] px-5 py-5'>
                         <div className='flex flex-col gap-1 truncate'>
                           <p className='truncate'>{filteredLog.info ?? '-'}</p>
-                          <p className='truncate max-w-sm'>
+                          <p className='max-w-sm truncate'>
                             {filteredLog.description ?? '-'}
                           </p>
                         </div>

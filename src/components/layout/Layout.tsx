@@ -16,7 +16,11 @@ const Header = ({ pageTitle }: { pageTitle: string }) => {
         <h1 className='h3 hidden capitalize sm:block lg:hidden'>{pageTitle}</h1>
         <h1 className='h2 hidden capitalize lg:block'>{pageTitle}</h1>
         <div className='flex gap-2'>
-          <Link href={pathname} locale={locale === 'en' ? 'zh' : 'en'}>
+          <Link
+            href={pathname}
+            locale={locale === 'en' ? 'zh' : 'en'}
+            className='label-md inline-block rounded-full border-2 border-gray-200 p-2 px-3'
+          >
             {locale}
           </Link>
           <NotificationsDialog />
