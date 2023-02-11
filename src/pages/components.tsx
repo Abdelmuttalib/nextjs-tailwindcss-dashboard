@@ -16,7 +16,7 @@ import Seo from '@/components/Seo';
 
 export default function ComponentsPage() {
   return (
-    <Layout>
+    <Layout pageTitle='Components'>
       <Seo
         templateTitle='Components'
         description='Pre-built components with awesome default'

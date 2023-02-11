@@ -1,8 +1,8 @@
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
 
 import NotificationsDialog from '@/components/@pages/Notifications/NotificationsDialog';
-import IconButtonOrLink from '@/components/ui/icon-button';
 
 import SideBar from './SideBar';
 
@@ -10,19 +10,15 @@ import SideBar from './SideBar';
 const Header = ({ pageTitle }: { pageTitle: string }) => {
   const { pathname, locale } = useRouter();
   return (
-    <header className='sticky top-0 z-50 backdrop-filter backdrop-blur-md flex-none transition-colors duration-300 border-b border-gray-900/10 bg-white/[0.5] lg:pl-0 py-4'>
+    <header className='sticky top-0 z-50 flex-none border-b border-gray-900/10 bg-white/[0.5] py-4 backdrop-blur-md backdrop-filter transition-colors duration-300 lg:pl-0'>
       <div className='flex h-14 items-center justify-between px-4 lg:px-8'>
-        <h1 className='block sm:hidden h5 capitalize'>{pageTitle}</h1>
-        <h1 className='hidden sm:block lg:hidden h3 capitalize'>{pageTitle}</h1>
-        <h1 className='hidden lg:block h2 capitalize'>{pageTitle}</h1>
+        <h1 className='h5 block capitalize sm:hidden'>{pageTitle}</h1>
+        <h1 className='h3 hidden capitalize sm:block lg:hidden'>{pageTitle}</h1>
+        <h1 className='h2 hidden capitalize lg:block'>{pageTitle}</h1>
         <div className='flex gap-2'>
-          <IconButtonOrLink
-            href={pathname}
-            locale={locale === 'en' ? 'zh' : 'en'}
-            variant='outline'
-          >
+          <Link href={pathname} locale={locale === 'en' ? 'zh' : 'en'}>
             {locale}
-          </IconButtonOrLink>
+          </Link>
           <NotificationsDialog />
         </div>
       </div>
@@ -33,7 +29,7 @@ const Header = ({ pageTitle }: { pageTitle: string }) => {
 // Footer
 const Footer = () => {
   return (
-    <footer className='mt-auto border-t w-full py-4 px-4 lg:px-8 text-gray-700'>
+    <footer className='mt-auto w-full border-t py-4 px-4 text-gray-700 lg:px-8'>
       <div className='w-full text-center md:text-left'>
         <h5 className='label-sm mb-1'>
           InView
@@ -55,13 +51,13 @@ export default function Layout({
   children: React.ReactNode;
 }) {
   return (
-    <div className='flex min-h-screen fixed top-0 left-0 w-screen h-screen antialiased duration-300 transition-colors text-gray-800 bg-white'>
+    <div className='fixed top-0 left-0 flex h-screen min-h-screen w-screen bg-white text-gray-800 antialiased transition-colors duration-300'>
       <aside>
         <SideBar />
       </aside>
-      <div className='w-full overflow-auto flex flex-col'>
+      <div className='flex w-full flex-col overflow-auto'>
         <Header pageTitle={pageTitle} />
-        <main className='pt-6 w-full px-4 lg:px-8'>{children}</main>
+        <main className='w-full px-4 pt-6 lg:px-8'>{children}</main>
         <Footer />
       </div>
     </div>

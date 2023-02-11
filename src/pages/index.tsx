@@ -18,13 +18,13 @@ export default function HomePage() {
       <main>
         <section className='bg-white'>
           <div className='flex min-h-screen flex-col'>
-            <div className='grid md:grid-cols-2 gap-y-4'>
+            <div className='grid gap-y-4 md:grid-cols-2'>
               {' '}
               {dashboardLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className='h3 text-primary hover:text-primary-400 focus:text-primary-600 inline-flex items-center gap-2 first-letter:uppercase'
+                  className='h3 inline-flex items-center gap-2 text-primary first-letter:uppercase hover:text-primary-400 focus:text-primary-600'
                 >
                   <p className='first-letter:uppercase'>
                     {t(`pages.dashboard.${link.text}.title`)}
@@ -43,7 +43,7 @@ export default function HomePage() {
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common'])),
+      ...(await serverSideTranslations(locale as string, ['common'])),
       // Will be passed to the page component as props
     },
   };

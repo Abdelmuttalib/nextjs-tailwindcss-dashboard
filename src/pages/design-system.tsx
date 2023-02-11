@@ -17,7 +17,7 @@ import {
 
 export default function HomePage() {
   return (
-    <Layout>
+    <Layout pageTitle='Design'>
       {/* <Seo templateTitle='Home' /> */}
       <Seo />
 

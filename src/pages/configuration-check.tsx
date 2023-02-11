@@ -19,7 +19,7 @@ export default ConfigurationCheckPage;
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common'])),
+      ...(await serverSideTranslations(locale as string, ['common'])),
       // Will be passed to the page component as props
     },
   };
