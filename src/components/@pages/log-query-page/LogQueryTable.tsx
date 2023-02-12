@@ -17,12 +17,14 @@ import LogQueryTabs from '@/components/@pages/log-query-page/LogQueryTabs';
 import Badge from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 
+export type StatusTypeT = 'INFO' | 'WARNING' | 'DEBUG' | 'ERROR' | 'CRITICAL';
+
 export type LogT = {
   _id: string;
   date: string;
   projectId: string;
   deviceId: string;
-  type: 'INFO' | 'WARNING' | 'DEBUG' | 'ERROR' | 'CRITICAL';
+  type: StatusTypeT;
   info: string;
   description: string;
   __v: number;
@@ -265,7 +267,6 @@ const LogQueryTable = ({
                   !fetchedFilteredLogs &&
                   logs.map((log: LogT) => (
                     <tr
-                      v-for='log in logs'
                       key={log._id}
                       className='body-medium whitespace-nowrap border-b border-gray-200 bg-white text-gray-900'
                     >
@@ -330,7 +331,6 @@ const LogQueryTable = ({
                   fetchedFilteredLogs &&
                   filteredLogs.map((filteredLog: LogT) => (
                     <tr
-                      v-for='filteredLog in filteredLogs'
                       key={filteredLog._id}
                       className='body-medium whitespace-nowrap border-b border-gray-200 bg-white text-gray-900'
                     >

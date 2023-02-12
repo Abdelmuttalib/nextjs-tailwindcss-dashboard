@@ -8,7 +8,8 @@ import SideBar from './SideBar';
 
 // Header
 const Header = ({ pageTitle }: { pageTitle: string }) => {
-  const { pathname, locale } = useRouter();
+  const { pathname, locale, query } = useRouter();
+
   return (
     <header className='sticky top-0 z-50 flex-none border-b border-gray-900/10 bg-white/[0.5] py-4 backdrop-blur-md backdrop-filter transition-colors duration-300 lg:pl-0'>
       <div className='flex h-14 items-center justify-between px-4 lg:px-8'>
@@ -17,7 +18,11 @@ const Header = ({ pageTitle }: { pageTitle: string }) => {
         <h1 className='h2 hidden capitalize lg:block'>{pageTitle}</h1>
         <div className='flex gap-2'>
           <Link
-            href={pathname}
+            href={
+              pathname === '/notifications/[id]'
+                ? `/notifications/${query.id}`
+                : pathname
+            }
             locale={locale === 'en' ? 'zh' : 'en'}
             className='label-md inline-block rounded-full border-2 border-gray-200 p-2 px-3'
           >
@@ -54,6 +59,21 @@ export default function Layout({
   pageTitle: string;
   children: React.ReactNode;
 }) {
+  // const { addToast } = useToast();
+  // const socket = io('http://161.189.66.94:8090');
+
+  // socket.on('New Notification', (message) => {
+  //   console.log('received notification:', message);
+  //   addToast(message, 'error');
+  // });
+
+  // socket.on('connect', () => {
+  //   console.log('connect: ', socket.id);
+  // });
+
+  // socket.on('disconnect', () => {
+  //   console.log('disconnect: ', socket.id);
+  // });
   return (
     <div className='fixed top-0 left-0 flex h-screen min-h-screen w-screen bg-white text-gray-800 antialiased transition-colors duration-300'>
       <aside>

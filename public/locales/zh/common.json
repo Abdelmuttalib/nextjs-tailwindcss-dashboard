@@ -18,7 +18,11 @@
     "errors": "错误",
     "sync": "同步",
     "view_details": "查看详情",
-    "mark_all_as_read": "标记为已读"
+    "mark_all_as_read": "标记为已读",
+    "description": "描述",
+    "error_notification_details": "错误通知详情",
+    "notification_details": "通知详情",
+    "view_notification": "查看通知"
   },
   "pages": {
     "404": {
@@ -79,6 +83,7 @@
         "host": "主持人",
         "projects_servers_status": "项目服务器状态",
         "project_id": "项目编号",
+        "name": "姓名",
         "inquire": "查询",
         "online": "在线的",
         "offline": "离线",

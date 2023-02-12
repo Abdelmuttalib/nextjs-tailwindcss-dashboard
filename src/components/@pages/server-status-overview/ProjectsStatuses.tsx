@@ -22,15 +22,15 @@ const ProjectsStatuses = ({
   t: TFunction;
 }) => {
   return (
-    <div className='mt-5 grid grid-cols-1 lg:grid-cols-2 max-w-7xl gap-5'>
+    <div className='mt-5 grid max-w-7xl grid-cols-1 gap-5 lg:grid-cols-2'>
       {data &&
         data.map &&
         data.map((project: ProjectStatusT) => (
           <div key={project._id}>
-            <div className='flex flex-col shadow rounded w-full'>
-              <div className='flex justify-between items-center h-12 px-4 py-2 bg-primary-200 rounded-t'>
+            <div className='flex w-full flex-col rounded shadow'>
+              <div className='flex h-12 items-center justify-between rounded-t bg-primary-200 px-4 py-2'>
                 <div>
-                  <div className='flex items-center gap-1 w-full rounded-t truncate'>
+                  <div className='flex w-full items-center gap-1 truncate rounded-t'>
                     <h3 className='text-lg font-semibold'>
                       {t(
                         'pages.dashboard.server_status_overview.data.project_name'

@@ -25,10 +25,10 @@ class MyDocument extends Document {
           />
 
           {/*  allow mixed content */}
-          <meta
+          {/* <meta
             http-equiv='Content-Security-Policy'
             content='upgrade-insecure-requests'
-          ></meta>
+          ></meta> */}
         </Head>
         <body>
           <Main />

@@ -18,7 +18,11 @@
     "errors": "Errors",
     "sync": "Sync",
     "view_details": "View Details",
-    "mark_all_as_read": "Mark All as Read"
+    "mark_all_as_read": "Mark All as Read",
+    "description": "Description",
+    "error_notification_details": "Error Notification Details",
+    "notification_details": "Notification Details",
+    "view_notification": "view notifications"
   },
   "pages": {
     "404": {
@@ -77,6 +81,7 @@
       "source_query": {
         "title": "source query",
         "host": "Host",
+        "name": "Name",
         "projects_servers_status": "Projects Servers Status",
         "project_id": "Project ID",
         "inquire": "Inquire",

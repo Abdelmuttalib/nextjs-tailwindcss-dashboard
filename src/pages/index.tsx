@@ -10,6 +10,7 @@ import Seo from '@/components/Seo';
 
 export default function HomePage() {
   const { t } = useTranslation();
+
   return (
     <Layout pageTitle={t('app.description')}>
       {/* <Seo templateTitle='Home' /> */}

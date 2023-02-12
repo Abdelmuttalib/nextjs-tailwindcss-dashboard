@@ -32,7 +32,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
     props: {
       data,
       ...(await serverSideTranslations(locale as string, ['common'])),
-      // Will be passed to the page component as props
     },
+    revalidate: 5,
   };
 };
