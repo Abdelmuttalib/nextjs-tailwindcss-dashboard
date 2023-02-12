@@ -20,7 +20,7 @@ const useNotifications = () => {
   );
 
   const newNotificationsExist = notifications?.some(
-    (notification) => !notification.read
+    (notification) => notification.read === 'false'
   );
   const markAllAsRead = () => {
     const config = {

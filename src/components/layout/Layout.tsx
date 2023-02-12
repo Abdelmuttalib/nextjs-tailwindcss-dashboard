@@ -74,6 +74,7 @@ export default function Layout({
   // socket.on('disconnect', () => {
   //   console.log('disconnect: ', socket.id);
   // });
+
   return (
     <div className='fixed top-0 left-0 flex h-screen min-h-screen w-screen bg-white text-gray-800 antialiased transition-colors duration-300'>
       <aside>

@@ -20,11 +20,11 @@ const NotificationItem = ({
       key={notification._id}
       className={cn(
         'relative flex w-full gap-4 border-b bg-white px-5 py-2 hover:bg-primary-100/10 focus:bg-primary-100/30 sm:py-4',
-        { 'bg-primary-100/30': !notification.read }
+        { 'bg-primary-100/30': notification.read === 'false' }
       )}
     >
       {/* not read notification indicator  */}
-      {!notification.read && (
+      {notification.read === 'false' && (
         <div className='absolute top-2 right-3 h-2.5 w-2.5 rounded-full bg-primary'></div>
       )}
       <div className='h-fit w-fit'>

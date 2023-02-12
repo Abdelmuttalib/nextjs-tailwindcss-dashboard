@@ -31,7 +31,7 @@ const NotificationsDialog = ({ t }: { t: TFunction }) => {
         >
           {/* <icon-heroicons:bell-20-solid className="w-6" aria-hidden="true" /> */}
           {newNotificationsExist && (
-            <span className='absolute top-4 right-4 inline-flex items-center justify-center w-3 h-3 text-xs font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full'></span>
+            <span className='absolute top-4 right-4 inline-flex h-3 w-3 translate-x-1/2 -translate-y-1/2 transform items-center justify-center rounded-full bg-red-600 text-xs font-bold leading-none text-white'></span>
           )}
           <BellIcon className='w-6' aria-hidden='true' />
         </Button>
@@ -62,8 +62,8 @@ const NotificationsDialog = ({ t }: { t: TFunction }) => {
                 leaveFrom='opacity-100'
                 leaveTo='opacity-0'
               >
-                <Dialog.Panel className='absolute right-0 left-0 bottom-0 w-full sm:max-w-sm md:max-w-md lg:max-w-lg sm:left-auto sm:top-0 sm:right-0 overflow-y-scroll h-[70%] pt-2.5 sm:min-h-screen rounded-t-md sm:rounded-md bg-white shadow-xl'>
-                  <div className='px-5 lg:px-6 w-full text-left lg:mb-3'>
+                <Dialog.Panel className='absolute right-0 left-0 bottom-0 h-[70%] w-full overflow-y-scroll rounded-t-md bg-white pt-2.5 shadow-xl sm:left-auto sm:top-0 sm:right-0 sm:min-h-screen sm:max-w-sm sm:rounded-md md:max-w-md lg:max-w-lg'>
+                  <div className='w-full px-5 text-left lg:mb-3 lg:px-6'>
                     <Dialog.Title
                       as='div'
                       className='text-lg font-medium leading-6 text-gray-900'
@@ -91,9 +91,9 @@ const NotificationsDialog = ({ t }: { t: TFunction }) => {
                   <div className='mt-2'>
                     <NotificationsTabs />
                   </div>
-                  <div className='w-full py-2 px-4 border-t bg-white shadow-lg sticky bottom-0'>
+                  <div className='sticky bottom-0 w-full border-t bg-white py-2 px-4 shadow-lg'>
                     <Button
-                      className='w-full inline-flex gap-1'
+                      className='inline-flex w-full gap-1'
                       onClick={markAllAsRead}
                     >
                       <CheckCircleIcon className='w-5' />{' '}

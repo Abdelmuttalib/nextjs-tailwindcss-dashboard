@@ -76,6 +76,10 @@ const LogQueryTable = ({
 
   useEffect(() => {
     mutate();
+    if (filteredLogs && fetchedFilteredLogs) {
+      setFilteredLogs([]);
+      setFetchedFilteredLogs(false);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedTab]);
 
