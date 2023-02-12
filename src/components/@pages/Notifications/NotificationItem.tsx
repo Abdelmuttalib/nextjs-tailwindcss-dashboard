@@ -19,7 +19,7 @@ const NotificationItem = ({
     <li
       key={notification._id}
       className={cn(
-        'relative flex w-full gap-4 border-b bg-white px-5 py-2 focus-within:bg-primary-100 hover:bg-primary-100/10 focus:bg-primary-100/30 sm:py-4',
+        'relative flex w-full gap-4 border-b bg-white px-5 py-2 hover:bg-primary-100/10 focus:bg-primary-100/30 sm:py-4',
         { 'bg-primary-100/30': !notification.read }
       )}
     >
@@ -44,7 +44,7 @@ const NotificationItem = ({
       <div className='w-full'>
         <h4 className='body-sm font-medium'>{notification.description}</h4>
 
-        <div className='flex w-full justify-between'>
+        <div className='mt-1 flex w-full justify-between'>
           <p className='text-sm font-medium text-gray-400'>
             {formatDate(notification.date)}
           </p>

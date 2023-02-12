@@ -2,9 +2,9 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 const defaultMeta = {
-  title: 'Next.js Starter',
-  siteName: 'Next.js Starter',
-  description: 'A starter for Next.js',
+  title: 'InView | Maintenance Dashboard',
+  siteName: 'InView | Maintenance Dashboard',
+  description: 'InView Maintenance Dashboard',
   url: '',
   type: 'website',
   robots: 'follow, index',

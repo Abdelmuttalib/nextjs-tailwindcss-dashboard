@@ -22,7 +22,7 @@
     "description": "Description",
     "error_notification_details": "Error Notification Details",
     "notification_details": "Notification Details",
-    "view_notification": "view notifications"
+    "view_notification": "view notification"
   },
   "pages": {
     "404": {

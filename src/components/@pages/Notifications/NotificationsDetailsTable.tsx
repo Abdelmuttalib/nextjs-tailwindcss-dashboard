@@ -9,6 +9,16 @@ import { Button } from '@/components/ui/button';
 
 import { NotificationDetailsT } from '@/pages/notifications/[id]';
 
+const logStatusTypes: {
+  [key in NotificationDetailsT['type']]: { label: string; color: string };
+} = {
+  INFO: { label: 'INFO', color: 'gray' },
+  WARNING: { label: 'WARNING', color: 'yellow' },
+  DEBUG: { label: 'DEBUG', color: 'blue' },
+  ERROR: { label: 'ERROR', color: 'red' },
+  CRITICAL: { label: 'CRITICAL', color: 'red' },
+};
+
 const NotificationsDetailsTable = ({
   data,
   t,
@@ -64,12 +74,11 @@ const NotificationsDetailsTable = ({
                     </td>
                     <td className='px-5 py-5'>
                       <Badge
-                        color='gray'
-                        // color={
-                        //   logStatusTypes[
-                        //     notificationDetails.type
-                        //   ].color.toLocaleLowerCase() ?? 'gray'
-                        // }
+                        color={
+                          logStatusTypes[
+                            notificationDetails.type
+                          ].color.toLocaleLowerCase() ?? 'gray'
+                        }
                       >
                         {notificationDetails.type.toLocaleLowerCase()}
                       </Badge>

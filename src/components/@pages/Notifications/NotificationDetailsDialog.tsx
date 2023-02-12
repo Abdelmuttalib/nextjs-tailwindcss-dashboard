@@ -67,27 +67,18 @@ const NotificationDetailsDialog = ({
                   >
                     <div>
                       <h5 className='h5 sm:hidden'>
-                        {t('pages.dashboard.log_query.log_query_details')}
+                        {t('notifications.notification_details')}
                       </h5>
                       <h4 className='h4 hidden sm:block lg:hidden'>
-                        {t('pages.dashboard.log_query.log_query_details')}
+                        {t('notifications.notification_details')}
                       </h4>
                       <h3 className='h3 hidden lg:block'>
-                        {t('pages.dashboard.log_query.log_query_details')}
+                        {t('notifications.notification_details')}
                       </h3>
                     </div>
-                    <Badge
-                      color={
-                        logStatusTypes[
-                          notificationDetails.type
-                        ].color.toLocaleLowerCase() ?? 'gray'
-                      }
-                    >
-                      {notificationDetails.type.toLocaleLowerCase()}
-                    </Badge>
                   </Dialog.Title>
                   <Button
-                    className='absolute top-4 right-2 focus:border-2 focus:border-gray-800'
+                    className='absolute top-2 right-2 focus:border-2 focus:border-gray-800'
                     variant='outline'
                     size='sm'
                     onClick={closeModal}
@@ -100,12 +91,24 @@ const NotificationDetailsDialog = ({
                 <div>
                   <div className='mb-6 px-5 lg:px-6'>
                     <div className='flex flex-col gap-4 md:gap-5'>
-                      <div className='flex items-center gap-1 text-gray-500'>
-                        <CalendarDaysIcon className='w-7 text-gray-500' />
-                        <p className='label-md inline-block'>
-                          {formatDate(notificationDetails.date)}
-                        </p>
+                      <div className='flex justify-between'>
+                        <div className='flex items-center gap-1 text-gray-500'>
+                          <CalendarDaysIcon className='w-7 text-gray-500' />
+                          <p className='label-md inline-block'>
+                            {formatDate(notificationDetails.date)}
+                          </p>
+                        </div>
+                        <Badge
+                          color={
+                            logStatusTypes[
+                              notificationDetails.type
+                            ].color.toLocaleLowerCase() ?? 'gray'
+                          }
+                        >
+                          {notificationDetails.type.toLocaleLowerCase()}
+                        </Badge>
                       </div>
+
                       <hr />
                       <div className='label-md flex flex-col gap-1'>
                         <p className='md:label-lg inline-block'>
