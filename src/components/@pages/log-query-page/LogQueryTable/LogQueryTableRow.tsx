@@ -3,9 +3,10 @@ import React from 'react';
 
 import { formatDate } from '@/lib/date';
 
-import { LogT } from '@/components/@pages/log-query-page/LogQueryTable/LogQueryTable';
 import Badge from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+
+import { LogT } from '../types';
 
 const logStatusTypes: {
   [key in LogT['type']]: { label: string; color: string };
