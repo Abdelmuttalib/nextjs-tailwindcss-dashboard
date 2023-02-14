@@ -1,16 +1,17 @@
-import { GetStaticProps } from 'next';
+import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { fetchAPI } from '@/lib/api';
 
-import ForwardFlowQueryTable, {
-  StreamOutputUrlT,
-} from '@/components/@pages/forward-flow-query-page/ForwardFlowQueryTable';
+import { ForwardFlowQueryTable } from '@/components/@pages/forward-flow-query-page';
+import { StreamOutputT } from '@/components/@pages/forward-flow-query-page/types';
 import { Layout } from '@/components/layout';
 
-const ForwardFlowQueryPage = ({ data }: { data: StreamOutputUrlT[] }) => {
+const ForwardFlowQueryPage = ({
+  data,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { t } = useTranslation(['common']);
   return (
     <Layout pageTitle={t('pages.dashboard.forward_flow_query.title')}>
@@ -25,8 +26,10 @@ const ForwardFlowQueryPage = ({ data }: { data: StreamOutputUrlT[] }) => {
 
 export default ForwardFlowQueryPage;
 
-export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  const data = await fetchAPI('/forward-flow-query');
+export const getStaticProps: GetStaticProps<{
+  data: StreamOutputT[];
+}> = async ({ locale }) => {
+  const data = await fetchAPI.get('/forward-flow-query');
   return {
     props: {
       data,

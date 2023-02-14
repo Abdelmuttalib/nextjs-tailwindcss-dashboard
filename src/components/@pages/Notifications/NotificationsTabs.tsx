@@ -23,7 +23,7 @@ const NotificationsTabs = ({ t }: { t: TFunction }) => {
   return (
     <div className='w-full'>
       <Tab.Group>
-        <Tab.List className='flex bg-gray-100/60 px-5 lg:px-6'>
+        <Tab.List className='flex bg-gray-100/60 px-5 dark:bg-gray-800/50 lg:px-6'>
           {Object.keys(notificationsData).map((notificationLabel) => (
             <Tab
               v-for='notificationLabel in Object.keys(notificationsData)'
@@ -32,9 +32,9 @@ const NotificationsTabs = ({ t }: { t: TFunction }) => {
               className={({ selected }) =>
                 cn(
                   'sm:label-sm border-b-2 border-transparent px-4 py-2 text-sm leading-5 sm:py-3',
-                  'focus:bg-gray-200 focus:outline-none',
+                  'focus:bg-gray-200 focus:outline-none dark:focus:bg-gray-800',
                   selected
-                    ? 'border-black font-medium'
+                    ? 'border-black font-medium dark:border-primary-400'
                     : 'font-medium text-gray-500'
                 )
               }
@@ -48,7 +48,10 @@ const NotificationsTabs = ({ t }: { t: TFunction }) => {
         <Tab.Panels>
           <div>
             {Object.values(notificationsData).map((notifications, idx) => (
-              <Tab.Panel key={idx} className='bg-white py-3 focus:outline-none'>
+              <Tab.Panel
+                key={idx}
+                className='bg-white py-3 focus:outline-none dark:bg-gray-900'
+              >
                 <ul className='w-full'>
                   {notifications?.map((notification) => (
                     <NotificationItem

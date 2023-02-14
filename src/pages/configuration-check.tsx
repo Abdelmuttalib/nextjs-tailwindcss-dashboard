@@ -1,3 +1,4 @@
+import { ClockIcon } from '@heroicons/react/20/solid';
 import { GetStaticProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import React from 'react';
@@ -9,7 +10,10 @@ const ConfigurationCheckPage = () => {
   const { t } = useTranslation(['common']);
   return (
     <Layout pageTitle={t('pages.dashboard.configuration_check.title')}>
-      <div>ConfigurationCheck</div>
+      <div className='flex h-40 w-full items-center justify-center gap-2 rounded bg-gray-900 text-gray-100'>
+        <ClockIcon className='w-10' />{' '}
+        <h2 className='h2'> Ongoing development...</h2>
+      </div>
     </Layout>
   );
 };

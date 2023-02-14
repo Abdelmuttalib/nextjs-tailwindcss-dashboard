@@ -3,47 +3,39 @@ import { TFunction, withTranslation } from 'next-i18next';
 import Badge from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 
-export type StreamOutputUrlT = {
-  _id: string;
-  url: string;
-  projectId: string;
-  deviceId: string;
-  deviceType: string;
-  status: boolean;
-  __v: number;
-};
+import { StreamOutputT } from './types';
 
 const ForwardFlowQueryTable = ({
   streams,
   t,
 }: {
-  streams: StreamOutputUrlT[];
+  streams: StreamOutputT[];
   t: TFunction;
 }) => {
   return (
-    <div className='rounded-md w-full'>
+    <div className='w-full rounded-md'>
       <div className=''>
-        <div className='-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto'>
-          <div className='inline-block min-w-full shadow rounded-lg overflow-hidden'>
+        <div className='-mx-4 overflow-x-auto px-4 py-4 sm:-mx-8 sm:px-8'>
+          <div className='inline-block min-w-full overflow-hidden rounded-lg shadow'>
             <table className='min-w-full'>
-              <thead className='bg-gray-50'>
-                <tr className='border-b-2 border-gray-200 text-gray-600 text-left'>
-                  <th className='label-sm px-5 py-4 whitespace-nowrap'>
+              <thead className='bg-gray-50 dark:bg-gray-800/50'>
+                <tr className='border-b-2 border-gray-200 text-left text-gray-600 dark:border-gray-800'>
+                  <th className='label-sm whitespace-nowrap px-5 py-4'>
                     <span>ID</span>
                     {/* <span>{t('pages.dashboard.source_query.project_id')}</span> */}
                   </th>
-                  <th className='label-sm px-5 py-4 whitespace-nowrap'>
+                  <th className='label-sm whitespace-nowrap px-5 py-4'>
                     <span>
                       {t('pages.dashboard.forward_flow_query.device_type')}
                     </span>
                   </th>
-                  <th className='label-sm px-5 py-4 whitespace-nowrap'>
+                  <th className='label-sm whitespace-nowrap px-5 py-4'>
                     <span>{t('pages.dashboard.source_query.device_id')}</span>
                   </th>
-                  <th className='label-sm px-5 py-4 whitespace-nowrap'>
+                  <th className='label-sm whitespace-nowrap px-5 py-4'>
                     <span>{t('pages.dashboard.source_query.status')}</span>
                   </th>
-                  <th className='label-sm px-5 py-4 whitespace-nowrap'>
+                  <th className='label-sm whitespace-nowrap px-5 py-4'>
                     <span>{t('pages.dashboard.source_query.view_live')}</span>
                   </th>
                 </tr>
@@ -51,10 +43,10 @@ const ForwardFlowQueryTable = ({
               <tbody>
                 {streams &&
                   streams.map &&
-                  streams.map((stream: StreamOutputUrlT) => (
+                  streams.map((stream) => (
                     <tr
                       key={stream._id}
-                      className='body-md text-gray-900 whitespace-nowrap border-b border-gray-200 bg-white'
+                      className='body-md whitespace-nowrap border-b border-gray-200 bg-white text-gray-900 dark:border-gray-800 dark:bg-gray-800 dark:text-gray-200'
                     >
                       <td className='px-5 py-5'>
                         <p>{stream._id}</p>

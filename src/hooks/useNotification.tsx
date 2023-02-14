@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { useMemo } from 'react';
 import useSWR from 'swr';
 
 import { fetchAPI } from '@/lib/api';
@@ -14,13 +15,21 @@ export type NotificationT = {
 };
 
 const useNotifications = () => {
-  const { data: notifications } = useSWR<NotificationT[]>(
+  const { data: notifications, mutate } = useSWR<NotificationT[]>(
     '/notifications',
-    fetchAPI
+    fetchAPI.get
   );
 
-  const newNotificationsExist = notifications?.some(
-    (notification) => notification.read === 'false'
+  const newNotificationsCount = useMemo(
+    () =>
+      notifications?.filter((notification) => notification.read === 'false')
+        .length,
+    [notifications]
+  );
+
+  const newNotificationsExist = useMemo(
+    () => newNotificationsCount && newNotificationsCount > 0,
+    [newNotificationsCount]
   );
   const markAllAsRead = () => {
     const config = {
@@ -30,12 +39,15 @@ const useNotifications = () => {
         'Content-Type': 'application/json',
       },
     };
-    axios(config);
+    axios(config).then(() => {
+      mutate();
+    });
   };
   // const viewNotification = async (id: string) => {};
 
   return {
     notifications,
+    newNotificationsCount,
     newNotificationsExist,
     markAllAsRead,
     // viewNotification,

@@ -6,7 +6,7 @@ import { Fragment } from 'react';
 import { withTranslation } from 'react-i18next';
 
 import Badge from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import { IconButton } from '@/components/ui/icon-button';
 
 type LogT = {
   _id: string;
@@ -56,7 +56,7 @@ const LogQueryDetailsDialog = ({
           leaveFrom='opacity-100'
           leaveTo='opacity-0'
         >
-          <div className='fixed inset-0 bg-black bg-opacity-25' />
+          <div className='fixed inset-0 bg-black bg-opacity-25 dark:bg-opacity-70' />
         </Transition.Child>
 
         <div className='fixed inset-0 overflow-y-auto'>
@@ -70,11 +70,11 @@ const LogQueryDetailsDialog = ({
               leaveFrom='opacity-100'
               leaveTo='opacity-0'
             >
-              <Dialog.Panel className='absolute right-0 left-0 bottom-0 w-full sm:max-w-sm md:max-w-md lg:max-w-lg sm:left-auto sm:top-0 sm:right-0 overflow-y-scroll h-[70%] py-2.5 sm:min-h-screen rounded-t-md sm:rounded-md bg-white shadow-xl'>
-                <div className='px-5 lg:px-6 w-full text-left lg:mb-3'>
+              <Dialog.Panel className='absolute right-0 left-0 bottom-0 h-[70%] w-full overflow-y-scroll rounded-t-md bg-white py-2.5 shadow-xl dark:bg-gray-900 sm:left-auto sm:top-0 sm:right-0 sm:min-h-screen sm:max-w-sm sm:rounded-md md:max-w-md lg:max-w-lg'>
+                <div className='w-full px-5 text-left lg:mb-3 lg:px-6'>
                   <Dialog.Title
                     as='div'
-                    className='text-lg font-medium leading-6 text-gray-900 flex items-center gap-3'
+                    className='flex items-center gap-3 text-lg font-medium leading-6 text-gray-900 dark:text-gray-200'
                   >
                     <div>
                       <h5 className='h5 sm:hidden'>
@@ -97,21 +97,21 @@ const LogQueryDetailsDialog = ({
                       {logData.type.toLocaleLowerCase()}
                     </Badge>
                   </Dialog.Title>
-                  <Button
+                  <IconButton
                     className='absolute top-4 right-2 focus:border-2 focus:border-gray-800'
                     variant='outline'
                     size='sm'
                     onClick={() => closeModal(isOpen)}
                   >
                     <XMarkIcon className='w-6' aria-hidden='true' />
-                  </Button>
+                  </IconButton>
                 </div>
 
                 {/* data */}
                 <div>
                   <div className='mb-6 px-5 lg:px-6'>
                     <div className='flex flex-col gap-4 md:gap-5'>
-                      <div className='flex text-gray-500 items-center gap-1'>
+                      <div className='flex items-center gap-1 text-gray-500'>
                         <CalendarDaysIcon className='w-7 text-gray-500' />
                         <p className='label-md inline-block'>
                           {new Date(logData.date).toLocaleDateString('en-us', {
@@ -123,27 +123,27 @@ const LogQueryDetailsDialog = ({
                           })}
                         </p>
                       </div>
-                      <hr />
+                      <hr className='dark:border-t dark:border-gray-800' />
 
-                      <div className='flex flex-col gap-1 label-md md:label-lg'>
-                        <p className='inline-block md:label-lg'>
+                      <div className='label-md md:label-lg flex flex-col gap-1'>
+                        <p className='md:label-lg inline-block'>
                           {t('pages.dashboard.log_query.project_id')}
                         </p>
-                        <p className='ml-1 body-sm md:body-md text-gray-500 inline-block'>
+                        <p className='body-sm md:body-md ml-1 inline-block text-gray-500'>
                           {logData.projectId ?? '-'}
                         </p>
                       </div>
 
-                      <div className='flex flex-col gap-1 label-md md:label-lg'>
-                        <p className='inline-block md:label-lg'>
+                      <div className='label-md md:label-lg flex flex-col gap-1'>
+                        <p className='md:label-lg inline-block'>
                           {t('pages.dashboard.log_query.device_id')}:
                         </p>
-                        <p className='text-gray-500 inline-block'>
+                        <p className='inline-block text-gray-500'>
                           {logData.deviceId ?? '-'}
                         </p>
                       </div>
-                      <div className='flex flex-col gap-1 label-md md:label-lg'>
-                        <p className='inline-block md:label-lg'>
+                      <div className='label-md md:label-lg flex flex-col gap-1'>
+                        <p className='md:label-lg inline-block'>
                           {t('pages.dashboard.log_query.info')}:
                         </p>{' '}
                         <p className='body-sm md:body-md inline-block text-gray-500'>
@@ -151,8 +151,8 @@ const LogQueryDetailsDialog = ({
                         </p>
                       </div>
 
-                      <div className='flex flex-col gap-1 label-md'>
-                        <p className='inline-block md:label-lg'>
+                      <div className='label-md flex flex-col gap-1'>
+                        <p className='md:label-lg inline-block'>
                           {t('pages.dashboard.log_query.description')}:
                         </p>
                         <p className='body-sm md:body-md inline-block text-gray-500'>

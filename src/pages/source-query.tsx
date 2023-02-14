@@ -1,16 +1,16 @@
-import { GetStaticProps } from 'next';
+import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { fetchAPI } from '@/lib/api';
 
-import SourceQueryTable, {
-  ProjectT,
-} from '@/components/@pages/source-query-page/SourceQueryTable';
+import { SourceQueryTable } from '@/components/@pages/source-query-page';
+import { ProjectStatusT } from '@/components/@pages/source-query-page/types';
 import { Layout } from '@/components/layout';
 
-const SourceQueryPage = ({ data }: { data: ProjectT[] }) => {
+const SourceQueryPage = ({
+  data,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { t } = useTranslation('common');
 
   return (
@@ -25,8 +25,10 @@ const SourceQueryPage = ({ data }: { data: ProjectT[] }) => {
 
 export default SourceQueryPage;
 
-export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  const data = await fetchAPI('/check-server-status');
+export const getStaticProps: GetStaticProps<{
+  data: ProjectStatusT[];
+}> = async ({ locale }) => {
+  const data = await fetchAPI.get('/check-server-status');
 
   return {
     props: {

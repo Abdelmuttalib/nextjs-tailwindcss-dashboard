@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 import { baseApiUrl } from '@/lib/api';
 
-import { StatusTypeT } from '@/components/@pages/log-query-page/LogQueryTable';
+import { StatusTypeT } from '@/components/@pages/log-query-page/LogQueryTable/LogQueryTable';
 import NotificationsDetailsTable from '@/components/@pages/Notifications/NotificationsDetailsTable';
 import { Layout } from '@/components/layout';
 

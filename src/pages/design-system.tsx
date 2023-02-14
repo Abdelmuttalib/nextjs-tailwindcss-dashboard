@@ -1,19 +1,12 @@
+import { ArrowDownCircleIcon } from '@heroicons/react/20/solid';
+import { GetStaticProps } from 'next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+
+import { Button as B } from '@/components/buttons';
 import { Layout } from '@/components/layout';
-import { ButtonLink } from '@/components/links';
 import Seo from '@/components/Seo';
 import { Button } from '@/components/ui/button';
-import {
-  Blockquote,
-  Display,
-  H1,
-  H2,
-  H3,
-  H4,
-  H5,
-  H6,
-  Label,
-  P,
-} from '@/components/ui/typography';
+import { IconButton } from '@/components/ui/icon-button';
 
 export default function HomePage() {
   return (
@@ -21,62 +14,58 @@ export default function HomePage() {
       {/* <Seo templateTitle='Home' /> */}
       <Seo />
 
-      <main>
-        <section className='bg-white'>
-          <div className='layout flex min-h-screen flex-col justify-center'>
-            <Display size='lg' weight='normal'>
-              Display
-            </Display>
-            <Display size='lg' weight='medium'>
-              Display Medium
-            </Display>
-            <Display size='md' weight='normal'>
-              Display
-            </Display>
-            <Display size='md' weight='medium'>
-              Display Medium
-            </Display>
-            <Display size='sm' weight='normal'>
-              Display
-            </Display>
-            <Display size='sm' weight='medium'>
-              Display Medium
-            </Display>
+      <div className='mb-40 flex min-h-screen flex-col items-center gap-6 text-left'>
+        <h1 className='display-lg'>Display LG</h1>
+        <h1 className='display-lg-light'>Display LG Light</h1>
+        <h1 className='display-md'>Display MD</h1>
+        <h1 className='display-md-light'>Display MD Light</h1>
+        <h1 className='display-sm'>Display SM</h1>
+        <h1 className='display-sm-light'>Display SM Light</h1>
 
-            {/* Heading */}
-            <H1 weight='normal'>H1</H1>
-            <H1 weight='medium'>H1 medium</H1>
-            <H2 weight='normal'>H2</H2>
-            <H2 weight='medium'>H2 medium</H2>
-            <H3 weight='normal'>H3</H3>
-            <H3 weight='medium'>H3 medium</H3>
-            <H4 weight='normal'>H4</H4>
-            <H4 weight='medium'>H4 medium</H4>
-            <H5 weight='normal'>H5</H5>
-            <H5 weight='medium'>H5 medium</H5>
-            <H6 weight='normal'>H6</H6>
-            <H6 weight='medium'>H6 medium</H6>
+        <h1 className='h1'>H1</h1>
+        <h1 className='h1-light'>H1 Light</h1>
+        <h1 className='h2'>H2</h1>
+        <h1 className='h2-light'>H2 Light</h1>
+        <h1 className='h3'>H3</h1>
+        <h1 className='h3-light'>H3 Light</h1>
+        <h1 className='h4'>H4</h1>
+        <h1 className='h4-light'>H4 Light</h1>
+        <h1 className='h5'>H5</h1>
+        <h1 className='h5-light'>H5 Light</h1>
+        <h1 className='h6'>H6</h1>
+        <h1 className='h6-light'>H6 Light</h1>
 
-            <P size='lg'>Paragraph</P>
-            <P size='md'>Paragraph</P>
-            <P size='sm'>Paragraph</P>
+        <p className='body-lg'>Body LG</p>
+        <p className='body-lg-light'>Body LG Light</p>
+        <p className='body-md'>Body MD</p>
+        <p className='body-md-light'>Body MD Light</p>
+        <p className='body-sm'>Body SM</p>
+        <p className='body-sm-light'>Body SM Light</p>
 
-            <Label size='lg'>Label</Label>
-            <Label size='md'>Label</Label>
-            <Label size='sm'>Label</Label>
+        <p className='label-lg'>Label LG</p>
+        <p className='label-lg-light'>Label LG Light</p>
+        <p className='label-md'>Label MD</p>
+        <p className='label-md-light'>Label MD Light</p>
+        <p className='label-sm'>Label SM</p>
+        <p className='label-sm-light'>Label SM Light</p>
 
-            <Blockquote>Blockquote</Blockquote>
+        <Button isLoading variant='dark' size='md'>
+          Button
+        </Button>
+        <B variant='dark'>Button</B>
 
-            <Button type='reset' variant='default'>
-              Button
-            </Button>
-
-            <ButtonLink className='mt-8' href='/components' variant='light'>
-              See all components
-            </ButtonLink>
-          </div>
-        </section>
-      </main>
+        <IconButton size='md' variant='outline'>
+          <ArrowDownCircleIcon className='w-6' />
+        </IconButton>
+      </div>
     </Layout>
   );
 }
+
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale || 'en', ['common'])),
+    },
+  };
+};

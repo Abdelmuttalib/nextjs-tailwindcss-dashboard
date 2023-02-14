@@ -3,15 +3,15 @@ import { withTranslation } from 'react-i18next';
 
 import Badge from '@/components/ui/badge';
 
-export type ProjectT = {
-  _id: string;
-  name: string;
-  host: string;
-  status: string;
-  __v: number;
-};
+import { ProjectStatusT } from './types';
 
-const SourceQueryTable = ({ data, t }: { data: ProjectT[]; t: TFunction }) => {
+const SourceQueryTable = ({
+  data,
+  t,
+}: {
+  data: ProjectStatusT[];
+  t: TFunction;
+}) => {
   return (
     <div className='w-full max-w-5xl rounded-md'>
       <div className=''>
@@ -35,7 +35,7 @@ const SourceQueryTable = ({ data, t }: { data: ProjectT[]; t: TFunction }) => {
               <tbody>
                 {data &&
                   data.map &&
-                  data.map((project: ProjectT) => (
+                  data.map((project: ProjectStatusT) => (
                     <tr
                       v-for='projectServer in projectsServers'
                       key={project?._id}

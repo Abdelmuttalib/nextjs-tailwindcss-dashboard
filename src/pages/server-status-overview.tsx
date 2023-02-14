@@ -1,16 +1,17 @@
-import { GetStaticProps } from 'next';
+import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { fetchAPI } from '@/lib/api';
 
-import ProjectsStatuses, {
-  ProjectStatusT,
-} from '@/components/@pages/server-status-overview/ProjectsStatuses';
+import { Projects } from '@/components/@pages/server-status-overview-page';
+import { ProjectT } from '@/components/@pages/server-status-overview-page/types';
 import { Layout } from '@/components/layout';
 
-const ServerStatusOverviewPage = ({ data }: { data: ProjectStatusT[] }) => {
+const ServerStatusOverviewPage = ({
+  data,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { t } = useTranslation('common');
 
   return (
@@ -18,15 +19,17 @@ const ServerStatusOverviewPage = ({ data }: { data: ProjectStatusT[] }) => {
       <h3 className='h5'>
         {t('pages.dashboard.server_status_overview.projects')}
       </h3>
-      <ProjectsStatuses data={data} />
+      <Projects data={data} />
     </Layout>
   );
 };
 
 export default ServerStatusOverviewPage;
 
-export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  const data = await fetchAPI('/status-overview');
+export const getStaticProps: GetStaticProps<{ data: ProjectT[] }> = async ({
+  locale,
+}) => {
+  const data = await fetchAPI.get('/status-overview');
 
   return {
     props: {

@@ -202,13 +202,13 @@
 /* text select color */
 ::-moz-selection {
   /* Code for Firefox */
-  @apply text-white bg-primary;
+  @apply bg-primary text-white;
 }
 
 ::selection {
-  @apply text-white bg-primary;
+  @apply bg-primary text-white;
 }
 
 .input {
-  @apply label-sm md:label-md w-full placeholder-gray-400 bg-white hover:bg-gray-50 transition duration-200 rounded-md px-3 py-2 md:px-5 md:py-3 border-[2px] border-gray-300 focus:outline-none focus:bg-white focus:border-primary text-gray-800 flex-1 bg-transparent outline-none;
+  @apply label-sm md:label-md w-full flex-1 rounded-md border-[2px] border-gray-300 bg-white bg-transparent px-3 py-2 text-gray-800 placeholder-gray-400 outline-none transition duration-200 hover:bg-gray-50 focus:border-primary focus:bg-white focus:outline-none dark:border-gray-800 dark:bg-gray-900 dark:text-gray-200 md:px-5 md:py-3;
 }

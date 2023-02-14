@@ -19,40 +19,45 @@ const NotificationItem = ({
     <li
       key={notification._id}
       className={cn(
-        'relative flex w-full gap-4 border-b bg-white px-5 py-2 hover:bg-primary-100/10 focus:bg-primary-100/30 sm:py-4',
-        { 'bg-primary-100/30': notification.read === 'false' }
+        'relative flex w-full gap-4 border-l-4 border-b border-l-transparent bg-white px-5 py-2 hover:bg-primary-100/20 focus:bg-primary-100/30 dark:border-gray-800/50 dark:border-l-transparent dark:bg-gray-900 dark:hover:bg-gray-800/50 sm:py-4',
+        {
+          'border-l-primary-500 bg-primary-100/40 dark:border-l-primary-400 dark:bg-gray-800/50':
+            notification.read === 'false',
+        }
       )}
     >
       {/* not read notification indicator  */}
       {notification.read === 'false' && (
-        <div className='absolute top-2 right-3 h-2.5 w-2.5 rounded-full bg-primary'></div>
+        <div className='absolute top-2 right-3 h-2.5 w-2.5 rounded-full bg-primary dark:bg-primary-400'></div>
       )}
       <div className='h-fit w-fit'>
         {/* Error Icon Label  */}
         {notification.notificationType === 'error' && (
-          <div className='block w-fit rounded-full bg-red-500/20 p-1.5'>
+          <div className='block w-fit rounded-full bg-red-500/20 p-1.5 dark:bg-red-400/20'>
             <XMarkIcon className='h-7 w-7 text-red-600' />
           </div>
         )}
         {/* Sync Icon Label  */}
         {notification.notificationType === 'sync' && (
-          <div className='block w-fit rounded-full bg-blue-600/20 p-2'>
+          <div className='block w-fit rounded-full bg-blue-600/20 p-2 dark:bg-blue-500/20'>
             <ArrowPathIcon className='h-6 w-6 text-blue-500' />
           </div>
         )}
       </div>
       <div className='w-full'>
-        <h4 className='body-sm font-medium'>{notification.description}</h4>
+        <h4 className='body-sm font-medium dark:text-gray-200'>
+          {notification.description}
+        </h4>
 
         <div className='mt-1 flex w-full justify-between'>
-          <p className='text-sm font-medium text-gray-400'>
+          <p className='text-sm font-medium text-gray-400 dark:text-gray-500'>
             {formatDate(notification.date)}
           </p>
 
           {notification.notificationType === 'error' && (
             <Link
               href={`/notifications/${notification._id}`}
-              className='label-sm ml-auto font-medium text-primary-600 hover:text-primary-700 focus:text-primary-500'
+              className='label-sm ml-auto font-medium text-primary-600 hover:text-primary-700 focus:text-primary-500 dark:text-primary-400'
             >
               {t('notifications.view_notification')}
             </Link>
