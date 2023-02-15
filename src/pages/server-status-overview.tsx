@@ -8,6 +8,7 @@ import { fetchAPI } from '@/lib/api';
 import { Projects } from '@/components/@pages/server-status-overview-page';
 import { ProjectT } from '@/components/@pages/server-status-overview-page/types';
 import { Layout } from '@/components/layout';
+import Seo from '@/components/Seo';
 
 const ServerStatusOverviewPage = ({
   data,
@@ -16,6 +17,11 @@ const ServerStatusOverviewPage = ({
 
   return (
     <Layout pageTitle={t('pages.dashboard.server_status_overview.title')}>
+      <Seo
+        title={`${t('pages.dashboard.server_status_overview.title')} | ${t(
+          'app.name'
+        )} ${t('app.description')}`}
+      />
       <h3 className='h5'>
         {t('pages.dashboard.server_status_overview.projects')}
       </h3>

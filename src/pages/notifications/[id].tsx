@@ -5,9 +5,10 @@ import { useTranslation } from 'react-i18next';
 
 import { baseApiUrl } from '@/lib/api';
 
-import { StatusTypeT } from '@/components/@pages/log-query-page/LogQueryTable/LogQueryTable';
+import { StatusTypeT } from '@/components/@pages/log-query-page/types';
 import NotificationsDetailsTable from '@/components/@pages/Notifications/NotificationsDetailsTable';
 import { Layout } from '@/components/layout';
+import Seo from '@/components/Seo';
 
 export type NotificationDetailsT = {
   description: string;
@@ -19,6 +20,11 @@ const NotificationDetails = ({ data }: { data: NotificationDetailsT[] }) => {
   const { t } = useTranslation();
   return (
     <Layout pageTitle={t('notifications.error_notification_details')}>
+      <Seo
+        title={`${t('notifications.error_notification_details')} | ${t(
+          'app.name'
+        )} ${t('app.description')}`}
+      />
       <NotificationsDetailsTable data={data} />
     </Layout>
   );

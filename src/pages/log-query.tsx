@@ -6,6 +6,7 @@ import { fetchAPI } from '@/lib/api';
 
 import { LogQueryTable } from '@/components/@pages/log-query-page';
 import { Layout } from '@/components/layout';
+import Seo from '@/components/Seo';
 
 const LogQueryPage = ({
   logTypes,
@@ -13,6 +14,11 @@ const LogQueryPage = ({
   const { t } = useTranslation(['common']);
   return (
     <Layout pageTitle={t('pages.dashboard.log_query.title')}>
+      <Seo
+        title={`${t('pages.dashboard.log_query.title')} | ${t('app.name')} ${t(
+          'app.description'
+        )}`}
+      />
       <LogQueryTable logTypes={logTypes} />
     </Layout>
   );

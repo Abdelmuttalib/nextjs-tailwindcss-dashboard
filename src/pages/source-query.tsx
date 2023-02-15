@@ -8,6 +8,7 @@ import { fetchAPI } from '@/lib/api';
 import { SourceQueryTable } from '@/components/@pages/source-query-page';
 import { ProjectStatusT } from '@/components/@pages/source-query-page/types';
 import { Layout } from '@/components/layout';
+import Seo from '@/components/Seo';
 
 const SourceQueryPage = ({
   data,
@@ -41,6 +42,11 @@ const SourceQueryPage = ({
 
   return (
     <Layout pageTitle={t('pages.dashboard.source_query.title')}>
+      <Seo
+        title={`${t('pages.dashboard.source_query.title')} | ${t(
+          'app.name'
+        )} ${t('app.description')}`}
+      />
       <h3 className='h5'>
         {t('pages.dashboard.source_query.projects_servers_status')}
       </h3>
