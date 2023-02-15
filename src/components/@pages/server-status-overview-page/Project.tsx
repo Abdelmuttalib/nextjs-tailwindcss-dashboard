@@ -77,7 +77,7 @@ const Project = ({ project, t }: ProjectProps) => {
               {t('pages.dashboard.server_status_overview.data.created_date')}:
             </p>
             <div className='body-md'>
-              {!isMounted ? (
+              {isMounted ? (
                 formatDate(createDate)
               ) : (
                 <SkeletonLoader className='h-6 w-20' />
