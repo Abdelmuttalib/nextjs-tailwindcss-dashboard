@@ -19,7 +19,7 @@ const ForwardFlowQueryTable = ({
           <div className='inline-block min-w-full overflow-hidden rounded-lg shadow'>
             <table className='min-w-full'>
               <thead className='bg-gray-50 dark:bg-gray-800/50'>
-                <tr className='border-b-2 border-gray-200 text-left text-gray-600 dark:border-gray-800'>
+                <tr className='border-b-2 border-gray-200 text-left text-gray-600 dark:border-gray-800 dark:text-gray-200'>
                   <th className='label-sm whitespace-nowrap px-5 py-4'>
                     <span>ID</span>
                     {/* <span>{t('pages.dashboard.source_query.project_id')}</span> */}
@@ -46,7 +46,7 @@ const ForwardFlowQueryTable = ({
                   streams.map((stream) => (
                     <tr
                       key={stream._id}
-                      className='body-md whitespace-nowrap border-b border-gray-200 bg-white text-gray-900 dark:border-gray-800 dark:bg-gray-800 dark:text-gray-200'
+                      className='body-md whitespace-nowrap border-b border-gray-200 bg-white text-gray-900 dark:border-gray-800 dark:bg-gray-800/40  dark:text-gray-200'
                     >
                       <td className='px-5 py-5'>
                         <p>{stream._id}</p>

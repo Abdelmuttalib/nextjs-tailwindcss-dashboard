@@ -1,3 +1,4 @@
+import { MoonIcon, SunIcon, XMarkIcon } from '@heroicons/react/20/solid';
 import {
   ChevronDoubleRightIcon,
   CommandLineIcon,
@@ -8,7 +9,12 @@ import {
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
+import { useTheme } from 'next-themes';
 import React from 'react';
+
+import cn from '@/lib/cn';
+
+import { IconButton, IconLink } from '@/components/ui/icon-button';
 
 type DashboardLinkT = {
   text: string;
@@ -44,12 +50,36 @@ export const dashboardLinks: DashboardLinkT[] = [
   },
 ];
 
-const SideBar = () => {
-  const { pathname } = useRouter();
+const SideBar = ({
+  mode = 'normal',
+  setShowSidebarMenu,
+}: {
+  mode: 'mobile' | 'normal';
+  setShowSidebarMenu?: (show: boolean) => void;
+}) => {
+  const { pathname, locale, query } = useRouter();
   const { t } = useTranslation('common');
+  const { theme, setTheme } = useTheme();
   return (
-    <div className='hidden h-full min-h-screen w-full flex-col bg-[#06080b] lg:flex lg:w-72 xl:w-80'>
-      <div className='flex-1 overflow-y-auto py-4 lg:pl-0'>
+    <div
+      className={cn({
+        'hidden h-full min-h-screen w-full flex-col bg-[#06080b] lg:flex lg:w-72 xl:w-80':
+          mode === 'normal',
+        'fixed inset-0 z-50 flex h-full w-full flex-col bg-[#06080b] backdrop-blur-md backdrop-filter transition-colors duration-300 dark:bg-gray-900 dark:text-gray-200 lg:hidden':
+          mode === 'mobile',
+      })}
+    >
+      <div className='relative flex-1 overflow-y-auto py-4 lg:pl-0'>
+        {setShowSidebarMenu && (
+          <IconButton
+            className='absolute top-6 left-4 focus:border-2 focus:border-gray-800'
+            variant='outline'
+            size='sm'
+            onClick={() => setShowSidebarMenu(false)}
+          >
+            <XMarkIcon className='w-6' aria-hidden='true' />
+          </IconButton>
+        )}
         <div className='text-center text-white'>
           <h5 className='h5'>
             {t('app.name')}
@@ -59,14 +89,14 @@ const SideBar = () => {
             {t('app.description')}
           </p>
         </div>
-        <ul className='mt-10 mb-44 flex flex-col gap-1'>
+        <ul className='mt-10 flex flex-col gap-1 md:mb-44'>
           {dashboardLinks.map((link) => (
             <li key={link.text}>
               <Link
                 href={link.href}
-                className={`label-md group flex w-full items-center border-r-4 border-black py-3 pl-4 hover:border-gray-900 hover:bg-gray-900 focus:border-gray-900 focus:bg-gray-800 focus:text-primary-50 focus:outline-transparent xl:gap-3 ${
+                className={`label-md group flex w-full items-center border-r-4 border-transparent py-3 pl-4 hover:border-transparent hover:bg-gray-900 focus:border-gray-900 focus:bg-gray-900/80 focus:text-primary-50 focus:outline-transparent xl:gap-3 ${
                   pathname === link.href
-                    ? 'border-primary-400 bg-gray-800/50 text-primary'
+                    ? 'border-r-primary-400 bg-gray-800/50 text-primary dark:bg-gray-800/40'
                     : 'text-gray-100'
                 }`}
               >
@@ -78,6 +108,31 @@ const SideBar = () => {
             </li>
           ))}
         </ul>
+        <div className='my-10 flex w-full justify-center gap-3 px-5 sm:hidden'>
+          <IconLink
+            href={
+              pathname === '/notifications/[id]'
+                ? `/notifications/${query.id}`
+                : pathname
+            }
+            locale={locale === 'en' ? 'zh' : 'en'}
+            variant='outline'
+            size='lg'
+          >
+            {locale}
+          </IconLink>
+          <IconButton
+            type='button'
+            variant='outline'
+            onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+          >
+            {theme === 'light' ? (
+              <SunIcon className='w-7' />
+            ) : (
+              <MoonIcon className='w-7 p-0.5' />
+            )}
+          </IconButton>
+        </div>
       </div>
     </div>
   );

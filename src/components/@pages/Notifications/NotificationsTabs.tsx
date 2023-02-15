@@ -23,7 +23,7 @@ const NotificationsTabs = ({ t }: { t: TFunction }) => {
   return (
     <div className='w-full'>
       <Tab.Group>
-        <Tab.List className='flex bg-gray-100/60 px-5 dark:bg-gray-800/50 lg:px-6'>
+        <Tab.List className='flex bg-gray-100/60 px-5 dark:bg-gray-800/30 lg:px-6'>
           {Object.keys(notificationsData).map((notificationLabel) => (
             <Tab
               v-for='notificationLabel in Object.keys(notificationsData)'

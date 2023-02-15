@@ -210,16 +210,16 @@ const LogQueryTable = ({
         </form>
       </div>
       <div className=''>
-        <div className='-mx-4 overflow-x-auto px-4 py-4 sm:-mx-8 sm:px-8'>
-          <LogQueryTabs
-            logTypes={logTypes}
-            setSelectedLogType={setSelectedLogType}
-          />
-
+        {' '}
+        <LogQueryTabs
+          logTypes={logTypes}
+          setSelectedLogType={setSelectedLogType}
+        />
+        <div className='-mx-4 overflow-x-auto px-4 pb-10 sm:-mx-8 sm:px-8'>
           <div className='inline-block min-w-full overflow-hidden rounded-lg shadow'>
             <table className='min-w-full'>
-              <thead className='bg-gray-50 dark:bg-gray-800/30'>
-                <tr className='border-b-2 border-gray-200 text-left text-gray-600 dark:border-gray-800'>
+              <thead className='bg-gray-50 dark:bg-gray-800/60'>
+                <tr className='border-b-2 border-gray-200 text-left text-gray-600 dark:border-gray-800 dark:text-gray-200'>
                   <th className='label-sm whitespace-nowrap px-5 py-4'>
                     <span>{t('pages.dashboard.log_query.project_id')}</span>
                   </th>

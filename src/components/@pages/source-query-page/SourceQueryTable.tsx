@@ -18,8 +18,8 @@ const SourceQueryTable = ({
         <div className='-mx-4 overflow-x-auto px-4 py-4 sm:-mx-8 sm:px-8'>
           <div className='inline-block min-w-full overflow-hidden rounded-lg shadow'>
             <table className='min-w-full'>
-              <thead className='bg-gray-50'>
-                <tr className='border-b-2 border-gray-200 text-left text-gray-600'>
+              <thead className='bg-gray-50 dark:bg-gray-800/50'>
+                <tr className='border-b-2 border-gray-200 text-left text-gray-600 dark:border-gray-800 dark:text-gray-200'>
                   <th className='label-sm whitespace-nowrap px-5 py-4'>
                     <span>{t('pages.dashboard.source_query.name')}</span>
                   </th>
@@ -37,9 +37,8 @@ const SourceQueryTable = ({
                   data.map &&
                   data.map((project: ProjectStatusT) => (
                     <tr
-                      v-for='projectServer in projectsServers'
                       key={project?._id}
-                      className='body-md whitespace-nowrap border-b border-gray-200 bg-white text-gray-900'
+                      className='body-md whitespace-nowrap border-b border-gray-200 bg-white text-gray-900 dark:border-gray-800/50 dark:bg-gray-800/40 dark:text-gray-200'
                     >
                       <td className='px-5 py-5'>
                         <p>{project?.name}</p>

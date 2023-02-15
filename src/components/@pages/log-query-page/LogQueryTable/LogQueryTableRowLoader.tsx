@@ -4,7 +4,7 @@ import { SkeletonLoader } from '@/components/loaders';
 
 const LogQueryTableRowLoader = () => {
   return (
-    <tr className='body-medium whitespace-nowrap border-b border-gray-200 bg-white text-gray-900 dark:border-gray-800 dark:bg-gray-900'>
+    <tr className='body-md whitespace-nowrap border-b border-gray-200 bg-white text-gray-900 dark:border-gray-800/50 dark:bg-gray-800/40 dark:text-gray-200'>
       <td className='px-5 py-5'>
         <div>
           <SkeletonLoader className='h-7 w-full' />

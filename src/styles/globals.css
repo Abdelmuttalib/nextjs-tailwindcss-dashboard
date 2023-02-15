@@ -210,5 +210,5 @@
 }
 
 .input {
-  @apply label-sm md:label-md w-full flex-1 rounded-md border-[2px] border-gray-300 bg-white bg-transparent px-3 py-2 text-gray-800 placeholder-gray-400 outline-none transition duration-200 hover:bg-gray-50 focus:border-primary focus:bg-white focus:outline-none dark:border-gray-800 dark:bg-gray-900 dark:text-gray-200 md:px-5 md:py-3;
+  @apply label-sm md:label-md w-full flex-1 rounded-md border-[2px] border-gray-300 bg-white bg-transparent px-3 py-2 text-gray-800 placeholder-gray-400 outline-none transition duration-200 hover:bg-gray-50 focus:border-primary focus:bg-white focus:bg-gray-800/70 focus:outline-none dark:border-gray-800 dark:bg-gray-900 dark:text-gray-200 dark:hover:bg-gray-800/50 dark:focus:border-primary-400 md:px-5 md:py-3;
 }

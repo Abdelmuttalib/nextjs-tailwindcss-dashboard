@@ -42,8 +42,8 @@ const NotificationsDetailsTable = ({
       <div className='-mx-4 overflow-x-auto px-4 py-4 sm:-mx-8 sm:px-8'>
         <div className='inline-block min-w-full overflow-hidden rounded-lg shadow'>
           <table className='min-w-full'>
-            <thead className='bg-gray-50'>
-              <tr className='border-b-2 border-gray-200 text-left text-gray-600'>
+            <thead className='bg-gray-50 dark:bg-gray-800/50'>
+              <tr className='border-b-2 border-gray-200 text-left text-gray-600 dark:border-gray-800 dark:text-gray-200'>
                 <th className='label-sm whitespace-nowrap px-5 py-4'>
                   <span>{t('notifications.description')}</span>
                 </th>
@@ -65,7 +65,7 @@ const NotificationsDetailsTable = ({
                 data.map((notificationDetails: NotificationDetailsT, idx) => (
                   <tr
                     key={idx}
-                    className='body-sm truncate whitespace-nowrap border-b border-gray-200 bg-white text-gray-900'
+                    className='body-md whitespace-nowrap border-b border-gray-200 bg-white text-gray-900 dark:border-gray-800/50 dark:bg-gray-800/40 dark:text-gray-200'
                   >
                     <td className='max-w-lg px-5 py-5'>
                       <p className='truncate'>
@@ -84,7 +84,7 @@ const NotificationsDetailsTable = ({
                       </Badge>
                     </td>
                     <td className='px-5 py-5'>
-                      <p className='text-gray-600'>
+                      <p className='text-gray-600 dark:text-gray-500'>
                         {formatDate(notificationDetails.date)}
                       </p>
                     </td>

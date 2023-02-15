@@ -126,7 +126,7 @@ const LogQueryDetailsDialog = ({
                       <hr className='dark:border-t dark:border-gray-800' />
 
                       <div className='label-md md:label-lg flex flex-col gap-1'>
-                        <p className='md:label-lg inline-block'>
+                        <p className='md:label-lg inline-block dark:text-gray-200'>
                           {t('pages.dashboard.log_query.project_id')}
                         </p>
                         <p className='body-sm md:body-md ml-1 inline-block text-gray-500'>
@@ -135,7 +135,7 @@ const LogQueryDetailsDialog = ({
                       </div>
 
                       <div className='label-md md:label-lg flex flex-col gap-1'>
-                        <p className='md:label-lg inline-block'>
+                        <p className='md:label-lg inline-block dark:text-gray-200'>
                           {t('pages.dashboard.log_query.device_id')}:
                         </p>
                         <p className='inline-block text-gray-500'>
@@ -143,7 +143,7 @@ const LogQueryDetailsDialog = ({
                         </p>
                       </div>
                       <div className='label-md md:label-lg flex flex-col gap-1'>
-                        <p className='md:label-lg inline-block'>
+                        <p className='md:label-lg inline-block dark:text-gray-200'>
                           {t('pages.dashboard.log_query.info')}:
                         </p>{' '}
                         <p className='body-sm md:body-md inline-block text-gray-500'>
@@ -152,7 +152,7 @@ const LogQueryDetailsDialog = ({
                       </div>
 
                       <div className='label-md flex flex-col gap-1'>
-                        <p className='md:label-lg inline-block'>
+                        <p className='md:label-lg inline-block dark:text-gray-200'>
                           {t('pages.dashboard.log_query.description')}:
                         </p>
                         <p className='body-sm md:body-md inline-block text-gray-500'>

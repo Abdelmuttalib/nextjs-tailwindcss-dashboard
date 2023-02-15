@@ -8,7 +8,7 @@ import { withTranslation } from 'react-i18next';
 import { formatDate } from '@/lib/date';
 
 import Badge from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import { IconButton } from '@/components/ui/icon-button';
 
 import { NotificationDetailsT } from '@/pages/notifications/[id]';
 
@@ -59,11 +59,11 @@ const NotificationDetailsDialog = ({
               leaveFrom='opacity-100'
               leaveTo='opacity-0'
             >
-              <Dialog.Panel className='absolute right-0 left-0 bottom-0 h-[70%] w-full overflow-y-scroll rounded-t-md bg-white py-2.5 shadow-xl sm:left-auto sm:top-0 sm:right-0 sm:min-h-screen sm:max-w-sm sm:rounded-md md:max-w-md lg:max-w-lg'>
+              <Dialog.Panel className='absolute right-0 left-0 bottom-0 h-[70%] w-full overflow-y-scroll rounded-t-md bg-white py-2.5 shadow-xl dark:bg-gray-900 sm:left-auto sm:top-0 sm:right-0 sm:min-h-screen sm:max-w-sm sm:rounded-md md:max-w-md lg:max-w-lg'>
                 <div className='w-full px-5 text-left lg:mb-3 lg:px-6'>
                   <Dialog.Title
                     as='div'
-                    className='flex items-center gap-3 text-lg font-medium leading-6 text-gray-900'
+                    className='flex items-center gap-3 text-lg font-medium leading-6 text-gray-900 dark:text-gray-200'
                   >
                     <div>
                       <h5 className='h5 sm:hidden'>
@@ -77,21 +77,21 @@ const NotificationDetailsDialog = ({
                       </h3>
                     </div>
                   </Dialog.Title>
-                  <Button
-                    className='absolute top-2 right-2 focus:border-2 focus:border-gray-800'
+                  <IconButton
+                    className='absolute top-2 right-2 focus:border-2 focus:border-gray-800 '
                     variant='outline'
                     size='sm'
                     onClick={closeModal}
                   >
                     <XMarkIcon className='w-6' aria-hidden='true' />
-                  </Button>
+                  </IconButton>
                 </div>
 
                 {/* data */}
                 <div>
                   <div className='mb-6 px-5 lg:px-6'>
                     <div className='flex flex-col gap-4 md:gap-5'>
-                      <div className='flex justify-between'>
+                      <div className='flex gap-3 md:justify-between'>
                         <div className='flex items-center gap-1 text-gray-500'>
                           <CalendarDaysIcon className='w-7 text-gray-500' />
                           <p className='label-md inline-block'>
@@ -109,9 +109,9 @@ const NotificationDetailsDialog = ({
                         </Badge>
                       </div>
 
-                      <hr />
+                      <hr className='dark:border-t dark:border-gray-800' />
                       <div className='label-md flex flex-col gap-1'>
-                        <p className='md:label-lg inline-block'>
+                        <p className='md:label-lg inline-block dark:text-gray-200'>
                           {t('pages.dashboard.log_query.description')}:
                         </p>
                         <p className='body-sm md:body-md inline-block text-gray-500'>

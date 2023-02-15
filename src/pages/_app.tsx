@@ -3,13 +3,13 @@ import { appWithTranslation, I18n, i18n } from 'next-i18next';
 import { ThemeProvider } from 'next-themes';
 import { I18nextProvider } from 'react-i18next';
 
+// import io from 'socket.io-client';
 import '@/styles/globals.css';
 
 import ToastProvider from '@/components/Toast/ToastProvider';
 
 function MyApp({ Component, pageProps }: AppProps) {
-  // const { addToast } = useToast();
-  // const socket = io('http://161.189.66.94:8090');
+  // const socket = io('http://161.189.66.94:8090/api');
 
   // socket.on('New Notification', (message) => {
   //   console.log('received notification:', message);

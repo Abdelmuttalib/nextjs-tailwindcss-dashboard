@@ -30,7 +30,7 @@ const LogQueryTableRow = ({
   return (
     <tr
       key={log._id}
-      className='body-medium whitespace-nowrap border-b border-gray-200 bg-white text-gray-900 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-200'
+      className='body-md whitespace-nowrap border-b border-gray-200 bg-white text-gray-900 dark:border-gray-800/50 dark:bg-gray-800/40 dark:text-gray-200'
     >
       <td className='px-5 py-5'>
         <p>{log.projectId ?? '-'}</p>
