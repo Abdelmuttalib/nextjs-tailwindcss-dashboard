@@ -1,18 +1,22 @@
+import { useRouter } from 'next/router';
 import { TFunction, withTranslation } from 'next-i18next';
 import { useEffect, useState } from 'react';
 
 import { formatDate } from '@/lib/date';
 
 import { SkeletonLoader } from '@/components/loaders';
+import { Button } from '@/components/ui/button';
 
 import { ProjectT } from './types';
 
 type ProjectProps = {
   project: ProjectT;
+  withDetailsButton?: boolean;
   t: TFunction;
 };
 
-const Project = ({ project, t }: ProjectProps) => {
+const Project = ({ project, withDetailsButton, t }: ProjectProps) => {
+  const { push, locale } = useRouter();
   const {
     _id,
     projectId,
@@ -85,6 +89,19 @@ const Project = ({ project, t }: ProjectProps) => {
             </div>
           </div>
         </div>
+
+        {withDetailsButton && (
+          <div className='flex w-full justify-end border-t px-4 py-3 dark:border-t-gray-800'>
+            <Button
+              size='sm'
+              onClick={() => {
+                push(`devices/${_id}`, undefined, { locale });
+              }}
+            >
+              {t('pages.dashboard.devices.view_devices')}
+            </Button>{' '}
+          </div>
+        )}
       </div>
     </div>
   );

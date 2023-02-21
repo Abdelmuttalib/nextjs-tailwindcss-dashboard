@@ -21,7 +21,7 @@ const NotificationItem = ({
       className={cn(
         'relative flex w-full gap-4 border-l-4 border-b border-l-transparent bg-white px-3 py-2 hover:bg-primary-100/20 focus:bg-primary-100/30 dark:border-gray-800/50 dark:border-l-transparent dark:bg-gray-900 dark:hover:bg-gray-800/50 sm:py-4',
         {
-          'border-l-primary-500 bg-primary-100/40 dark:border-l-primary-400 dark:bg-gray-800/40':
+          'bg-primary-100/40 dark:bg-gray-800/40':
             notification.read === 'false',
         }
       )}

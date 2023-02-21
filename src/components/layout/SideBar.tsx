@@ -2,6 +2,7 @@ import { MoonIcon, SunIcon, XMarkIcon } from '@heroicons/react/20/solid';
 import {
   ChevronDoubleRightIcon,
   CommandLineIcon,
+  DeviceTabletIcon,
   ServerIcon,
   ServerStackIcon,
   WrenchScrewdriverIcon,
@@ -27,6 +28,11 @@ export const dashboardLinks: DashboardLinkT[] = [
     text: 'server_status_overview',
     icon: <ServerStackIcon className='mx-2 my-1.5 w-5 text-current' />,
     href: '/server-status-overview',
+  },
+  {
+    text: 'devices',
+    icon: <DeviceTabletIcon className='mx-2 my-1.5 w-5 text-current' />,
+    href: '/devices',
   },
   {
     text: 'source_query',

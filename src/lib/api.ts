@@ -1,5 +1,5 @@
 export const baseApiUrl = 'http://161.189.66.94:8090/api';
-
+// console.log(process.env.NEXT_PUBLIC_BASE_API_URL);
 // export const fetchAPI = (apiUrl: string, options: object) => {
 //   return fetch(`${baseApiUrl}${apiUrl}`, options).then((response) =>
 //     response.json()

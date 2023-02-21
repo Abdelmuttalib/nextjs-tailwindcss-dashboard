@@ -78,6 +78,17 @@
           "devices": "设备"
         }
       },
+      "devices": {
+        "title": "设备",
+        "view_devices": "查看设备",
+        "device_algorithm": "设备算法",
+        "project_name": "项目名",
+        "algorithm": "算法",
+        "last_offline": "上次离线",
+        "device_id": "设备ID",
+        "status": "地位",
+        "devices_algorithms": "设备算法"
+      },
       "source_query": {
         "title": "来源查询",
         "host": "主持人",

@@ -78,6 +78,17 @@
           "devices": "Devices"
         }
       },
+      "devices": {
+        "title": "devices",
+        "view_devices": "view devices",
+        "device_algorithm": "Device Algorithm",
+        "project_name": "Project Name",
+        "algorithm": "Algorithm",
+        "last_offline": "Last Offline",
+        "device_id": "Device ID",
+        "status": "Status",
+        "devices_algorithms": "Devices Algorithms"
+      },
       "source_query": {
         "title": "source query",
         "host": "Host",
