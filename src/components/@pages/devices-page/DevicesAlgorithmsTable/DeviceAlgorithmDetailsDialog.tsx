@@ -151,7 +151,9 @@ const DeviceAlgorithmDetailsDialog = ({
                               </td>
                               <td className='px-5 py-5'>
                                 <p className='body-md'>
-                                  {formatDate(data.lastOffline)}
+                                  {data.lastOffline
+                                    ? formatDate(data.lastOffline)
+                                    : '-'}
                                 </p>
                               </td>
                             </tr>
