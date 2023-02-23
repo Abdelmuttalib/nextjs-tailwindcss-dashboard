@@ -87,7 +87,8 @@
         "last_offline": "Last Offline",
         "device_id": "Device ID",
         "status": "Status",
-        "devices_algorithms": "Devices Algorithms"
+        "devices_algorithms": "Devices Algorithms",
+        "active_devices": "Active Devices"
       },
       "source_query": {
         "title": "source query",

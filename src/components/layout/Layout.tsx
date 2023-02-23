@@ -42,6 +42,8 @@ const Header = ({ pageTitle }: { pageTitle: string }) => {
               href={
                 pathname === '/notifications/[id]'
                   ? `/notifications/${query.id}`
+                  : pathname === '/devices/[id]'
+                  ? `/devices/${query.id}`
                   : pathname
               }
               locale={locale === 'en' ? 'zh' : 'en'}
