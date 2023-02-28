@@ -1,14 +1,16 @@
 import { Tab } from '@headlessui/react';
-import React from 'react';
+import React, { FC } from 'react';
 
 import cn from '@/lib/cn';
 
-const LogQueryTabs = ({
-  logTypes,
-  setSelectedLogType,
-}: {
+interface LogQueryTabsProps {
   logTypes: string[];
   setSelectedLogType: (tab: string) => void;
+}
+
+const LogQueryTabs: FC<LogQueryTabsProps> = ({
+  logTypes,
+  setSelectedLogType,
 }) => {
   return (
     <div className='w-full overflow-auto rounded'>

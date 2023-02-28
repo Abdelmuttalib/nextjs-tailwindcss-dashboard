@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'react-i18next';
@@ -34,29 +33,20 @@ const DevicesCountPage = ({
 export default DevicesCountPage;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const projects = await fetchAPI.get('/status-overview');
+  const { data: projects } = await fetchAPI.get('/status-overview');
 
   const currentProject = projects.filter(
     (project: ProjectT) => project._id === context?.params?.id
   );
 
-  const requestHeaders = {
-    'Content-Type': 'application/json',
-  };
   const data = {
     statisticServerAddr: currentProject[0].statisticServerAddr,
     unionId: currentProject[0].unionId,
   };
-  const getCurrentProjectDevicesCount = () =>
-    axios
-      .post('http://161.189.66.94:8090/api/devices-count', data, {
-        headers: requestHeaders,
-      })
-      .then((response) => {
-        return response.data;
-      });
-
-  const currentProjectDevicesCount = await getCurrentProjectDevicesCount();
+  const { data: currentProjectDevicesCount } = await fetchAPI.post(
+    '/devices-count',
+    data
+  );
 
   return {
     props: {

@@ -3,7 +3,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { baseApiUrl } from '@/lib/api';
+import { fetchAPI } from '@/lib/api';
 
 import { StatusTypeT } from '@/components/@pages/log-query-page/types';
 import NotificationsDetailsTable from '@/components/@pages/Notifications/NotificationsDetailsTable';
@@ -35,14 +35,8 @@ export default NotificationDetails;
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const locale = context?.locale;
   const id = context?.params?.id as string;
-  const res = await fetch(`${baseApiUrl}/view-notification`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ id: id }),
-  });
-  const data = await res.json();
+  const { data } = await fetchAPI.post('/view-notification', { id: id });
+
   return {
     props: {
       data,

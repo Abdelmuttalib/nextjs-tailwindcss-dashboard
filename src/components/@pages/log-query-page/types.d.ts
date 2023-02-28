@@ -1,3 +1,5 @@
+export type StatusTypeT = 'INFO' | 'WARNING' | 'DEBUG' | 'ERROR' | 'CRITICAL';
+
 export type LogT = {
   _id: string;
   date: string;
@@ -8,5 +10,3 @@ export type LogT = {
   description: string;
   __v: number;
 };
-
-export type StatusTypeT = 'INFO' | 'WARNING' | 'DEBUG' | 'ERROR' | 'CRITICAL';

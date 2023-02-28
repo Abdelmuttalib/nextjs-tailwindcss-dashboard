@@ -3,57 +3,40 @@ import {
   AdjustmentsHorizontalIcon,
   ArrowDownTrayIcon,
 } from '@heroicons/react/24/solid';
-import axios from 'axios';
 import { TFunction } from 'next-i18next';
-import { useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { withTranslation } from 'react-i18next';
-import useSWR from 'swr';
 
-import { baseApiUrl } from '@/lib/api';
+import useLogs from '@/hooks/useLogs';
 
 import LogQueryTableRowPlaceholder from '@/components/@pages/log-query-page/LogQueryTable/LogQueryTableRowPlaceholder';
 import { LogT } from '@/components/@pages/log-query-page/types';
 import { Button } from '@/components/ui/button';
 
-import LogQueryTableRow from './LogQueryTableRow';
-import LogQueryTableRowLoader from './LogQueryTableRowLoader';
+import LogQueryTableRow, { LogQueryTableRowLoader } from './LogQueryTableRow';
 import LogQueryDetailsDialog from '../LogQueryDetailsDialog';
 import LogQueryTabs from '../LogQueryTabs';
 
-const requestHeaders = {
-  'Content-Type': 'application/json',
-};
-const LogQueryTable = ({
-  logTypes,
-  t,
-}: {
+interface LogQueryTableProps {
   logTypes: string[];
+  logsData: LogT[];
   t: TFunction;
-}) => {
+}
+
+const LogQueryTable: FC<LogQueryTableProps> = ({ logTypes, logsData, t }) => {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
   const [selectedLogType, setSelectedLogType] = useState<string>(logTypes[0]);
 
-  const data = JSON.stringify({
-    type: selectedLogType,
-  });
-
-  const fetcher = (url: string) =>
-    axios
-      .post(url, data, {
-        headers: requestHeaders,
-      })
-      .then((response) => {
-        return response.data;
-      });
   const {
-    data: logs,
-    error,
+    logs,
+    isLoading,
     mutate,
-  } = useSWR<LogT[]>(`${baseApiUrl}/logs-types`, fetcher);
-  const isLoading = !error && !logs;
+    getFilteredLogsByDate,
+    downloadFilteredLogs,
+  } = useLogs(logsData, selectedLogType);
 
-  const [filteredLogs, setFilteredLogs] = useState([]);
+  const [filteredLogs, setFilteredLogs] = useState<LogT[]>([]);
   const [fetchedFilteredLogs, setFetchedFilteredLogs] = useState(false);
 
   const [logQueryDialogOpen, setLogQueryDialogOpen] = useState(false);
@@ -68,43 +51,15 @@ const LogQueryTable = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedLogType]);
 
-  const getFilteredLogsByDate = () => {
-    const data = {
-      startDate: startDate,
-      endDate: endDate,
-      logs: logs,
-    };
-
-    axios
-      .post(`${baseApiUrl}/logsfilter-date`, data, {
-        headers: requestHeaders,
-      })
-      .then((response) => {
-        setFilteredLogs(response.data);
-        setFetchedFilteredLogs(true);
-      });
+  const onFilterLogsByDate = () => {
+    getFilteredLogsByDate(startDate, endDate, logs as LogT[]).then((res) => {
+      setFilteredLogs(res.data);
+      setFetchedFilteredLogs(true);
+    });
   };
 
   const downloadLogs = () => {
-    try {
-      const data = JSON.stringify({
-        logs: filteredLogs,
-      });
-
-      axios
-        .post(`${baseApiUrl}/logs-download`, data, {
-          headers: requestHeaders,
-        })
-        .then((res) => {
-          const blob = new Blob([res.data], { type: 'text/csv' });
-          const link = document.createElement('a');
-          link.href = window.URL.createObjectURL(blob);
-          link.download = 'logs.csv';
-          link.click();
-        });
-    } catch (error) {
-      /* empty */
-    }
+    downloadFilteredLogs(filteredLogs);
   };
 
   function closeModal() {
@@ -136,12 +91,12 @@ const LogQueryTable = ({
           logData={selectedLog}
         />
       )}
-      <div className='mb-4 flex max-w-md flex-col gap-2'>
+      <div className='mb-4 flex max-w-xl flex-col gap-2'>
         <h5 className='h5'>{t('pages.dashboard.log_query.filter_by_date')}</h5>
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            getFilteredLogsByDate();
+            onFilterLogsByDate();
           }}
           className='flex flex-col gap-3'
         >
@@ -192,7 +147,7 @@ const LogQueryTable = ({
               type='submit'
               className='mt-2 inline-flex h-fit w-full flex-none gap-1 self-end sm:mt-0 sm:mb-1 sm:w-fit md:px-16'
               disabled={!startDate || !endDate}
-              onClick={() => getFilteredLogsByDate()}
+              onClick={() => onFilterLogsByDate()}
             >
               <AdjustmentsHorizontalIcon className='w-6' />
               {t('pages.dashboard.log_query.filter')}
@@ -209,8 +164,7 @@ const LogQueryTable = ({
           </div>
         </form>
       </div>
-      <div className=''>
-        {' '}
+      <div>
         <LogQueryTabs
           logTypes={logTypes}
           setSelectedLogType={setSelectedLogType}

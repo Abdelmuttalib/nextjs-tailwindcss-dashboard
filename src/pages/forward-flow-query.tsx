@@ -35,12 +35,12 @@ export default ForwardFlowQueryPage;
 export const getStaticProps: GetStaticProps<{
   data: StreamOutputT[];
 }> = async ({ locale }) => {
-  const data = await fetchAPI.get('/forward-flow-query');
+  const { data } = await fetchAPI.get('/forward-flow-query');
   return {
     props: {
       data,
       ...(await serverSideTranslations(locale as string, ['common'])),
     },
-    revalidate: 5,
+    revalidate: 10,
   };
 };

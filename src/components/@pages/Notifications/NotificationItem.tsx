@@ -6,7 +6,7 @@ import { withTranslation } from 'react-i18next';
 
 import cn from '@/lib/cn';
 import { formatDate } from '@/lib/date';
-import { NotificationT } from '@/hooks/useNotification';
+import { NotificationT } from '@/hooks/useNotifications';
 
 const NotificationItem = ({
   notification,

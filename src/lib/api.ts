@@ -1,23 +1,63 @@
-export const baseApiUrl = 'http://161.189.66.94:8090/api';
-// console.log(process.env.NEXT_PUBLIC_BASE_API_URL);
-// export const fetchAPI = (apiUrl: string, options: object) => {
-//   return fetch(`${baseApiUrl}${apiUrl}`, options).then((response) =>
-//     response.json()
-//   );
-// };
+import axios, { AxiosRequestHeaders } from 'axios';
 
-const get = (apiUrl: string) => {
-  return fetch(`${baseApiUrl}${apiUrl}`).then((response) => response.json());
-};
+export const BASE_API_URL = process.env.NEXT_PUBLIC_BASE_API_URL;
 
-const post = (apiUrl: string, options: object) => {
-  return fetch(`${baseApiUrl}${apiUrl}`, {
-    ...options,
-    headers: {
+const axiosService = axios.create({
+  baseURL: BASE_API_URL,
+});
+
+axiosService.interceptors.request.use(
+  (config) => {
+    config.headers = {
       'Content-Type': 'application/json',
-    },
-    method: 'POST',
-  }).then((response) => response.json());
+      ...config.headers,
+    } as AxiosRequestHeaders;
+
+    config.data = {
+      ...config.data,
+    };
+
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
+
+axiosService.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  (error) => {
+    return {
+      error,
+    };
+  }
+);
+
+/**
+ * get
+ * @param {*} url
+ * @param {*} params
+ */
+export const get = (url: string, params?: object | unknown) => {
+  return axiosService({
+    url: url,
+    method: 'get',
+    params,
+  });
+};
+/**
+ * post
+ * @param {*} url
+ * @param {*} data
+ */
+export const post = (url: string, data: object | unknown) => {
+  return axiosService({
+    url: url,
+    method: 'post',
+    data,
+  });
 };
 
 export const fetchAPI = {

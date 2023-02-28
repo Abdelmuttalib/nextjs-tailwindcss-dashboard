@@ -17,8 +17,8 @@ const ConfigurationCheckPage = () => {
         )} ${t('app.description')}`}
       />
       <div className='flex h-40 w-full items-center justify-center gap-2 rounded bg-gray-900 text-gray-100 dark:bg-gray-800/30'>
-        <ClockIcon className='w-10' />{' '}
-        <h2 className='h5 md:h2'> Ongoing development...</h2>
+        <ClockIcon className='w-10' />
+        <h2 className='h5 md:h2'>Ongoing development...</h2>
       </div>
     </Layout>
   );
@@ -31,6 +31,6 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
     props: {
       ...(await serverSideTranslations(locale as string, ['common'])),
     },
-    revalidate: 5,
+    revalidate: 10,
   };
 };

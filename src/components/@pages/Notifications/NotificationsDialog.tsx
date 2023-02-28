@@ -7,7 +7,7 @@ import {
 import { TFunction, withTranslation } from 'next-i18next';
 import React, { Fragment } from 'react';
 
-import useNotifications from '@/hooks/useNotification';
+import useNotifications from '@/hooks/useNotifications';
 
 import { Button } from '@/components/ui/button';
 import { IconButton } from '@/components/ui/icon-button';

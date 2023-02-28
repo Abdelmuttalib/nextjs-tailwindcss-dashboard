@@ -5,11 +5,13 @@ import { useTranslation } from 'react-i18next';
 import { fetchAPI } from '@/lib/api';
 
 import { LogQueryTable } from '@/components/@pages/log-query-page';
+import { LogT } from '@/components/@pages/log-query-page/types';
 import { Layout } from '@/components/layout';
 import Seo from '@/components/Seo';
 
 const LogQueryPage = ({
   logTypes,
+  logsData,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { t } = useTranslation(['common']);
   return (
@@ -19,7 +21,7 @@ const LogQueryPage = ({
           'app.description'
         )}`}
       />
-      <LogQueryTable logTypes={logTypes} />
+      <LogQueryTable logTypes={logTypes} logsData={logsData} />
     </Layout>
   );
 };
@@ -28,14 +30,19 @@ export default LogQueryPage;
 
 export const getStaticProps: GetStaticProps<{
   logTypes: string[];
+  logsData: LogT[];
 }> = async ({ locale }) => {
-  const logTypes = await fetchAPI.get('/log-query');
+  const { data: logTypes } = await fetchAPI.get('/log-query');
+  const { data: logsData } = await fetchAPI.post('/logs-types', {
+    type: logTypes[0],
+  });
 
   return {
     props: {
+      logsData,
       logTypes,
       ...(await serverSideTranslations(locale as string, ['common'])),
     },
-    revalidate: 5,
+    revalidate: 10,
   };
 };

@@ -14,10 +14,12 @@ export type NotificationT = {
   __v: number;
 };
 
+const fetcher = (url: string) => fetchAPI.get(url).then((r) => r.data);
+
 const useNotifications = () => {
   const { data: notifications, mutate } = useSWR<NotificationT[]>(
     '/notifications',
-    fetchAPI.get
+    fetcher
   );
 
   const newNotificationsCount = useMemo(

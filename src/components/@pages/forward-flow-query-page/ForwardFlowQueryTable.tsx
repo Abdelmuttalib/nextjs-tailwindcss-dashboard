@@ -1,16 +1,19 @@
 import { TFunction, withTranslation } from 'next-i18next';
+import { FC } from 'react';
 
 import Badge from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 
 import { StreamOutputT } from './types';
 
-const ForwardFlowQueryTable = ({
-  streams,
-  t,
-}: {
+interface ForwardFlowQueryTableProps {
   streams: StreamOutputT[];
   t: TFunction;
+}
+
+const ForwardFlowQueryTable: FC<ForwardFlowQueryTableProps> = ({
+  streams,
+  t,
 }) => {
   return (
     <div className='w-full rounded-md'>

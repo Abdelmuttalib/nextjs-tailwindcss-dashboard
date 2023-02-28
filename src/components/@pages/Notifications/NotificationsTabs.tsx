@@ -4,7 +4,7 @@ import React from 'react';
 import { withTranslation } from 'react-i18next';
 
 import cn from '@/lib/cn';
-import useNotifications from '@/hooks/useNotification';
+import useNotifications from '@/hooks/useNotifications';
 
 import NotificationItem from '@/components/@pages/Notifications/NotificationItem';
 
