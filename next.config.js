@@ -7,7 +7,7 @@ module.exports = {
     dirs: ['src'],
   },
   i18n,
-  reactStrictMode: true,
+  reactStrictMode: false,
 
   // Uncoment to add domain whitelist
   // images: {
