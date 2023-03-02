@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import io from 'socket.io-client';
 import { useSWRConfig } from 'swr';
 
+import { fetchAPI } from '@/lib/api';
 import { ToastContext, ToastT } from '@/hooks/useToast';
 
 import ToastContainer from './ToastContainer';
@@ -38,6 +39,7 @@ const ToastProvider = ({ children }: { children: React.ReactNode }) => {
       }) => {
         mutate('/notifications');
         addToast(message.description, message.notificationType);
+        fetchAPI.get('/check-devices-algorithm');
       }
     );
   }

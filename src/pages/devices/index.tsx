@@ -45,7 +45,7 @@ export default DevicesPage;
 export const getStaticProps: GetStaticProps<{
   projectsData: ProjectT[];
 }> = async ({ locale }) => {
-  await fetchAPI.get(`/check-devices-algorithm`);
+  await fetchAPI.get('/check-devices-algorithm');
   const { data: projectsData } = await fetchAPI.get('/status-overview');
 
   return {
