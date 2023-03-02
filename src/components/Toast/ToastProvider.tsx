@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import io from 'socket.io-client';
 import { useSWRConfig } from 'swr';
 
@@ -13,6 +13,7 @@ let id = 0;
 const ToastProvider = ({ children }: { children: React.ReactNode }) => {
   const [toasts, setToasts] = useState<ToastT[]>([]);
   const { mutate } = useSWRConfig();
+  const socketInitialized = useRef(false);
 
   const addToast = useCallback(
     (description: ToastT['description'], type: ToastT['type']) => {
@@ -46,6 +47,8 @@ const ToastProvider = ({ children }: { children: React.ReactNode }) => {
   // }
 
   useEffect(() => {
+    if (socketInitialized.current) return;
+    socketInitialized.current = true;
     initSocketIO();
 
     // return disconnectSocketIO();
