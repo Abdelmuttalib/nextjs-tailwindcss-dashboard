@@ -98,10 +98,22 @@ module.exports = {
             backgroundPosition: '700px 0',
           },
         },
+
+        fadeIn: {
+          from: { opacity: 0 },
+          to: { opacity: 1 },
+        },
+        slideUp: {
+          from: { transform: 'translateY(-50%)' },
+          to: { transform: 'translateY(0)' },
+        },
       },
       animation: {
         flicker: 'flicker 3s linear infinite',
         shimmer: 'shimmer 1.3s linear infinite',
+        'fade-in': 'fadeIn 0.15s ease-in-out',
+        'slide-up': 'slideUp 0.15s ease-in-out',
+        'fade-in-up': 'fadeIn 0.15s ease-in-out, slideUp 0.15s ease-in-out',
       },
     },
   },

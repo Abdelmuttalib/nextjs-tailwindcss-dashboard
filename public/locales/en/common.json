@@ -88,7 +88,8 @@
         "device_id": "Device ID",
         "status": "Status",
         "devices_algorithms": "Devices Algorithms",
-        "active_devices": "Active Devices"
+        "active_devices": "Active Devices",
+        "go_back": "go back"
       },
       "source_query": {
         "title": "source query",

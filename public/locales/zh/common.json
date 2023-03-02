@@ -88,7 +88,8 @@
         "device_id": "设备ID",
         "status": "地位",
         "devices_algorithms": "设备算法",
-        "active_devices": "有源设备"
+        "active_devices": "有源设备",
+        "go_back": "回去"
       },
       "source_query": {
         "title": "来源查询",
