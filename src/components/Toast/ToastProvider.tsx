@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import io from 'socket.io-client';
+import { useSWRConfig } from 'swr';
 
 import { ToastContext, ToastT } from '@/hooks/useToast';
 
@@ -7,9 +8,11 @@ import ToastContainer from './ToastContainer';
 
 const SOCKET_IO_URL = process.env.NEXT_PUBLIC_SOCKET_IO_URL as string;
 const socket = io(SOCKET_IO_URL);
+
 let id = 0;
 const ToastProvider = ({ children }: { children: React.ReactNode }) => {
   const [toasts, setToasts] = useState<ToastT[]>([]);
+  const { mutate } = useSWRConfig();
 
   const addToast = useCallback(
     (description: ToastT['description'], type: ToastT['type']) => {
@@ -32,19 +35,20 @@ const ToastProvider = ({ children }: { children: React.ReactNode }) => {
         notificationType: 'error' | 'sync' | 'device' | 'Device';
         description: string;
       }) => {
+        mutate('/notifications');
         addToast(message.description, message.notificationType);
       }
     );
   }
 
-  function disconnectSocketIO() {
-    socket.disconnect();
-  }
+  // function disconnectSocketIO() {
+  //   socket.disconnect();
+  // }
 
   useEffect(() => {
     initSocketIO();
 
-    return disconnectSocketIO();
+    // return disconnectSocketIO();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
