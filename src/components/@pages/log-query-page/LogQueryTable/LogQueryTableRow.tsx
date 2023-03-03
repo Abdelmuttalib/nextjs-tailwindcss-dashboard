@@ -54,7 +54,7 @@ const LogQueryTableRow: FC<LogQueryTableRowProps> = ({
             {formatDate(log.date)}
           </p>
         ) : (
-          <SkeletonLoader className='h-6 w-20' />
+          <SkeletonLoader className='h-7 w-16' />
         )}
       </td>
       <td className='px-5 py-4'>
