@@ -17,7 +17,7 @@ const useLogs = (initialLogsData: LogT[], selectedLogType: string) => {
     isLoading,
     error,
     mutate,
-  } = useSWR<LogT[]>('/logs-type', fetcher, {
+  } = useSWR<LogT[]>('/logs-types', fetcher, {
     fallbackData: initialLogsData,
   });
 
