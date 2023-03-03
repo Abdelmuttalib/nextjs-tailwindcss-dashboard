@@ -28,13 +28,8 @@ const LogQueryTable: FC<LogQueryTableProps> = ({ logTypes, logsData, t }) => {
   const [endDate, setEndDate] = useState('');
   const [selectedLogType, setSelectedLogType] = useState<string>(logTypes[0]);
 
-  const {
-    logs,
-    isLoading,
-    mutate,
-    getFilteredLogsByDate,
-    downloadFilteredLogs,
-  } = useLogs(logsData, selectedLogType);
+  const { logs, isLoading, getFilteredLogsByDate, downloadFilteredLogs } =
+    useLogs(logsData, selectedLogType);
 
   const [filteredLogs, setFilteredLogs] = useState<LogT[]>([]);
   const [fetchedFilteredLogs, setFetchedFilteredLogs] = useState(false);
@@ -43,7 +38,6 @@ const LogQueryTable: FC<LogQueryTableProps> = ({ logTypes, logsData, t }) => {
   const [selectedLog, setSelectedLog] = useState<LogT>();
 
   useEffect(() => {
-    mutate();
     if (filteredLogs && fetchedFilteredLogs) {
       setFilteredLogs([]);
       setFetchedFilteredLogs(false);
@@ -91,7 +85,7 @@ const LogQueryTable: FC<LogQueryTableProps> = ({ logTypes, logsData, t }) => {
           logData={selectedLog}
         />
       )}
-      <div className='mb-4 flex max-w-xl flex-col gap-2'>
+      <div className='mb-6 flex max-w-xl flex-col gap-2'>
         <h5 className='h5'>{t('pages.dashboard.log_query.filter_by_date')}</h5>
         <form
           onSubmit={(e) => {

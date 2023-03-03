@@ -5,10 +5,10 @@ import { fetchAPI } from '@/lib/api';
 import { LogT } from '@/components/@pages/log-query-page/types';
 
 const useLogs = (initialLogsData: LogT[], selectedLogType: string) => {
-  const fetcher = (url: string) =>
+  const fetcher = (url: string, logType: string) =>
     fetchAPI
       .post(url, {
-        type: selectedLogType,
+        type: logType,
       })
       .then((res) => res.data);
 
@@ -17,9 +17,13 @@ const useLogs = (initialLogsData: LogT[], selectedLogType: string) => {
     isLoading,
     error,
     mutate,
-  } = useSWR<LogT[]>('/logs-types', fetcher, {
-    fallbackData: initialLogsData,
-  });
+  } = useSWR<LogT[]>(
+    ['/logs-types', selectedLogType],
+    ([url, selectedLogType]: string[]) => fetcher(url, selectedLogType),
+    {
+      fallbackData: initialLogsData,
+    }
+  );
 
   const getFilteredLogsByDate = (
     startDate: string,
