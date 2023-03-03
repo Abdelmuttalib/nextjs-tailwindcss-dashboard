@@ -49,13 +49,13 @@ const LogQueryTableRow: FC<LogQueryTableRowProps> = ({
         </Badge>
       </td>
       <td className='px-5 py-5'>
-        <p className='text-gray-600 dark:text-gray-500'>
-          {isMounted ? (
-            formatDate(log.date)
-          ) : (
-            <SkeletonLoader className='h-6 w-20' />
-          )}
-        </p>
+        {isMounted ? (
+          <p className='text-gray-600 dark:text-gray-500'>
+            {formatDate(log.date)}
+          </p>
+        ) : (
+          <SkeletonLoader className='h-6 w-20' />
+        )}
       </td>
       <td className='px-5 py-4'>
         <Button size='sm' onClick={() => viewLogDetails(log)}>
