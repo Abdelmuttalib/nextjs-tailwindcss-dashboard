@@ -1,8 +1,9 @@
 {
-    "recommendations": [
-        "Vue.volar",
-        "bradlc.vscode-tailwindcss",
-        "dbaeumer.vscode-eslint",
-        "antfu.iconify",
-    ]
+  "recommendations": [
+    // Tailwind CSS Intellisense
+    "bradlc.vscode-tailwindcss",
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "aaron-bond.better-comments"
+  ]
 }
