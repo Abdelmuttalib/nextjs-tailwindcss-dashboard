@@ -1,0 +1,27 @@
+<template>
+  <button
+    class="
+       inline-flex
+       items-center
+       px-4
+       py-2
+       transition
+       text-sm
+       md:text-base
+       font-medium
+       rounded-md
+       shadow-xl
+       hover:shadow-primary-500/60
+       text-white
+       bg-secondary-600
+       dark:bg-primary-500
+        hover:bg-secondary-500
+        dark:hover:bg-primary-500/90
+       focus:outline-none
+       focus:bg-secondary-600
+       dark:focus:bg-primary-500/95
+    "
+  >
+    <slot />
+  </button>
+</template>
