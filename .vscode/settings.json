@@ -1,32 +1,10 @@
 {
-    /* Tailwindcss Setting */
-    "css.validate": false,
-    "editor.quickSuggestions": {
-        "strings": true
-    },
-    "tailwindCSS.includeLanguages": {
-        "plaintext": "html"
-    },
-   
-    "prettier.enable": false,
-    "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": true
-    },
-    "files.associations": {
-        "*.css": "postcss"
-    },
-    "editor.formatOnSave": false,
-    "cSpell.words": [
-        "antfu",
-        "composables",
-        "headlessui",
-        "heroicons",
-        "nuxt",
-        "nuxtjs",
-        "pinia",
-        "tailwindcss",
-        "Unplugin",
-        "vite",
-        "vueuse"
-    ],
+  "css.validate": false,
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+  "headwind.runOnSave": false,
+  "typescript.preferences.importModuleSpecifier": "non-relative"
 }

@@ -1,0 +1,173 @@
+{
+  "app": {
+    "name": "InView",
+    "description": "Maintenance Dashboard"
+  },
+  "components": {
+    "language_switcher": {
+      "change_language": "change language"
+    },
+    "theme_switcher": {
+      "theme": "theme",
+      "change_theme": "change theme"
+    }
+  },
+  "notifications": {
+    "notifications": "Notifications",
+    "all": "All",
+    "errors": "Errors",
+    "sync": "Sync",
+    "view_details": "View Details",
+    "mark_all_as_read": "Mark All as Read",
+    "description": "Description",
+    "error_notification_details": "Error Notification Details",
+    "notification_details": "Notification Details",
+    "view_notification": "view notification"
+  },
+  "pages": {
+    "404": {
+      "title": "page not found"
+    },
+    "index": {
+      "title": "InView Maintenance Dashboard"
+    },
+    "blank": {
+      "nav": "blank",
+      "title": "blank page",
+      "description": "this is a blank page",
+      "just_blank_page_with_title": "just blank page with title"
+    },
+    "post": {
+      "nav": "post",
+      "title": "post",
+      "description": "this is a post page"
+    },
+    "test": {
+      "nav": "test",
+      "title": "testing",
+      "description": "this is a test page",
+      "counter": "counter",
+      "increment": "increment",
+      "decrement": "decrement",
+      "reset": "reset",
+      "identity": "identity",
+      "full_name": "fullName"
+    },
+    "dashboard": {
+      "nav": "dashboard",
+      "title": "dashboard",
+      "ongoing_development": "ongoing development",
+      "index": {
+        "nav": "home",
+        "title": "home"
+      },
+      "server_status_overview": {
+        "title": "server status overview",
+        "server_status": "Server status",
+        "online": "Online",
+        "offline": "Offline",
+        "projects": "Projects",
+        "data": {
+          "project": "Project",
+          "created_date": "Created Date",
+          "project_id": "Project ID",
+          "project_name": "Project Name",
+          "project_info": "Project Info",
+          "statistic_server_address": "Statistic Server Address",
+          "device_infos": "Device Infos",
+          "devices": "Devices"
+        }
+      },
+      "devices": {
+        "title": "devices",
+        "view_devices": "view devices",
+        "device_algorithm": "Device Algorithm",
+        "project_name": "Project Name",
+        "algorithm": "Algorithm",
+        "last_offline": "Last Offline",
+        "device_id": "Device ID",
+        "status": "Status",
+        "devices_algorithms": "Devices Algorithms",
+        "active_devices": "Active Devices",
+        "go_back": "go back"
+      },
+      "source_query": {
+        "title": "source query",
+        "host": "Host",
+        "name": "Name",
+        "projects_servers_status": "Projects Servers Status",
+        "project_id": "Project ID",
+        "inquire": "Inquire",
+        "online": "Online",
+        "offline": "Offline",
+        "device_id": "Device ID",
+        "origin": "Origin",
+        "view_live": "View live",
+        "status": "Status",
+        "view": "view"
+      },
+      "forward_flow_query": {
+        "title": "forward flow query",
+        "live_stream": "Live Stream",
+        "device_type": "Device Type"
+      },
+      "log_query": {
+        "title": "log query",
+        "type": "Type",
+        "info": "Info",
+        "description": "Description",
+        "date": "Date",
+        "filter": "Filter",
+        "filter_by_date": "Filter by date",
+        "start_date": "Start Date",
+        "end_date": "End Date",
+        "download_results": "Download Results",
+        "no_logs_found": "no logs found",
+        "log_details": "Log Details",
+        "view_log_details": "view log details",
+        "log_query_details": "Log Details",
+        "project_id": "Project ID",
+        "device_id": "Device ID",
+        "clear_filters": "Clear Filters"
+      },
+      "configuration_check": {
+        "title": "configuration check"
+      },
+      "settings": {
+        "nav": "setting",
+        "title": "settings",
+        "description": "this is a setting page",
+        "sections": {
+          "general": "General",
+          "protection": "Protection",
+          "advanced": "Advanced",
+          "validate_username": {
+            "title": "validate github profile",
+            "description": "type your github username and click the button to validate.",
+            "footer": "Learn more about",
+            "footer_button": "validate",
+            "footer_link": "github users api"
+          },
+          "bot_id": {
+            "title": "bot id",
+            "description": "This is your bot ID.",
+            "footer": "Used when interacting with the bot."
+          },
+          "protection_spam": {
+            "title": "spam protection",
+            "description": "toggle enable to remove the red border",
+            "footer": "if enable we will secure your comments from spam"
+          },
+          "advanced_enable_advanced": {
+            "title": "enable advanced settings",
+            "description": "you can enable advanced settings to change the settings"
+          },
+          "advanced_dir_listing": {
+            "title": "directory listing",
+            "description": "if no index file is present within a directory, the directory contents will be displayed."
+          }
+        }
+      }
+    }
+  }
+}
