@@ -1,11 +1,15 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 import { TFunction } from 'next-i18next';
-import { Fragment } from 'react';
+import { FC, Fragment } from 'react';
 import { withTranslation } from 'react-i18next';
+import useSWR from 'swr';
 
+import { fetchAPI } from '@/lib/api';
 import { formatDate } from '@/lib/date';
 
+import { AlgorithmT } from '@/components/@pages/devices-page/DevicesAlgorithmsTable/types';
+import { SkeletonLoader } from '@/components/loaders';
 import Badge from '@/components/ui/badge';
 import { IconButton } from '@/components/ui/icon-button';
 
@@ -21,17 +25,38 @@ export interface AlgorithmDetailsT {
   __v: number;
 }
 
-const DeviceAlgorithmDetailsDialog = ({
-  algorithmData,
-  isOpen,
-  closeModal,
-  t,
-}: {
-  algorithmData: AlgorithmDetailsT[];
+interface DeviceAlgorithmDetailsDialogProps {
+  algorithmType: AlgorithmT;
+  projectUnionId: string;
   isOpen: boolean;
   closeModal: (isOpen: boolean) => void;
   t: TFunction;
+}
+
+const fetcher = (url: string, algType: AlgorithmT, projectUniId: string) =>
+  fetchAPI
+    .post(url, {
+      algorithm: algType,
+      projectUnionId: projectUniId,
+    })
+    .then((res) => res.data);
+
+const DeviceAlgorithmDetailsDialog: FC<DeviceAlgorithmDetailsDialogProps> = ({
+  algorithmType,
+  projectUnionId,
+  isOpen,
+  closeModal,
+  t,
 }) => {
+  const { data: algorithmData, isLoading } = useSWR<AlgorithmDetailsT[]>(
+    ['/devices-algorithm', algorithmType, projectUnionId],
+    ([url, algType, projectUniId]: [
+      url: string,
+      algType: AlgorithmT,
+      projectUniId: string
+    ]) => fetcher(url, algType as AlgorithmT, projectUniId)
+  );
+
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog
@@ -120,6 +145,32 @@ const DeviceAlgorithmDetailsDialog = ({
                         </tr>
                       </thead>
                       <tbody>
+                        {/* Loaders */}
+                        {isLoading &&
+                          [1, 2, 3, 4].map((n) => (
+                            <tr
+                              key={n}
+                              className='body-md whitespace-nowrap border-b border-gray-200 bg-white text-gray-900 dark:border-gray-800/50 dark:bg-gray-800/40 dark:text-gray-200'
+                            >
+                              <td className='px-4 py-5'>
+                                <SkeletonLoader className='h-7 w-52' />
+                              </td>
+                              <td className='px-4 py-5'>
+                                <SkeletonLoader className='h-7 w-32' />
+                              </td>
+                              <td className='px-4 py-5'>
+                                <SkeletonLoader className='h-7 w-10' />
+                              </td>
+
+                              <td className='px-4 py-5'>
+                                <SkeletonLoader className='h-7 w-20 rounded-full' />
+                              </td>
+                              <td className='px-4 py-5'>
+                                <SkeletonLoader className='h-7 w-44' />
+                              </td>
+                            </tr>
+                          ))}
+                        {/* data rendering */}
                         {algorithmData &&
                           algorithmData.map((data: AlgorithmDetailsT) => (
                             <tr
@@ -150,7 +201,7 @@ const DeviceAlgorithmDetailsDialog = ({
                                 </Badge>
                               </td>
                               <td className='px-5 py-5'>
-                                <p className='body-md'>
+                                <p className='text-gray-600 dark:text-gray-500'>
                                   {data.lastOffline
                                     ? formatDate(data.lastOffline)
                                     : '-'}
@@ -158,21 +209,25 @@ const DeviceAlgorithmDetailsDialog = ({
                               </td>
                             </tr>
                           ))}
+
+                        {/* no data */}
                         {algorithmData && algorithmData.length === 0 && (
                           <tr className='body-md whitespace-nowrap border-b border-gray-200 bg-white text-gray-900 dark:border-gray-800/50 dark:bg-gray-800/40 dark:text-gray-200'>
-                            <td className='px-5 py-5'>
-                              <p>-</p>
+                            <td className='px-5 py-10 pl-16'>
+                              <span className='label-md italic text-gray-500'>
+                                nothing to show
+                              </span>
                             </td>
                             <td className='px-5 py-5'>
-                              <p>-</p>
+                              <p></p>
                             </td>
                             <td className='px-5 py-5'>
-                              <p>-</p>
+                              <p></p>
                             </td>
 
-                            <td className='px-5 py-5'>-</td>
+                            <td className='px-5 py-5'></td>
                             <td className='px-5 py-5'>
-                              <p>-</p>
+                              <p></p>
                             </td>
                           </tr>
                         )}

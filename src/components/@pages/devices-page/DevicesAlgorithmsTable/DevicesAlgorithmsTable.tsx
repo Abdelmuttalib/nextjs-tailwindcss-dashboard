@@ -2,14 +2,11 @@ import { TFunction } from 'next-i18next';
 import React, { useEffect, useState } from 'react';
 import { withTranslation } from 'react-i18next';
 
-import { fetchAPI } from '@/lib/api';
-
-import DeviceAlgorithmDetailsDialog, {
-  AlgorithmDetailsT,
-} from '@/components/@pages/devices-page/DevicesAlgorithmsTable/DeviceAlgorithmDetailsDialog';
+import DeviceAlgorithmDetailsDialog from '@/components/@pages/devices-page/DevicesAlgorithmsTable/DeviceAlgorithmDetailsDialog';
 import { Button } from '@/components/ui/button';
 
 import {
+  AlgorithmT,
   DeviceAlgorithmsT,
   InitializedDeviceAlgorithmsT,
   UninitializedDeviceAlgorithmsT,
@@ -19,15 +16,11 @@ type DevicesAlgorithmsTableProps = {
   data: DeviceAlgorithmsT[];
   t: TFunction;
 };
+
 const DevicesAlgorithmsTable = ({ data, t }: DevicesAlgorithmsTableProps) => {
-  const [algorithmData, setAlgorithmData] = useState<AlgorithmDetailsT[]>();
+  const [algorithmType, setAlgorithmType] = useState<AlgorithmT>('safety');
   const [projectUnionId, setProjectUnionId] = useState<string>('');
   const [isOpen, setIsOpen] = useState<boolean>(false);
-
-  const closeModal = () => {
-    setAlgorithmData([]);
-    setIsOpen(false);
-  };
 
   useEffect(() => {
     if (data && data[0] && data[0]['unionId']) {
@@ -35,30 +28,18 @@ const DevicesAlgorithmsTable = ({ data, t }: DevicesAlgorithmsTableProps) => {
     }
   }, [data]);
 
-  const getDevicesInAlgorithmAndProject = async (algorithmType: string) => {
-    setIsOpen(true);
-    const body = {
-      algorithm: algorithmType,
-      projectUnionId: projectUnionId,
-    };
-
-    try {
-      const { data } = await fetchAPI.post('/devices-algorithm', body);
-
-      setAlgorithmData(data);
-    } catch (error) {
-      throw new Error(error as string);
-    }
+  const closeModal = () => {
+    setIsOpen(false);
   };
+
   return (
     <div>
-      {algorithmData && (
-        <DeviceAlgorithmDetailsDialog
-          algorithmData={algorithmData}
-          isOpen={isOpen}
-          closeModal={closeModal}
-        />
-      )}
+      <DeviceAlgorithmDetailsDialog
+        algorithmType={algorithmType}
+        projectUnionId={projectUnionId}
+        isOpen={isOpen}
+        closeModal={closeModal}
+      />
       {data && data[0] && data[0].unionId && (
         <div className='mb-10 flex flex-col gap-2'>
           {!data[0].status && (
@@ -99,7 +80,8 @@ const DevicesAlgorithmsTable = ({ data, t }: DevicesAlgorithmsTableProps) => {
                           if (objectKey === 'Status') {
                             return;
                           }
-                          getDevicesInAlgorithmAndProject(objectKey);
+                          setIsOpen(true);
+                          setAlgorithmType(objectKey as AlgorithmT);
                         }}
                       >
                         {objectKey}

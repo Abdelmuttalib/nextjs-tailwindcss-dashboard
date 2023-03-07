@@ -195,7 +195,9 @@ const LogQueryTable: FC<LogQueryTableProps> = ({ logTypes, logsData, t }) => {
                 {/* loading */}
                 {isLoading &&
                   !fetchedFilteredLogs &&
-                  [...Array(6)].map((n) => <LogQueryTableRowLoader key={n} />)}
+                  [1, 2, 3, 4, 5, 6].map((n) => (
+                    <LogQueryTableRowLoader key={n} />
+                  ))}
                 {/* all logs  */}
                 {logs &&
                   logs.length > 0 &&
