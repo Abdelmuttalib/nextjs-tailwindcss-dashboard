@@ -53,11 +53,11 @@ const NotificationDetailsDialog = ({
             <Transition.Child
               as={Fragment}
               enter='duration-300 ease-out'
-              enterFrom='opacity-0'
-              enterTo='opacity-100'
+              enterFrom='opacity-0 -translate-y-1 sm:-translate-y-0 sm:-translate-x-1'
+              enterTo='opacity-100 translate-y-0 sm:translate-x-0'
               leave='duration-200 ease-in'
-              leaveFrom='opacity-100'
-              leaveTo='opacity-0'
+              leaveFrom='opacity-100 translate-y-0 sm:translate-x-0'
+              leaveTo='opacity-0 -translate-y-1 sm:-translate-y-0 sm:-translate-x-1'
             >
               <Dialog.Panel className='absolute right-0 left-0 bottom-0 h-[70%] w-full overflow-y-scroll rounded-t-md bg-white py-2.5 shadow-xl dark:bg-gray-900 sm:left-auto sm:top-0 sm:right-0 sm:min-h-screen sm:max-w-sm sm:rounded-md md:max-w-md lg:max-w-lg'>
                 <div className='w-full px-5 text-left lg:mb-3 lg:px-6'>
