@@ -11,6 +11,8 @@ const buttonVariants = cva(
       variant: {
         default:
           'text-white bg-primary dark:bg-primary/80 hover:bg-primary-600 focus:border-primary-200 dark:focus:border-primary-300 focus:bg-primary',
+        primary:
+          'text-white bg-primary dark:bg-primary/80 hover:bg-primary-600 focus:border-primary-200 dark:focus:border-primary-300 focus:bg-primary',
         outline:
           'text-gray-900 bg-white border-gray-200/100 hover:bg-gray-50 focus:border-primary',
         secondary:

@@ -1,6 +1,6 @@
 export type StatusTypeT = 'INFO' | 'WARNING' | 'DEBUG' | 'ERROR' | 'CRITICAL';
 
-export type LogT = {
+export interface LogT {
   _id: string;
   date: string;
   projectId: string;
@@ -9,4 +9,9 @@ export type LogT = {
   info: string;
   description: string;
   __v: number;
-};
+}
+
+export interface LogsResponseT {
+  logs: LogT[];
+  totalPages: number | string;
+}

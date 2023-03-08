@@ -1,39 +1,31 @@
+import { useState } from 'react';
 import useSWR from 'swr';
 
 import { fetchAPI } from '@/lib/api';
 
-import { LogT } from '@/components/@pages/log-query-page/types';
+import { LogsResponseT, LogT } from '@/components/@pages/log-query-page/types';
 
-const useLogs = (initialLogsData: LogT[], selectedLogType: string) => {
-  const fetcher = (url: string, logType: string) =>
+const useLogs = (selectedLogType: string) => {
+  const fetcher = (url: string, logType: string, pageNumber: number) =>
     fetchAPI
       .post(url, {
         type: logType,
+        page: pageNumber,
       })
       .then((res) => res.data);
 
-  const {
-    data: logs,
-    isLoading,
-    error,
-    mutate,
-  } = useSWR<LogT[]>(
-    ['/logs-types', selectedLogType],
-    ([url, selectedLogType]: string[]) => fetcher(url, selectedLogType),
-    {
-      fallbackData: initialLogsData,
-    }
+  const [page, setPage] = useState<number>(1);
+  const { data, isLoading, error, mutate } = useSWR<LogsResponseT>(
+    ['/logs-types', selectedLogType, page],
+    ([url, selectedLogType, page]: (string | number)[]) =>
+      fetcher(url as string, selectedLogType as string, page as number)
   );
 
-  const getFilteredLogsByDate = (
-    startDate: string,
-    endDate: string,
-    logs: LogT[]
-  ) => {
+  const getFilteredLogsByDate = (startDate: string, endDate: string) => {
     const data = {
       startDate: startDate,
       endDate: endDate,
-      logs: logs,
+      type: selectedLogType,
     };
 
     return fetchAPI.post('/logsfilter-date', data);
@@ -54,7 +46,9 @@ const useLogs = (initialLogsData: LogT[], selectedLogType: string) => {
   };
 
   return {
-    logs,
+    data,
+    page,
+    setPage,
     isLoading,
     error,
     mutate,

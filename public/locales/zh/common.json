@@ -129,7 +129,13 @@
         "log_query_details": "日志查询详情",
         "project_id": "项目编号",
         "device_id": "设备编号",
-        "clear_filters": "清除过滤器"
+        "clear_filters": "清除过滤器",
+        "showing_page": "显示页面",
+        "of": "的",
+        "page": "页",
+        "pages": "页数",
+        "next": "下一个",
+        "previous": "以前"
       },
       "configuration_check": {
         "title": "配置检查"

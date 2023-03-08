@@ -68,12 +68,15 @@ const SideBar = ({
   const { theme, setTheme } = useTheme();
   return (
     <div
-      className={cn({
-        'hidden h-full min-h-screen w-full flex-col bg-[#06080b] lg:flex lg:w-72 xl:w-80':
-          mode === 'normal',
-        'fixed inset-0 z-50 flex h-full w-full flex-col bg-[#06080b] backdrop-blur-md backdrop-filter transition-colors duration-300 dark:bg-gray-900 dark:text-gray-200 lg:hidden':
-          mode === 'mobile',
-      })}
+      className={cn(
+        'bg-[#06080b] dark:border-r dark:border-gray-800/20 dark:bg-[#0A0F13]',
+        {
+          'hidden h-full min-h-screen w-full flex-col lg:flex lg:w-72 xl:w-80':
+            mode === 'normal',
+          'fixed inset-0 z-50 flex h-full w-full flex-col  backdrop-blur-md backdrop-filter transition-colors duration-300 dark:bg-gray-900 dark:text-gray-200 lg:hidden':
+            mode === 'mobile',
+        }
+      )}
     >
       <div className='relative flex-1 overflow-y-auto py-4 lg:pl-0'>
         {setShowSidebarMenu && (

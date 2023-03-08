@@ -128,7 +128,13 @@
         "log_query_details": "Log Details",
         "project_id": "Project ID",
         "device_id": "Device ID",
-        "clear_filters": "Clear Filters"
+        "clear_filters": "Clear Filters",
+        "showing_page": "Showing page",
+        "of": "of",
+        "page": "page",
+        "pages": "pages",
+        "next": "Next",
+        "previous": "Previous"
       },
       "configuration_check": {
         "title": "configuration check"

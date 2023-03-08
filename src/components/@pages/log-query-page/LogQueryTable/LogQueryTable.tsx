@@ -1,4 +1,8 @@
-import { XMarkIcon } from '@heroicons/react/20/solid';
+import {
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  XMarkIcon,
+} from '@heroicons/react/20/solid';
 import {
   AdjustmentsHorizontalIcon,
   ArrowDownTrayIcon,
@@ -19,18 +23,23 @@ import LogQueryTabs from '../LogQueryTabs';
 
 interface LogQueryTableProps {
   logTypes: string[];
-  logsData: LogT[];
+  // logsData: LogsResponseT;
   t: TFunction;
 }
 
-const LogQueryTable: FC<LogQueryTableProps> = ({ logTypes, logsData, t }) => {
+const LogQueryTable: FC<LogQueryTableProps> = ({ logTypes, t }) => {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
   const [selectedLogType, setSelectedLogType] = useState<string>(logTypes[0]);
 
-  const { logs, isLoading, getFilteredLogsByDate, downloadFilteredLogs } =
-    useLogs(logsData, selectedLogType);
-
+  const {
+    data,
+    page,
+    setPage,
+    isLoading,
+    getFilteredLogsByDate,
+    downloadFilteredLogs,
+  } = useLogs(selectedLogType);
   const [filteredLogs, setFilteredLogs] = useState<LogT[]>([]);
   const [fetchedFilteredLogs, setFetchedFilteredLogs] = useState(false);
 
@@ -38,6 +47,7 @@ const LogQueryTable: FC<LogQueryTableProps> = ({ logTypes, logsData, t }) => {
   const [selectedLog, setSelectedLog] = useState<LogT>();
 
   useEffect(() => {
+    if (page !== 1) setPage(1);
     if (filteredLogs && fetchedFilteredLogs) {
       setFilteredLogs([]);
       setFetchedFilteredLogs(false);
@@ -46,8 +56,9 @@ const LogQueryTable: FC<LogQueryTableProps> = ({ logTypes, logsData, t }) => {
   }, [selectedLogType]);
 
   const onFilterLogsByDate = () => {
-    getFilteredLogsByDate(startDate, endDate, logs as LogT[]).then((res) => {
-      setFilteredLogs(res.data);
+    getFilteredLogsByDate(startDate, endDate).then((res) => {
+      const filteredLogs = res.data.logs;
+      setFilteredLogs(filteredLogs);
       setFetchedFilteredLogs(true);
     });
   };
@@ -85,6 +96,7 @@ const LogQueryTable: FC<LogQueryTableProps> = ({ logTypes, logsData, t }) => {
           logData={selectedLog}
         />
       )}
+
       <div className='mb-6 flex max-w-xl flex-col gap-2'>
         <h5 className='h5'>{t('pages.dashboard.log_query.filter_by_date')}</h5>
         <form
@@ -199,17 +211,18 @@ const LogQueryTable: FC<LogQueryTableProps> = ({ logTypes, logsData, t }) => {
                     <LogQueryTableRowLoader key={n} />
                   ))}
                 {/* all logs  */}
-                {logs &&
-                  logs.length > 0 &&
+                {data &&
+                  data.logs &&
+                  data.logs.length > 0 &&
                   !fetchedFilteredLogs &&
-                  logs.map((log) => (
+                  data.logs.map((log) => (
                     <LogQueryTableRow
                       key={log._id}
                       log={log}
                       viewLogDetails={viewLogDetails}
                     />
                   ))}
-                {logs && logs.length === 0 && !fetchedFilteredLogs && (
+                {data && data.logs.length === 0 && !fetchedFilteredLogs && (
                   <LogQueryTableRowPlaceholder />
                 )}
 
@@ -232,17 +245,56 @@ const LogQueryTable: FC<LogQueryTableProps> = ({ logTypes, logsData, t }) => {
               </tbody>
             </table>
             {/* Pagination */}
-            {/* <div className='px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between'>
-              <span className='body-small'> Showing 1 to 4 of 50 Entries</span>
-              <div className='inline-flex mt-2 xs:mt-0 space-x-1'>
-                <Button size='small' type='outline'>
-                  Previous
-                </Button>
-                <Button size='small' type='outline'>
-                  Next
-                </Button>
+            {data && data.logs && !fetchedFilteredLogs && (
+              <div className='flex flex-col items-start gap-2 border-t border-gray-200 bg-gray-50/20 px-5 py-8 dark:border-gray-800 dark:bg-gray-800/40 sm:items-center'>
+                <p className='label-sm lg:label-md text-gray-700 dark:text-gray-300'>
+                  {t('pages.dashboard.log_query.showing_page')}
+                  <span className='text-primary dark:text-primary-400'>
+                    {' '}
+                    {page}
+                  </span>{' '}
+                  {t('pages.dashboard.log_query.of')}{' '}
+                  <span className='text-primary dark:text-primary-400'>
+                    {data?.totalPages}{' '}
+                    {data?.totalPages && (data?.totalPages as number) > 1
+                      ? t('pages.dashboard.log_query.pages')
+                      : t('pages.dashboard.log_query.page')}{' '}
+                    {data?.totalPages && data?.totalPages === '' && 0}
+                  </span>
+                </p>
+                <div className='xs:mt-0 mt-2 grid grid-cols-2 sm:w-full sm:max-w-xs'>
+                  <Button
+                    size='sm'
+                    variant='primary'
+                    onClick={() =>
+                      data?.totalPages &&
+                      page > 1 &&
+                      setPage((currentPage) => currentPage - 1)
+                    }
+                    disabled={page === 1}
+                    className='rounded-r-none focus:border-primary-700'
+                  >
+                    <ChevronLeftIcon className='mr-2 inline w-5' />
+                    {t('pages.dashboard.log_query.previous')}
+                  </Button>
+
+                  <Button
+                    size='sm'
+                    variant='primary'
+                    onClick={() =>
+                      data?.totalPages &&
+                      page < (data?.totalPages as number) &&
+                      setPage((currentPage) => currentPage + 1)
+                    }
+                    disabled={page === data?.totalPages}
+                    className='rounded-l-none focus:border-primary-700'
+                  >
+                    {t('pages.dashboard.log_query.next')}
+                    <ChevronRightIcon className='ml-2 inline w-5' />
+                  </Button>
+                </div>
               </div>
-            </div> */}
+            )}
           </div>
         </div>
       </div>

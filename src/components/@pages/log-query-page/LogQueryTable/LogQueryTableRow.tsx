@@ -1,5 +1,5 @@
 import { TFunction, withTranslation } from 'next-i18next';
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC } from 'react';
 
 import { formatDate } from '@/lib/date';
 
@@ -21,11 +21,6 @@ const LogQueryTableRow: FC<LogQueryTableRowProps> = ({
   viewLogDetails,
   t,
 }) => {
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
   return (
     <tr
       key={log._id}
@@ -49,13 +44,9 @@ const LogQueryTableRow: FC<LogQueryTableRowProps> = ({
         </Badge>
       </td>
       <td className='px-5 py-5'>
-        {isMounted ? (
-          <p className='text-gray-600 dark:text-gray-500'>
-            {formatDate(log.date)}
-          </p>
-        ) : (
-          <SkeletonLoader className='h-7 w-16' />
-        )}
+        <p className='text-gray-600 dark:text-gray-500'>
+          {formatDate(log.date)}
+        </p>
       </td>
       <td className='px-5 py-4'>
         <Button size='sm' onClick={() => viewLogDetails(log)}>
@@ -96,7 +87,7 @@ export const LogQueryTableRowLoader = () => {
       </td>
       <td className='px-5 py-5'>
         <div className='text-gray-600'>
-          <SkeletonLoader className='h-7 w-16' />
+          <SkeletonLoader className='h-7 w-40' />
         </div>
       </td>
       <td className='px-5 py-4'>
