@@ -73,7 +73,7 @@ const SideBar = ({
         {
           'hidden h-full min-h-screen w-full flex-col lg:flex lg:w-72 xl:w-80':
             mode === 'normal',
-          'fixed inset-0 z-50 flex h-full w-full flex-col  backdrop-blur-md backdrop-filter transition-colors duration-300 dark:bg-gray-900 dark:text-gray-200 lg:hidden':
+          'fixed inset-0 z-50 flex h-[100svh] w-full flex-col  backdrop-blur-md backdrop-filter transition-colors duration-300 dark:bg-gray-900 dark:text-gray-200 lg:hidden':
             mode === 'mobile',
         }
       )}
@@ -117,7 +117,7 @@ const SideBar = ({
             </li>
           ))}
         </ul>
-        <div className='my-10 flex w-full justify-center gap-3 px-5 sm:hidden'>
+        <div className='mt-10 flex w-full justify-center gap-3 px-5 sm:hidden'>
           <IconLink
             href={
               pathname === '/notifications/[id]'

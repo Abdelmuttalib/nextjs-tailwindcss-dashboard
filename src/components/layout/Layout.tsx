@@ -114,13 +114,13 @@ export default function Layout({
   // });
 
   return (
-    <div className='fixed top-0 left-0 flex h-screen min-h-screen w-screen bg-white text-gray-800 antialiased transition-colors duration-300 dark:bg-gray-900 dark:text-gray-200'>
+    <div className='fixed top-0 left-0 flex h-full min-h-[100svh] w-screen bg-white text-gray-800 antialiased transition-colors duration-300 dark:bg-gray-900 dark:text-gray-200'>
       <aside>
         <SideBar mode='normal' />
       </aside>
       <div className='flex w-full flex-col overflow-auto'>
         <Header pageTitle={pageTitle} />
-        <main className='w-full px-4 pt-6 lg:px-8'>{children}</main>
+        <main className='w-full px-4 pt-6 pb-10 lg:px-8'>{children}</main>
         <Footer />
       </div>
     </div>
