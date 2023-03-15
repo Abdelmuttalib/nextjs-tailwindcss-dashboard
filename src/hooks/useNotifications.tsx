@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { useMemo } from 'react';
 import useSWR from 'swr';
 
 import { fetchAPI } from '@/lib/api';
@@ -22,17 +21,13 @@ const useNotifications = () => {
     fetcher
   );
 
-  const newNotificationsCount = useMemo(
-    () =>
-      notifications?.filter((notification) => notification.read === 'false')
-        .length,
-    [notifications]
-  );
+  const unreadNotificationsCount = notifications?.filter(
+    (notification) => notification.read === 'false'
+  ).length;
 
-  const newNotificationsExist = useMemo(
-    () => newNotificationsCount && newNotificationsCount > 0,
-    [newNotificationsCount]
-  );
+  const newNotificationsExist =
+    unreadNotificationsCount && unreadNotificationsCount > 0;
+
   const markAllAsRead = () => {
     const config = {
       method: 'get',
@@ -45,14 +40,12 @@ const useNotifications = () => {
       mutate();
     });
   };
-  // const viewNotification = async (id: string) => {};
 
   return {
     notifications,
-    newNotificationsCount,
+    unreadNotificationsCount,
     newNotificationsExist,
     markAllAsRead,
-    // viewNotification,
   };
 };
 

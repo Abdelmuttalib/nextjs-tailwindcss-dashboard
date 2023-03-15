@@ -5,7 +5,7 @@ import {
   XMarkIcon,
 } from '@heroicons/react/20/solid';
 import { TFunction, withTranslation } from 'next-i18next';
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 
 import useNotifications from '@/hooks/useNotifications';
 
@@ -15,9 +15,9 @@ import { IconButton } from '@/components/ui/icon-button';
 import NotificationsTabs from './NotificationsTabs';
 
 const NotificationsDialog = ({ t }: { t: TFunction }) => {
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-  const { newNotificationsCount, markAllAsRead } = useNotifications();
+  const { unreadNotificationsCount, markAllAsRead } = useNotifications();
 
   const toggleModal = () => setIsOpen((prevValue) => !prevValue);
 
@@ -29,10 +29,10 @@ const NotificationsDialog = ({ t }: { t: TFunction }) => {
         size='md'
         onClick={toggleModal}
       >
-        {newNotificationsCount !== 0 && (
+        {unreadNotificationsCount !== 0 && (
           <span className='absolute top-4 right-4 inline-flex h-5 w-5 translate-x-1/2 -translate-y-1/2 transform items-center justify-center rounded-full bg-red-600 text-xs font-bold leading-none text-white dark:bg-red-500'>
-            {newNotificationsCount && newNotificationsCount < 100
-              ? newNotificationsCount
+            {unreadNotificationsCount && unreadNotificationsCount < 100
+              ? unreadNotificationsCount
               : '99+'}
           </span>
         )}

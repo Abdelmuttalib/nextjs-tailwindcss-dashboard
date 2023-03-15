@@ -1,9 +1,10 @@
 import { TFunction, withTranslation } from 'next-i18next';
-import React from 'react';
+import { useEffect, useState } from 'react';
 
 import { formatDate } from '@/lib/date';
 
 import NotificationDetailsDialog from '@/components/@pages/Notifications/NotificationDetailsDialog';
+import { SkeletonLoader } from '@/components/loaders';
 import Badge from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 
@@ -26,10 +27,16 @@ const NotificationsDetailsTable = ({
   data: NotificationDetailsT[];
   t: TFunction;
 }) => {
-  const [isOpen, setIsOpen] = React.useState(false);
-  const [selectedItem, setSelectedItem] =
-    React.useState<NotificationDetailsT>();
+  const [isOpen, setIsOpen] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+  const [selectedItem, setSelectedItem] = useState<NotificationDetailsT>();
   const closeModal = () => setIsOpen(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+    return () => setIsMounted(false);
+  }, []);
+
   return (
     <div>
       {selectedItem && (
@@ -84,9 +91,13 @@ const NotificationsDetailsTable = ({
                       </Badge>
                     </td>
                     <td className='px-5 py-5'>
-                      <p className='text-gray-600 dark:text-gray-500'>
-                        {formatDate(notificationDetails.date)}
-                      </p>
+                      {isMounted ? (
+                        <p className='text-gray-600 dark:text-gray-500'>
+                          {formatDate(notificationDetails.date)}
+                        </p>
+                      ) : (
+                        <SkeletonLoader className='h-7 w-44' />
+                      )}
                     </td>
                     <td className='px-5 py-5'>
                       <Button

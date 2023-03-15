@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 import { fetchAPI } from '@/lib/api';
 
-import { Project } from '@/components/@pages/server-status-overview-page';
+import ProjectsTable from '@/components/@pages/server-status-overview-page/ProjectsTable/ProjectsTable';
 import { ProjectT } from '@/components/@pages/server-status-overview-page/types';
 import { Layout } from '@/components/layout';
 import Seo from '@/components/Seo';
@@ -25,16 +25,8 @@ const ServerStatusOverviewPage = ({
       <h3 className='h5'>
         {t('pages.dashboard.server_status_overview.projects')}
       </h3>
-      <div className='mt-5 grid max-w-7xl grid-cols-1 gap-5 lg:grid-cols-2'>
-        {data &&
-          data.map &&
-          data.map((project: ProjectT) => (
-            <Project
-              key={project._id}
-              project={project}
-              withDetailsButton={false}
-            />
-          ))}
+      <div className='mt-5'>
+        {data && <ProjectsTable projectsData={data} />}
       </div>
     </Layout>
   );

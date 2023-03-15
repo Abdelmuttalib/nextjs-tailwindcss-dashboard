@@ -40,7 +40,6 @@ const NotificationsTabs = ({ t }: { t: TFunction }) => {
               }
             >
               {t(`notifications.${notificationLabel.toLocaleLowerCase()}`)}
-              {/* {notificationLabel} */}
             </Tab>
           ))}
         </Tab.List>

@@ -75,7 +75,8 @@
           "project_info": "项目信息",
           "statistic_server_address": "统计服务器地址",
           "device_infos": "设备信息",
-          "devices": "设备"
+          "devices": "设备",
+          "no_projects_found": "没有找到项目"
         }
       },
       "devices": {

@@ -75,7 +75,8 @@
           "project_info": "Project Info",
           "statistic_server_address": "Statistic Server Address",
           "device_infos": "Device Infos",
-          "devices": "Devices"
+          "devices": "Devices",
+          "no_projects_found": "no projects found"
         }
       },
       "devices": {
