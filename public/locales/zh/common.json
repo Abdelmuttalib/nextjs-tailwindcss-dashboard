@@ -139,7 +139,16 @@
         "previous": "以前"
       },
       "configuration_check": {
-        "title": "配置检查"
+        "title": "配置检查",
+        "project_devices": "项目设备",
+        "add_new_device": "添加新设备",
+        "project_name": "项目名",
+        "project_info": "项目信息",
+        "device_type": "设备类型",
+        "device_info": "设备信息",
+        "actions": "行动",
+        "cancel": "取消",
+        "delete_device": "删除设备"
       },
       "settings": {
         "nav": "环境",

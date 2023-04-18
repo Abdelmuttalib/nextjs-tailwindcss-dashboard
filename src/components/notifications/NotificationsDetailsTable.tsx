@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react';
 
 import { formatDate } from '@/lib/date';
 
-import NotificationDetailsDialog from '@/components/@pages/Notifications/NotificationDetailsDialog';
 import { SkeletonLoader } from '@/components/loaders';
+import NotificationDetailsDialog from '@/components/notifications/NotificationDetailsDialog';
 import Badge from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 

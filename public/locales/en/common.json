@@ -138,7 +138,16 @@
         "previous": "Previous"
       },
       "configuration_check": {
-        "title": "configuration check"
+        "title": "configuration check",
+        "project_devices": "Project Devices",
+        "add_new_device": "Add a New Device",
+        "project_name": "Project Name",
+        "project_info": "Project Info",
+        "device_type": "Device Type",
+        "device_info": "Device Info",
+        "actions": "Actions",
+        "cancel": "Cancel",
+        "delete_device": "Delete Device"
       },
       "settings": {
         "nav": "setting",

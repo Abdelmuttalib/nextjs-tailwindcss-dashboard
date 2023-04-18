@@ -6,7 +6,7 @@ import { withTranslation } from 'react-i18next';
 import cn from '@/lib/cn';
 import useNotifications from '@/hooks/useNotifications';
 
-import NotificationItem from '@/components/@pages/Notifications/NotificationItem';
+import NotificationItem from '@/components/notifications/NotificationItem';
 
 const NotificationsTabs = ({ t }: { t: TFunction }) => {
   const { notifications } = useNotifications();

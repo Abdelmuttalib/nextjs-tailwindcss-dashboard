@@ -56,6 +56,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <ThemeProvider attribute='class'>
       <Toaster
         position='top-right'
+        richColors
         expand
         visibleToasts={6}
         closeButton

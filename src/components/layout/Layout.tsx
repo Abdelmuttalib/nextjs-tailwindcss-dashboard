@@ -3,14 +3,14 @@ import { useRouter } from 'next/router';
 import { useTheme } from 'next-themes';
 import React, { useState } from 'react';
 
-import NotificationsDialog from '@/components/@pages/Notifications/NotificationsDialog';
-import { IconButton, IconLink } from '@/components/ui/icon-button';
+import NotificationsDialog from '@/components/notifications/NotificationsDialog';
+import { IconButton } from '@/components/ui/icon-button';
 
 import SideBar from './SideBar';
 
 // Header
 const Header = ({ pageTitle }: { pageTitle: string }) => {
-  const { pathname, locale, query } = useRouter();
+  const { pathname, locale, query, push, asPath } = useRouter();
   const { theme, setTheme } = useTheme();
   const [showSidebarMenu, setShowSidebarMenu] = useState(false);
 
@@ -38,21 +38,27 @@ const Header = ({ pageTitle }: { pageTitle: string }) => {
           </div>
 
           <div className='flex gap-2'>
-            <IconLink
-              href={
-                pathname === '/notifications/[id]'
-                  ? `/notifications/${query.id}`
-                  : pathname === '/devices/[id]'
-                  ? `/devices/${query.id}`
-                  : pathname
-              }
-              locale={locale === 'en' ? 'zh' : 'en'}
+            <IconButton
+              // href={
+              //   pathname === '/notifications/[id]'
+              //     ? `/notifications/${query.id}`
+              //     : pathname === '/devices/[id]'
+              //     ? `/devices/${query.id}`
+              //     : pathname === '/configuration-check/[unionId]'
+              //     ? `/configuration-check/${query.unionId}`
+              //     : pathname
+              // }
+              onClick={() => {
+                push({ pathname, query }, asPath, {
+                  locale: locale === 'en' ? 'zh' : 'en',
+                });
+              }}
               variant='outline'
               size='lg'
               className='hidden sm:block'
             >
               {locale}
-            </IconLink>
+            </IconButton>
             <IconButton
               type='button'
               variant='outline'

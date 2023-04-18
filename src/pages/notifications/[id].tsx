@@ -6,8 +6,8 @@ import { useTranslation } from 'react-i18next';
 import { fetchAPI } from '@/lib/api';
 
 import { StatusTypeT } from '@/components/@pages/log-query-page/types';
-import NotificationsDetailsTable from '@/components/@pages/Notifications/NotificationsDetailsTable';
 import { Layout } from '@/components/layout';
+import NotificationsDetailsTable from '@/components/notifications/NotificationsDetailsTable';
 import Seo from '@/components/Seo';
 
 export type NotificationDetailsT = {

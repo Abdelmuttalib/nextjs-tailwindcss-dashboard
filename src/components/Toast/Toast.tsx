@@ -59,3 +59,7 @@ const Toast = ({ description, type }: ToastT) => {
 };
 
 export default Toast;
+
+// export const renderToast = (type: 'success' | 'error', description: string) => {
+//   return <Toast type='' description='' />;
+// };
