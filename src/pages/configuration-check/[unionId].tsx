@@ -38,7 +38,7 @@ const ProjectDevicesPage = ({
           'app.name'
         )} ${t('app.description')}`}
       /> */}
-      <div className='flex justify-between'>
+      <div className='flex flex-col justify-between gap-2 sm:flex-row sm:items-center'>
         <h3 className='h5'>
           {t('pages.dashboard.configuration_check.project_devices')}
         </h3>

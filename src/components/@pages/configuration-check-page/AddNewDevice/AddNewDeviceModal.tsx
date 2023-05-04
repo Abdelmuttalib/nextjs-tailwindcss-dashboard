@@ -26,7 +26,11 @@ const AddNewDeviceModal: FC<{
 
   return (
     <>
-      <Button className='inline-flex gap-1' type='button' onClick={openModal}>
+      <Button
+        className='inline-flex w-fit gap-1'
+        type='button'
+        onClick={openModal}
+      >
         <PlusIcon className='w-6' />
         {t('pages.dashboard.configuration_check.add_new_device')}
       </Button>
