@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'inview-dashboard',
+      name: 'inview-maintenance-dashboard',
       script: './node_modules/next/dist/bin/next',
       args: 'start',
       interpreter: 'node',
