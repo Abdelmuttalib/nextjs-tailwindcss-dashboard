@@ -23,12 +23,6 @@ class MyDocument extends Document {
             type='font/woff2'
             crossOrigin='anonymous'
           />
-
-          {/*  allow mixed content */}
-          {/* <meta
-            http-equiv='Content-Security-Policy'
-            content='upgrade-insecure-requests'
-          ></meta> */}
         </Head>
         <body>
           <Main />

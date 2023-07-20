@@ -2,7 +2,6 @@ import { ArrowDownCircleIcon } from '@heroicons/react/20/solid';
 import { GetStaticProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-import { Button as B } from '@/components/buttons';
 import { Layout } from '@/components/layout';
 import Seo from '@/components/Seo';
 import { Button } from '@/components/ui/button';
@@ -11,7 +10,6 @@ import { IconButton } from '@/components/ui/icon-button';
 export default function HomePage() {
   return (
     <Layout pageTitle='Design'>
-      {/* <Seo templateTitle='Home' /> */}
       <Seo />
 
       <div className='mb-40 flex min-h-screen flex-col items-center gap-6 text-left'>
@@ -52,7 +50,6 @@ export default function HomePage() {
         <Button isLoading variant='dark' size='md'>
           Button
         </Button>
-        <B variant='dark'>Button</B>
 
         <IconButton size='md' variant='outline'>
           <ArrowDownCircleIcon className='w-6' />

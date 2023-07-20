@@ -7,8 +7,6 @@ import {
 import { TFunction, withTranslation } from 'next-i18next';
 import React, { Fragment, useState } from 'react';
 
-import useNotifications from '@/hooks/useNotifications';
-
 import { Button } from '@/components/ui/button';
 import { IconButton } from '@/components/ui/icon-button';
 
@@ -16,8 +14,6 @@ import NotificationsTabs from './NotificationsTabs';
 
 const NotificationsDialog = ({ t }: { t: TFunction }) => {
   const [isOpen, setIsOpen] = useState(false);
-
-  const { unreadNotificationsCount, markAllAsRead } = useNotifications();
 
   const toggleModal = () => setIsOpen((prevValue) => !prevValue);
 
@@ -29,13 +25,9 @@ const NotificationsDialog = ({ t }: { t: TFunction }) => {
         size='md'
         onClick={toggleModal}
       >
-        {unreadNotificationsCount !== 0 && (
-          <span className='absolute top-4 right-4 inline-flex h-5 w-5 translate-x-1/2 -translate-y-1/2 transform items-center justify-center rounded-full bg-red-600 text-xs font-bold leading-none text-white dark:bg-red-500'>
-            {unreadNotificationsCount && unreadNotificationsCount < 100
-              ? unreadNotificationsCount
-              : '99+'}
-          </span>
-        )}
+        <span className='absolute top-4 right-4 inline-flex h-5 w-5 translate-x-1/2 -translate-y-1/2 transform items-center justify-center rounded-full bg-red-600 text-xs font-bold leading-none text-white dark:bg-red-500'>
+          99+
+        </span>
         <BellIcon className='w-7' aria-hidden='true' />
       </IconButton>
 
@@ -91,14 +83,12 @@ const NotificationsDialog = ({ t }: { t: TFunction }) => {
                       <XMarkIcon className='w-6' aria-hidden='true' />
                     </IconButton>
                   </div>
+                  {/* Notification Tabs */}
                   <div>
                     <NotificationsTabs />
                   </div>
-                  <div className='sticky bottom-0 w-full border-t bg-white py-2 px-4 shadow-lg dark:border-gray-800 dark:bg-gray-900'>
-                    <Button
-                      className='inline-flex w-full gap-1'
-                      onClick={markAllAsRead}
-                    >
+                  <div className='absolute bottom-0 w-full border-t bg-white py-2 px-4 shadow-lg dark:border-gray-800 dark:bg-gray-900'>
+                    <Button className='inline-flex w-full gap-1'>
                       <CheckCircleIcon className='w-5' />{' '}
                       {t('notifications.mark_all_as_read')}
                     </Button>

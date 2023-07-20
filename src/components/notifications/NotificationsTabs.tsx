@@ -4,19 +4,52 @@ import React from 'react';
 import { withTranslation } from 'react-i18next';
 
 import cn from '@/lib/cn';
-import useNotifications from '@/hooks/useNotifications';
 
 import NotificationItem from '@/components/notifications/NotificationItem';
 
+function randomDate(start: Date, end: Date) {
+  return new Date(
+    start.getTime() + Math.random() * (end.getTime() - start.getTime())
+  );
+}
+
+// Function to generate fake notifications data
+function generateFakeNotifications(count: number) {
+  const types = ['error', 'sync', 'warning'];
+  const notifications = [];
+
+  for (let i = 1; i <= count; i++) {
+    const id = `${i}`;
+    const type = types[Math.floor(Math.random() * types.length)];
+    const date = randomDate(new Date(2023, 0, 1), new Date());
+    const isRead = Math.random() < 0.5; // Randomly set isRead to true or false
+    const description = `This is notification ${i}`;
+
+    notifications.push({
+      id,
+      type,
+      date,
+      isRead,
+      description,
+    });
+  }
+
+  return notifications;
+}
+
 const NotificationsTabs = ({ t }: { t: TFunction }) => {
-  const { notifications } = useNotifications();
+  // Generate 10 fake notifications
+  const fakeNotifications = generateFakeNotifications(8);
   const notificationsData = {
-    All: notifications,
-    Errors: notifications?.filter(
-      (notification) => notification.notificationType === 'error'
+    All: fakeNotifications,
+    Errors: fakeNotifications?.filter(
+      (notification) => notification.type === 'error'
     ),
-    Sync: notifications?.filter(
-      (notification) => notification.notificationType === 'sync'
+    Sync: fakeNotifications?.filter(
+      (notification) => notification.type === 'sync'
+    ),
+    Warning: fakeNotifications?.filter(
+      (notification) => notification.type === 'warning'
     ),
   };
 
@@ -54,7 +87,7 @@ const NotificationsTabs = ({ t }: { t: TFunction }) => {
                 <ul className='w-full'>
                   {notifications?.map((notification) => (
                     <NotificationItem
-                      key={notification._id}
+                      key={notification.id}
                       notification={notification}
                     />
                   ))}

@@ -5,27 +5,19 @@ import { TFunction } from 'next-i18next';
 import { FC, Fragment } from 'react';
 import { withTranslation } from 'react-i18next';
 
-import { formatDate } from '@/lib/date';
-
-import { getStatusTypeColor } from '@/components/@pages/log-query-page/log-status-types';
+import { Meeting } from '@/components/TableExample';
 import Badge from '@/components/ui/badge';
 import { IconButton } from '@/components/ui/icon-button';
 
-import { LogT } from './types';
-
-interface LogQueryDetailsDialogProps {
-  logData: LogT;
+interface Props {
+  t: TFunction;
   isOpen: boolean;
   closeModal: (isOpen: boolean) => void;
-  t: TFunction;
+  meeting: Meeting;
 }
 
-const LogQueryDetailsDialog: FC<LogQueryDetailsDialogProps> = ({
-  logData,
-  isOpen,
-  closeModal,
-  t,
-}) => {
+const DialogExample: FC<Props> = ({ t, isOpen, closeModal, meeting }) => {
+  const { id, title, date, time, organizer, attendees, status } = meeting;
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog
@@ -64,21 +56,19 @@ const LogQueryDetailsDialog: FC<LogQueryDetailsDialogProps> = ({
                   >
                     <div>
                       <h5 className='h5 sm:hidden'>
-                        {t('pages.dashboard.log_query.log_query_details')}
+                        {t('components.headings.meeting_details')}
                       </h5>
                       <h4 className='h4 hidden sm:block lg:hidden'>
-                        {t('pages.dashboard.log_query.log_query_details')}
+                        {t('components.headings.meeting_details')}
                       </h4>
                       <h3 className='h3 hidden lg:block'>
-                        {t('pages.dashboard.log_query.log_query_details')}
+                        {t('components.headings.meeting_details')}
                       </h3>
                     </div>
-                    <Badge color={getStatusTypeColor(logData.type) ?? 'gray'}>
-                      {logData.type.toLocaleLowerCase()}
-                    </Badge>
+                    <Badge color='green'>{status}</Badge>
                   </Dialog.Title>
                   <IconButton
-                    className='absolute top-4 right-2 focus:border-2 focus:border-gray-800'
+                    className='absolute top-2 right-2 focus:border-2 focus:border-gray-800'
                     variant='outline'
                     size='sm'
                     onClick={() => closeModal(isOpen)}
@@ -94,43 +84,38 @@ const LogQueryDetailsDialog: FC<LogQueryDetailsDialogProps> = ({
                       <div className='flex items-center gap-1 text-gray-500'>
                         <CalendarDaysIcon className='w-7 text-gray-500' />
                         <p className='label-md inline-block'>
-                          {formatDate(logData.date)}
+                          {date} at {time}
                         </p>
                       </div>
                       <hr className='dark:border-t dark:border-gray-800' />
-
-                      <div className='label-md md:label-lg flex flex-col gap-1'>
-                        <p className='md:label-lg inline-block dark:text-gray-200'>
-                          {t('pages.dashboard.log_query.project_id')}
+                      <div className='label-md flex flex-col gap-1'>
+                        <p className=' inline-block dark:text-gray-200'>
+                          {t('pages.dashboard.home.table.meeting_id')}
                         </p>
                         <p className='body-sm md:body-md ml-1 inline-block text-gray-500'>
-                          {logData.projectId ?? '-'}
+                          {id}
                         </p>
                       </div>
-
-                      <div className='label-md md:label-lg flex flex-col gap-1'>
-                        <p className='md:label-lg inline-block dark:text-gray-200'>
-                          {t('pages.dashboard.log_query.device_id')}:
+                      <div className='label-md flex flex-col gap-2'>
+                        <p className=' inline-block dark:text-gray-200'>
+                          {t('pages.dashboard.home.table.meeting_title')}
                         </p>
-                        <p className='inline-block text-gray-500'>
-                          {logData.deviceId ?? '-'}
-                        </p>
+                        <p className='inline-block text-gray-500'>{title}</p>
                       </div>
-                      <div className='label-md md:label-lg flex flex-col gap-1'>
-                        <p className='md:label-lg inline-block dark:text-gray-200'>
-                          {t('pages.dashboard.log_query.info')}:
+                      <div className='label-md flex flex-col gap-1'>
+                        <p className='inline-block dark:text-gray-200'>
+                          {t('pages.dashboard.home.table.organizer')}:
                         </p>{' '}
                         <p className='body-sm md:body-md inline-block text-gray-500'>
-                          {logData.info ?? '-'}
+                          {organizer}
                         </p>
                       </div>
-
                       <div className='label-md flex flex-col gap-1'>
-                        <p className='md:label-lg inline-block dark:text-gray-200'>
-                          {t('pages.dashboard.log_query.description')}:
-                        </p>
+                        <p className='inline-block dark:text-gray-200'>
+                          {t('pages.dashboard.home.table.attendees')}:
+                        </p>{' '}
                         <p className='body-sm md:body-md inline-block text-gray-500'>
-                          {logData.description ?? '-'}
+                          {attendees}
                         </p>
                       </div>
                     </div>
@@ -145,4 +130,4 @@ const LogQueryDetailsDialog: FC<LogQueryDetailsDialogProps> = ({
   );
 };
 
-export default withTranslation()(LogQueryDetailsDialog);
+export default withTranslation()(DialogExample);

@@ -1,7 +1,6 @@
 {
   "app": {
-    "name": "InView",
-    "description": "维护仪表板"
+    "name": "Nextjs Tailwindcss Dashboard"
   },
   "components": {
     "language_switcher": {
@@ -10,6 +9,24 @@
     "theme_switcher": {
       "theme": "主题",
       "change_theme": "改变主题"
+    },
+    "buttons": {
+      "previous": "以前的",
+      "next": "下一个",
+      "view": "看法",
+      "view_details": "查看详情",
+      "filter": "过滤",
+      "download_results": "下载结果",
+      "clear_filters": "清除过滤器"
+    },
+    "labels": {
+      "start_date": "开始日期",
+      "end_date": "结束日期"
+    },
+    "headings": {
+      "table": "表",
+      "filter_by_date": "按日期过滤",
+      "meeting_details": "会议详情"
     }
   },
   "notifications": {
@@ -17,6 +34,7 @@
     "all": "全部",
     "errors": "错误",
     "sync": "同步",
+    "warning": "警告",
     "view_details": "查看详情",
     "mark_all_as_read": "标记为已读",
     "description": "描述",
@@ -25,166 +43,27 @@
     "view_notification": "查看通知"
   },
   "pages": {
-    "404": {
-      "title": "网页未找到"
-    },
-    "index": {
-      "title": "inview 维护仪表板"
-    },
-    "blank": {
-      "nav": "空白的",
-      "title": "空白页",
-      "description": "这是一个空白页",
-      "just_blank_page_with_title": "只是带有标题的空白页"
-    },
-    "post": {
-      "nav": "邮政",
-      "title": "邮政",
-      "description": "这是一个帖子页面"
-    },
-    "test": {
-      "nav": "测试",
-      "title": "测试",
-      "description": "这是一个测试页面",
-      "counter": "柜台",
-      "increment": "增量",
-      "decrement": "递减",
-      "reset": "重置",
-      "identity": "身份",
-      "full_name": "全名"
-    },
     "dashboard": {
-      "nav": "仪表板",
-      "title": "仪表板",
-      "ongoing_development": "持续发展",
-      "index": {
-        "nav": "家",
-        "title": "家"
-      },
-      "server_status_overview": {
-        "title": "服务器状态概览",
-        "server_status": "服务器状态",
-        "online": "在线的",
-        "offline": "离线",
-        "projects": "项目",
-        "data": {
-          "project": "项目",
-          "created_date": "创建日期",
-          "project_id": "项目编号",
-          "project_name": "项目名称",
-          "project_info": "项目信息",
-          "statistic_server_address": "统计服务器地址",
-          "device_infos": "设备信息",
-          "devices": "设备",
-          "no_projects_found": "没有找到项目"
+      "home": {
+        "title": "家",
+        "table": {
+          "meeting_id": "会议编号",
+          "meeting_title": "会议标题",
+          "date": "日期",
+          "time": "时间",
+          "organizer": "组织者",
+          "attendees": "与会者",
+          "status": "状态",
+          "showing_page": "显示页面",
+          "of": "的"
         }
-      },
-      "devices": {
-        "title": "设备",
-        "view_devices": "查看设备",
-        "device_algorithm": "设备算法",
-        "project_name": "项目名",
-        "algorithm": "算法",
-        "last_offline": "上次离线",
-        "device_id": "设备ID",
-        "status": "地位",
-        "devices_algorithms": "设备算法",
-        "active_devices": "有源设备",
-        "go_back": "回去"
-      },
-      "source_query": {
-        "title": "来源查询",
-        "host": "主持人",
-        "projects_servers_status": "项目服务器状态",
-        "project_id": "项目编号",
-        "name": "姓名",
-        "inquire": "查询",
-        "online": "在线的",
-        "offline": "离线",
-        "device_id": "设备编号",
-        "origin": "起源",
-        "view_live": "观看直播",
-        "status": "地位",
-        "view": "看法"
-      },
-      "forward_flow_query": {
-        "title": "前向流量查询",
-        "live_stream": "现场直播",
-        "device_type": "设备类型",
-        "id": "ID"
-      },
-      "log_query": {
-        "title": "日志查询",
-        "type": "类型",
-        "info": "信息",
-        "description": "描述",
-        "date": "日期",
-        "filter": "筛选",
-        "filter_by_date": "按日期筛选",
-        "start_date": "开始日期",
-        "end_date": "结束日期",
-        "download_results": "下载结果",
-        "no_logs_found": "没有找到日志",
-        "log_details": "日志详细信息",
-        "view_log_details": "查看日志详细信息",
-        "log_query_details": "日志查询详情",
-        "project_id": "项目编号",
-        "device_id": "设备编号",
-        "clear_filters": "清除过滤器",
-        "showing_page": "显示页面",
-        "of": "的",
-        "page": "页",
-        "pages": "页数",
-        "next": "下一个",
-        "previous": "以前"
-      },
-      "configuration_check": {
-        "title": "配置检查",
-        "project_devices": "项目设备",
-        "add_new_device": "添加新设备",
-        "project_name": "项目名",
-        "project_info": "项目信息",
-        "device_type": "设备类型",
-        "device_info": "设备信息",
-        "actions": "行动",
-        "cancel": "取消",
-        "delete_device": "删除设备"
       },
       "settings": {
-        "nav": "环境",
-        "title": "设置",
-        "description": "这是一个设置页面",
-        "sections": {
-          "general": "一般的",
-          "protection": "保护",
-          "advanced": "先进的",
-          "validate_username": {
-            "title": "验证 github 配置文件",
-            "description": "输入您的 github 用户名并单击按钮进行验证。",
-            "footer": "学习更多关于",
-            "footer_button": "证实",
-            "footer_link": "github 用户 api"
-          },
-          "bot_id": {
-            "title": "机器人编号",
-            "description": "这是您的机器人 id。",
-            "footer": "与机器人交互时使用。"
-          },
-          "protection_spam": {
-            "title": "垃圾邮件防护",
-            "description": "切换启用以删除红色边框",
-            "footer": "如果启用，我们将保护您的评论免受垃圾邮件"
-          },
-          "advanced_enable_advanced": {
-            "title": "启用高级设置",
-            "description": "您可以启用高级设置来更改设置"
-          },
-          "advanced_dir_listing": {
-            "title": "目录列表",
-            "description": "如果目录中没有索引文件，则显示目录内容。"
-          }
-        }
+        "title": "设置"
       }
+    },
+    "404": {
+      "title": "网页未找到"
     }
   }
 }

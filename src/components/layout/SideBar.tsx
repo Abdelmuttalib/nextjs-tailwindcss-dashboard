@@ -1,12 +1,10 @@
-import { MoonIcon, SunIcon, XMarkIcon } from '@heroicons/react/20/solid';
 import {
-  ChevronDoubleRightIcon,
-  CommandLineIcon,
-  DeviceTabletIcon,
-  ServerIcon,
-  ServerStackIcon,
-  WrenchScrewdriverIcon,
-} from '@heroicons/react/24/solid';
+  Cog6ToothIcon,
+  HomeIcon,
+  MoonIcon,
+  SunIcon,
+  XMarkIcon,
+} from '@heroicons/react/20/solid';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
@@ -25,34 +23,14 @@ type DashboardLinkT = {
 
 export const dashboardLinks: DashboardLinkT[] = [
   {
-    text: 'server_status_overview',
-    icon: <ServerStackIcon className='mx-2 my-1.5 w-5 text-current' />,
-    href: '/server-status-overview',
+    text: 'home',
+    icon: <HomeIcon className='mx-2 my-1.5 w-5 text-current' />,
+    href: '/dashboard',
   },
   {
-    text: 'devices',
-    icon: <DeviceTabletIcon className='mx-2 my-1.5 w-5 text-current' />,
-    href: '/devices',
-  },
-  {
-    text: 'source_query',
-    icon: <ServerIcon className='mx-2 my-1.5 w-5 text-current' />,
-    href: '/source-query',
-  },
-  {
-    text: 'forward_flow_query',
-    icon: <ChevronDoubleRightIcon className='mx-2 my-1.5 w-5 text-current' />,
-    href: '/forward-flow-query',
-  },
-  {
-    text: 'log_query',
-    icon: <CommandLineIcon className='mx-2 my-1.5 w-5 text-current' />,
-    href: '/log-query',
-  },
-  {
-    text: 'configuration_check',
-    icon: <WrenchScrewdriverIcon className='mx-2 my-1.5 w-5 text-current' />,
-    href: '/configuration-check',
+    text: 'settings',
+    icon: <Cog6ToothIcon className='mx-2 my-1.5 w-5 text-current' />,
+    href: '/dashboard/settings',
   },
 ];
 
@@ -63,7 +41,7 @@ const SideBar = ({
   mode: 'mobile' | 'normal';
   setShowSidebarMenu?: (show: boolean) => void;
 }) => {
-  const { pathname, locale, query } = useRouter();
+  const { pathname, locale } = useRouter();
   const { t } = useTranslation('common');
   const { theme, setTheme } = useTheme();
   return (
@@ -91,12 +69,10 @@ const SideBar = ({
         )}
         <div className='text-center text-white'>
           <h5 className='h5'>
-            {t('app.name')}
+            Dashboard
             <span className='ml-0.5 text-3xl text-primary'>.</span>
           </h5>
-          <p className='label-sm block text-center text-gray-600'>
-            {t('app.description')}
-          </p>
+          <p className='font-medium text-gray-500'>{t('app.name')}</p>
         </div>
         <ul className='mt-10 flex flex-col gap-1 md:mb-44'>
           {dashboardLinks.map((link) => (
@@ -122,11 +98,7 @@ const SideBar = ({
         </ul>
         <div className='mt-10 flex w-full justify-center gap-3 px-5 sm:hidden'>
           <IconLink
-            href={
-              pathname === '/notifications/[id]'
-                ? `/notifications/${query.id}`
-                : pathname
-            }
+            href={pathname}
             locale={locale === 'en' ? 'zh' : 'en'}
             variant='outline'
             size='lg'

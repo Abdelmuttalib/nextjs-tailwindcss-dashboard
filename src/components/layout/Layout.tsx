@@ -2,6 +2,7 @@ import { Bars3Icon, MoonIcon, SunIcon } from '@heroicons/react/20/solid';
 import { useRouter } from 'next/router';
 import { useTheme } from 'next-themes';
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import NotificationsDialog from '@/components/notifications/NotificationsDialog';
 import { IconButton } from '@/components/ui/icon-button';
@@ -39,15 +40,6 @@ const Header = ({ pageTitle }: { pageTitle: string }) => {
 
           <div className='flex gap-2'>
             <IconButton
-              // href={
-              //   pathname === '/notifications/[id]'
-              //     ? `/notifications/${query.id}`
-              //     : pathname === '/devices/[id]'
-              //     ? `/devices/${query.id}`
-              //     : pathname === '/configuration-check/[unionId]'
-              //     ? `/configuration-check/${query.unionId}`
-              //     : pathname
-              // }
               onClick={() => {
                 push({ pathname, query }, asPath, {
                   locale: locale === 'en' ? 'zh' : 'en',
@@ -81,15 +73,16 @@ const Header = ({ pageTitle }: { pageTitle: string }) => {
 
 // Footer
 const Footer = () => {
+  const { t } = useTranslation('common');
   return (
     <footer className='mt-auto w-full border-t py-4 px-4 text-gray-700 dark:border-gray-800 dark:text-gray-300 lg:px-8'>
       <div className='w-full text-center md:text-left'>
         <h5 className='label-sm mb-1'>
-          InView
-          {/* {{ app.name }} */}
+          {/* InView */}
+          {t('app.name')}
         </h5>
         <p className='text-xs text-gray-600'>
-          Copyright © {new Date().getFullYear()} invix. All rights reserved.
+          Copyright © {new Date().getFullYear()}.
         </p>
       </div>
     </footer>
@@ -103,22 +96,6 @@ export default function Layout({
   pageTitle: string;
   children: React.ReactNode;
 }) {
-  // const { addToast } = useToast();
-  // const socket = io('http://161.189.66.94:8090');
-
-  // socket.on('New Notification', (message) => {
-  //   console.log('received notification:', message);
-  //   addToast(message, 'error');
-  // });
-
-  // socket.on('connect', () => {
-  //   console.log('connect: ', socket.id);
-  // });
-
-  // socket.on('disconnect', () => {
-  //   console.log('disconnect: ', socket.id);
-  // });
-
   return (
     <div className='fixed top-0 left-0 flex h-full min-h-[100svh] w-screen bg-white text-gray-800 antialiased transition-colors duration-300 dark:bg-gray-900 dark:text-gray-200'>
       <aside>
