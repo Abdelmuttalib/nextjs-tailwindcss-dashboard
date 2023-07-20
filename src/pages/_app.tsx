@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react';
 import { AppProps } from 'next/app';
 import { appWithTranslation, I18n, i18n } from 'next-i18next';
 import { ThemeProvider } from 'next-themes';
@@ -21,6 +22,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       />
       <I18nextProvider i18n={i18n as I18n}>
         <Component {...pageProps} />
+        <Analytics />
       </I18nextProvider>
     </ThemeProvider>
   );
