@@ -1,19 +1,16 @@
-import { ArrowRightIcon, MoonIcon, SunIcon } from '@heroicons/react/20/solid';
+import { ArrowRightIcon } from '@heroicons/react/20/solid';
 import { GetStaticProps } from 'next';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useTheme } from 'next-themes';
 
+import LanguageSwitcher from '@/components/language-switcher';
 import { dashboardLinks } from '@/components/layout/SideBar';
 import Seo from '@/components/Seo';
-import { IconButton, IconLink } from '@/components/ui/icon-button';
+import ThemeSwitcher from '@/components/theme-switcher';
 
 export default function HomePage() {
   const { t } = useTranslation();
-  const { pathname, locale } = useRouter();
-  const { theme, setTheme } = useTheme();
 
   return (
     <>
@@ -55,29 +52,10 @@ export default function HomePage() {
                 </h1>
 
                 <div className='mt-3 flex justify-center gap-3'>
-                  <IconLink
-                    href={pathname}
-                    locale={locale === 'en' ? 'zh' : 'en'}
-                    variant='outline'
-                    size='lg'
-                  >
-                    {locale}
-                  </IconLink>
-                  <IconButton
-                    type='button'
-                    variant='outline'
-                    onClick={() =>
-                      setTheme(theme === 'light' ? 'dark' : 'light')
-                    }
-                  >
-                    {theme === 'light' ? (
-                      <SunIcon className='w-7' />
-                    ) : (
-                      <MoonIcon className='w-7 p-0.5' />
-                    )}
-                  </IconButton>
+                  <LanguageSwitcher />
+                  <ThemeSwitcher />
                 </div>
-                <div className='3xl:grid-cols-3 my-8 grid grid-cols-1 gap-3 md:grid-cols-2'>
+                <div className='my-8 grid grid-cols-1'>
                   {dashboardLinks.map((link) => (
                     <Link
                       key={link.href}
