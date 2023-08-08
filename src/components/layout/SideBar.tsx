@@ -1,19 +1,14 @@
-import {
-  Cog6ToothIcon,
-  HomeIcon,
-  MoonIcon,
-  SunIcon,
-  XMarkIcon,
-} from '@heroicons/react/20/solid';
+import { HomeIcon, XMarkIcon } from '@heroicons/react/20/solid';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
-import { useTheme } from 'next-themes';
 import React from 'react';
 
 import cn from '@/lib/cn';
 
-import { IconButton, IconLink } from '@/components/ui/icon-button';
+import LanguageSwitcher from '@/components/language-switcher';
+import ThemeSwitcher from '@/components/theme-switcher';
+import { IconButton } from '@/components/ui/icon-button';
 
 type DashboardLinkT = {
   text: string;
@@ -27,13 +22,14 @@ export const dashboardLinks: DashboardLinkT[] = [
     icon: <HomeIcon className='mx-2 my-1.5 w-5 text-current' />,
     href: '/dashboard',
   },
-  {
-    text: 'settings',
-    icon: <Cog6ToothIcon className='mx-2 my-1.5 w-5 text-current' />,
-    href: '/dashboard/settings',
-  },
+  // {
+  //   text: 'settings',
+  //   icon: <Cog6ToothIcon className='mx-2 my-1.5 w-5 text-current' />,
+  //   href: '/dashboard/settings',
+  // },
 ];
 
+// [#0A0F13]
 const SideBar = ({
   mode = 'normal',
   setShowSidebarMenu,
@@ -41,13 +37,12 @@ const SideBar = ({
   mode: 'mobile' | 'normal';
   setShowSidebarMenu?: (show: boolean) => void;
 }) => {
-  const { pathname, locale } = useRouter();
+  const { pathname } = useRouter();
   const { t } = useTranslation('common');
-  const { theme, setTheme } = useTheme();
   return (
     <div
       className={cn(
-        'bg-[#06080b] dark:border-r dark:border-gray-800/20 dark:bg-[#0A0F13]',
+        'bg-[#06080b] dark:border-r dark:border-gray-800/20 dark:bg-gray-900',
         {
           'hidden h-full min-h-screen w-full flex-col lg:flex lg:w-72 xl:w-80':
             mode === 'normal',
@@ -97,25 +92,8 @@ const SideBar = ({
           ))}
         </ul>
         <div className='mt-10 flex w-full justify-center gap-3 px-5 sm:hidden'>
-          <IconLink
-            href={pathname}
-            locale={locale === 'en' ? 'zh' : 'en'}
-            variant='outline'
-            size='lg'
-          >
-            {locale}
-          </IconLink>
-          <IconButton
-            type='button'
-            variant='outline'
-            onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-          >
-            {theme === 'light' ? (
-              <SunIcon className='w-7' />
-            ) : (
-              <MoonIcon className='w-7 p-0.5' />
-            )}
-          </IconButton>
+          <LanguageSwitcher />
+          <ThemeSwitcher />
         </div>
       </div>
     </div>

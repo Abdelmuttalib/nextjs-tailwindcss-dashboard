@@ -46,6 +46,11 @@
     "dashboard": {
       "home": {
         "title": "Home",
+        "tabs": {
+          "all": "All",
+          "recent": "Recent",
+          "updated": "Updated"
+        },
         "table": {
           "meeting_id": "Meeting ID",
           "meeting_title": "Meeting Title",
@@ -56,6 +61,12 @@
           "status": "Status",
           "showing_page": "Showing page",
           "of": "of"
+        },
+        "statuses": {
+          "scheduled": "Scheduled",
+          "confirmed": "Confirmed",
+          "postponed": "Postponed",
+          "cancelled": "Cancelled"
         }
       },
       "settings": {

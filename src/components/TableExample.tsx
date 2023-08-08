@@ -3,6 +3,8 @@ import { TFunction } from 'next-i18next';
 import { FC, useState } from 'react';
 import { withTranslation } from 'react-i18next';
 
+import { getMeetingStatusBadgeColor } from '@/lib/get-badge-status-color';
+
 import DialogExample from '@/components/DialogExample';
 import Badge from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -11,7 +13,7 @@ export type MeetingStatus =
   | 'Scheduled'
   | 'Confirmed'
   | 'Postponed'
-  | 'Canceled';
+  | 'Cancelled';
 
 export interface Meeting {
   id: number;
@@ -58,7 +60,7 @@ const meetings: Meeting[] = [
     time: '11:00 AM - 12:30 PM',
     organizer: 'Emily Brown',
     attendees: 'Linda, Robert, Karen',
-    status: 'Canceled',
+    status: 'Cancelled',
   },
   {
     id: 5,
@@ -140,7 +142,15 @@ const TableExample: FC<Props> = ({ t }) => {
                     <td className='px-5 py-5'>{organizer}</td>
                     <td className='px-5 py-5'>{attendees}</td>
                     <td className='px-5 py-5'>
-                      <Badge color='green'>{status}</Badge>
+                      <Badge
+                        color={getMeetingStatusBadgeColor(
+                          status.toLocaleLowerCase()
+                        )}
+                      >
+                        {t(
+                          `pages.dashboard.home.statuses.${status.toLowerCase()}`
+                        )}
+                      </Badge>
                     </td>
                     <td className='px-5 py-4'>
                       <Button

@@ -1,0 +1,80 @@
+{
+  "app": {
+    "name": "Tablero Nextjs Tailwindcss"
+  },
+  "components": {
+    "language_switcher": {
+      "change_language": "cambiar idioma"
+    },
+    "theme_switcher": {
+      "theme": "tema",
+      "change_theme": "cambiar tema"
+    },
+    "buttons": {
+      "previous": "Anterior",
+      "next": "Siguiente",
+      "view": "ver",
+      "view_details": "Ver Detalles",
+      "filter": "Filtrar",
+      "download_results": "Descargar Resultados",
+      "clear_filters": "Limpiar Filtros"
+    },
+    "labels": {
+      "start_date": "Fecha de Inicio",
+      "end_date": "Fecha de Fin"
+    },
+    "headings": {
+      "table": "Tabla",
+      "filter_by_date": "Filtrar por Fecha",
+      "meeting_details": "Detalles de la Reunión"
+    }
+  },
+  "notifications": {
+    "notifications": "Notificaciones",
+    "all": "Todas",
+    "errors": "Errores",
+    "sync": "Sincronización",
+    "warning": "Advertencia",
+    "view_details": "Ver Detalles",
+    "mark_all_as_read": "Marcar Todas como Leídas",
+    "description": "Descripción",
+    "error_notification_details": "Detalles de la Notificación de Error",
+    "notification_details": "Detalles de la Notificación",
+    "view_notification": "ver notificación"
+  },
+  "pages": {
+    "dashboard": {
+      "home": {
+        "title": "Inicio",
+        "tabs": {
+          "all": "Todas",
+          "recent": "Recientes",
+          "updated": "Actualizados"
+        },
+        "table": {
+          "meeting_id": "ID de Reunión",
+          "meeting_title": "Título de la Reunión",
+          "date": "Fecha",
+          "time": "Hora",
+          "organizer": "Organizador",
+          "attendees": "Asistentes",
+          "status": "Estado",
+          "showing_page": "Mostrando página",
+          "of": "de"
+        },
+        "statuses": {
+          "scheduled": "Programada",
+          "confirmed": "Confirmada",
+          "postponed": "Pospuesta",
+          "cancelled": "Cancelada"
+        }
+      },
+      "settings": {
+        "title": "Configuración"
+      }
+    },
+    "404": {
+      "title": "página no encontrada"
+    }
+  }
+}

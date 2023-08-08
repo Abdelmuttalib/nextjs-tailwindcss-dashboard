@@ -46,6 +46,11 @@
     "dashboard": {
       "home": {
         "title": "家",
+        "tabs": {
+          "all": "全部",
+          "recent": "最近",
+          "updated": "已更新"
+        },
         "table": {
           "meeting_id": "会议编号",
           "meeting_title": "会议标题",
@@ -56,6 +61,12 @@
           "status": "状态",
           "showing_page": "显示页面",
           "of": "的"
+        },
+        "statuses": {
+          "scheduled": "已安排",
+          "confirmed": "已确认",
+          "postponed": "已延期",
+          "cancelled": "已取消"
         }
       },
       "settings": {

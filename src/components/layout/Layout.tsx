@@ -1,18 +1,16 @@
-import { Bars3Icon, MoonIcon, SunIcon } from '@heroicons/react/20/solid';
-import { useRouter } from 'next/router';
-import { useTheme } from 'next-themes';
+import { Bars3Icon } from '@heroicons/react/20/solid';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import LanguageSwitcher from '@/components/language-switcher';
 import NotificationsDialog from '@/components/notifications/NotificationsDialog';
+import ThemeSwitcher from '@/components/theme-switcher';
 import { IconButton } from '@/components/ui/icon-button';
 
 import SideBar from './SideBar';
 
 // Header
 const Header = ({ pageTitle }: { pageTitle: string }) => {
-  const { pathname, locale, query, push, asPath } = useRouter();
-  const { theme, setTheme } = useTheme();
   const [showSidebarMenu, setShowSidebarMenu] = useState(false);
 
   return (
@@ -39,30 +37,8 @@ const Header = ({ pageTitle }: { pageTitle: string }) => {
           </div>
 
           <div className='flex gap-2'>
-            <IconButton
-              onClick={() => {
-                push({ pathname, query }, asPath, {
-                  locale: locale === 'en' ? 'zh' : 'en',
-                });
-              }}
-              variant='outline'
-              size='lg'
-              className='hidden sm:block'
-            >
-              {locale}
-            </IconButton>
-            <IconButton
-              type='button'
-              variant='outline'
-              onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-              className='hidden sm:block'
-            >
-              {theme === 'light' ? (
-                <SunIcon className='w-7' />
-              ) : (
-                <MoonIcon className='w-7 p-0.5' />
-              )}
-            </IconButton>
+            <LanguageSwitcher />
+            <ThemeSwitcher />
             <NotificationsDialog />
           </div>
         </div>
@@ -77,10 +53,7 @@ const Footer = () => {
   return (
     <footer className='mt-auto w-full border-t py-4 px-4 text-gray-700 dark:border-gray-800 dark:text-gray-300 lg:px-8'>
       <div className='w-full text-center md:text-left'>
-        <h5 className='label-sm mb-1'>
-          {/* InView */}
-          {t('app.name')}
-        </h5>
+        <h5 className='label-sm mb-1'>{t('app.name')}</h5>
         <p className='text-xs text-gray-600'>
           Copyright © {new Date().getFullYear()}.
         </p>
