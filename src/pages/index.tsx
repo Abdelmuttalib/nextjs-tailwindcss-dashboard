@@ -55,7 +55,7 @@ export default function HomePage() {
                   <LanguageSwitcher />
                   <ThemeSwitcher />
                 </div>
-                <div className='my-8 grid grid-cols-1'>
+                <div className='my-8 mx-auto grid max-w-md grid-cols-1'>
                   {dashboardLinks.map((link) => (
                     <Link
                       key={link.href}
