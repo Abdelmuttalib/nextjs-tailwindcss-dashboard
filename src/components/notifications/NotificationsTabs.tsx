@@ -77,7 +77,11 @@ const NotificationsTabs = ({ t }: { t: TFunction }) => {
                 color='gray'
                 className='p-1 ml-2 text-current dark:bg-layer'
               >
-                {notificationsData[notificationLabel].length}
+                {
+                  notificationsData[
+                    notificationLabel as keyof typeof notificationsData
+                  ].length
+                }
               </Badge>
             </Tab>
           ))}
