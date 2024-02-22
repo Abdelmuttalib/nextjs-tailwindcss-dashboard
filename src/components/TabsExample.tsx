@@ -9,7 +9,7 @@ const TabsExample = () => {
   return (
     <div className='w-full overflow-auto rounded rounded-b-none'>
       <Tab.Group>
-        <Tab.List className='flex bg-gray-100 dark:bg-gray-800/50'>
+        <Tab.List className='flex bg-gray-100  dark:bg-gray-800'>
           {['all', 'recent', 'updated'].map((tab) => {
             const tabLabel = t(`pages.dashboard.home.tabs.${tab}`);
 

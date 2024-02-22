@@ -1,34 +1,57 @@
-import { Dialog, Transition } from '@headlessui/react';
-import {
-  BellIcon,
-  CheckCircleIcon,
-  XMarkIcon,
-} from '@heroicons/react/20/solid';
-import { TFunction, withTranslation } from 'next-i18next';
+import { BellIcon } from '@heroicons/react/20/solid';
+import { withTranslation } from 'next-i18next';
 import React, { Fragment, useState } from 'react';
 
-import { Button } from '@/components/ui/button';
+import CustomDialog from '@/components/ui/animated-dialog';
 import { IconButton } from '@/components/ui/icon-button';
 
 import NotificationsTabs from './NotificationsTabs';
 
-const NotificationsDialog = ({ t }: { t: TFunction }) => {
+const NotificationsDialog = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleModal = () => setIsOpen((prevValue) => !prevValue);
 
   return (
     <>
-      <IconButton
-        className='relative'
-        variant='outline'
-        size='md'
-        onClick={toggleModal}
+      <CustomDialog
+        open={isOpen}
+        onClose={toggleModal}
+        title='Notifications'
+        // className='px-0'
+        fullScreen
+        triggerButton={
+          <IconButton
+            className='relative'
+            variant='ghost'
+            onClick={toggleModal}
+          >
+            <span className='absolute top-4 right-4 inline-flex h-3 w-3 translate-x-1/2 -translate-y-1/2 transform items-center justify-center rounded-full bg-red-600 text-xs font-bold leading-none text-white dark:bg-red-500'>
+              9
+            </span>
+            <BellIcon
+              className='w-5 text-foreground-light'
+              aria-hidden='true'
+            />
+          </IconButton>
+        }
       >
-        <span className='absolute top-4 right-4 inline-flex h-5 w-5 translate-x-1/2 -translate-y-1/2 transform items-center justify-center rounded-full bg-red-600 text-xs font-bold leading-none text-white dark:bg-red-500'>
-          99+
+        <div className='-mx-6 py-2'>
+          <NotificationsTabs />
+        </div>
+      </CustomDialog>
+    </>
+  );
+};
+
+export default withTranslation()(NotificationsDialog);
+
+{
+  /* <IconButton className='relative' variant='ghost' onClick={toggleModal}>
+        <span className='absolute top-4 right-4 inline-flex h-4 w-4 translate-x-1/2 -translate-y-1/2 transform items-center justify-center rounded-full bg-red-600 text-xs font-bold leading-none text-white dark:bg-red-500'>
+          9+
         </span>
-        <BellIcon className='w-7' aria-hidden='true' />
+        <BellIcon className='w-6 text-foreground-light' aria-hidden='true' />
       </IconButton>
 
       <Transition appear show={isOpen} as={Fragment}>
@@ -83,13 +106,24 @@ const NotificationsDialog = ({ t }: { t: TFunction }) => {
                       <XMarkIcon className='w-6' aria-hidden='true' />
                     </IconButton>
                   </div>
-                  {/* Notification Tabs */}
                   <div>
                     <NotificationsTabs />
                   </div>
-                  <div className='absolute bottom-0 w-full border-t bg-white py-2 px-4 shadow-lg dark:border-gray-800 dark:bg-gray-900'>
-                    <Button className='inline-flex w-full gap-1'>
-                      <CheckCircleIcon className='w-5' />{' '}
+                  <Button
+                    type='button'
+                    className='w-full'
+                    iconLeft={<CheckCircleIcon className='w-5' />}
+                    variant='secondary'
+                  >
+                    {t('notifications.mark_all_as_read')}
+                  </Button>
+                  <div className='absolute bottom-0 w-full border-t bg-white py-2 px-4 shadow-lg'>
+                    <Button
+                      type='button'
+                      className='inline-flex w-full gap-1'
+                      iconLeft={<CheckCircleIcon className='w-5' />}
+                      variant='link'
+                    >
                       {t('notifications.mark_all_as_read')}
                     </Button>
                   </div>
@@ -98,9 +132,5 @@ const NotificationsDialog = ({ t }: { t: TFunction }) => {
             </div>
           </div>
         </Dialog>
-      </Transition>
-    </>
-  );
-};
-
-export default withTranslation()(NotificationsDialog);
+      </Transition> */
+}

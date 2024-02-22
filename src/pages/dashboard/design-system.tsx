@@ -1,19 +1,30 @@
-import { ArrowDownCircleIcon } from '@heroicons/react/20/solid';
 import { GetStaticProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
+import DesignSystemGuide from '@/components/design-system';
 import { Layout } from '@/components/layout';
 import Seo from '@/components/Seo';
-import { Button } from '@/components/ui/button';
-import { IconButton } from '@/components/ui/icon-button';
 
 export default function HomePage() {
   return (
     <Layout pageTitle='Design'>
       <Seo />
 
-      <div className='mb-40 flex min-h-screen flex-col items-center gap-6 text-left'>
-        <h1 className='display-lg'>Display LG</h1>
+      <DesignSystemGuide />
+    </Layout>
+  );
+}
+
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale || 'en', ['common'])),
+    },
+  };
+};
+
+{
+  /* <h1 className='display-lg'>Display LG</h1>
         <h1 className='display-lg-light'>Display LG Light</h1>
         <h1 className='display-md'>Display MD</h1>
         <h1 className='display-md-light'>Display MD Light</h1>
@@ -45,24 +56,5 @@ export default function HomePage() {
         <p className='label-md'>Label MD</p>
         <p className='label-md-light'>Label MD Light</p>
         <p className='label-sm'>Label SM</p>
-        <p className='label-sm-light'>Label SM Light</p>
-
-        <Button isLoading variant='dark' size='md'>
-          Button
-        </Button>
-
-        <IconButton size='md' variant='outline'>
-          <ArrowDownCircleIcon className='w-6' />
-        </IconButton>
-      </div>
-    </Layout>
-  );
+        <p className='label-sm-light'>Label SM Light</p> */
 }
-
-export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  return {
-    props: {
-      ...(await serverSideTranslations(locale || 'en', ['common'])),
-    },
-  };
-};

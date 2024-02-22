@@ -1,7 +1,13 @@
-import { HomeIcon, XMarkIcon } from '@heroicons/react/20/solid';
+import {
+  ChatBubbleOvalLeftIcon,
+  Cog6ToothIcon,
+  HomeIcon,
+  Squares2X2Icon,
+  XMarkIcon,
+} from '@heroicons/react/20/solid';
+import { FigmaIcon } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useTranslation } from 'next-i18next';
 import React from 'react';
 
 import cn from '@/lib/cn';
@@ -19,14 +25,29 @@ type DashboardLinkT = {
 export const dashboardLinks: DashboardLinkT[] = [
   {
     text: 'home',
-    icon: <HomeIcon className='mx-2 my-1.5 w-5 text-current' />,
+    icon: <HomeIcon className='w-[18px] text-current' />,
     href: '/dashboard',
   },
-  // {
-  //   text: 'settings',
-  //   icon: <Cog6ToothIcon className='mx-2 my-1.5 w-5 text-current' />,
-  //   href: '/dashboard/settings',
-  // },
+  {
+    text: 'Board',
+    icon: <Squares2X2Icon className='w-[18px] text-current' />,
+    href: '/dashboard/board',
+  },
+  {
+    text: 'chat',
+    icon: <ChatBubbleOvalLeftIcon className='w-[18px] text-current' />,
+    href: '/dashboard/chat',
+  },
+  {
+    text: 'settings',
+    icon: <Cog6ToothIcon className='w-[18px] text-current' />,
+    href: '/dashboard/settings',
+  },
+  {
+    text: 'Design System',
+    icon: <FigmaIcon className='w-[18px] text-current' />,
+    href: '/dashboard/design-system',
+  },
 ];
 
 // [#0A0F13]
@@ -38,23 +59,19 @@ const SideBar = ({
   setShowSidebarMenu?: (show: boolean) => void;
 }) => {
   const { pathname } = useRouter();
-  const { t } = useTranslation('common');
   return (
     <div
-      className={cn(
-        'bg-[#06080b] dark:border-r dark:border-gray-800/20 dark:bg-gray-900',
-        {
-          'hidden h-full min-h-screen w-full flex-col lg:flex lg:w-72 xl:w-80':
-            mode === 'normal',
-          'fixed inset-0 z-50 flex h-[100svh] w-full flex-col  backdrop-blur-md backdrop-filter transition-colors duration-300 dark:bg-gray-900 dark:text-gray-200 lg:hidden':
-            mode === 'mobile',
-        }
-      )}
+      className={cn('bg-background', {
+        'hidden h-full min-h-screen w-full flex-col lg:flex lg:w-64':
+          mode === 'normal',
+        'fixed inset-0 z-50 flex h-[100svh] w-full flex-col  backdrop-blur-md backdrop-filter transition-colors duration-300 lg:hidden':
+          mode === 'mobile',
+      })}
     >
-      <div className='relative flex-1 overflow-y-auto py-4 lg:pl-0'>
+      <div className='relative mx-4 flex-1 overflow-y-auto py-4 lg:pl-0'>
         {setShowSidebarMenu && (
           <IconButton
-            className='absolute top-6 left-4 focus:border-2 focus:border-gray-800'
+            className='absolute top-4 left-0 focus:border-2 focus:border-gray-800'
             variant='outline'
             size='sm'
             onClick={() => setShowSidebarMenu(false)}
@@ -62,35 +79,33 @@ const SideBar = ({
             <XMarkIcon className='w-6' aria-hidden='true' />
           </IconButton>
         )}
-        <div className='text-center text-white'>
-          <h5 className='h5'>
+        <div className='text-foreground'>
+          {/* <Typography as='h5' variant='lg/regular'>
             Dashboard
             <span className='ml-0.5 text-3xl text-primary'>.</span>
-          </h5>
-          <p className='font-medium text-gray-500'>{t('app.name')}</p>
+          </Typography> */}
         </div>
-        <ul className='mt-10 flex flex-col gap-1 md:mb-44'>
+        <ul className='mt-20 flex flex-col md:mb-44'>
           {dashboardLinks.map((link) => (
             <li key={link.text}>
               <Link
                 href={link.href}
                 className={cn(
-                  'label-md group flex w-full items-center border-r-4 border-transparent py-3 pl-4 hover:border-transparent hover:bg-gray-900 focus:border-gray-900 focus:bg-gray-900/80 focus:text-primary-50 focus:outline-transparent xl:gap-3',
+                  'bg-background text-sm text-foreground-lighter hover:bg-layer-2 dark:hover:bg-layer-3 dark:hover:text-foreground-muted rounded py-2.5 px-4 inline-flex items-center gap-x-3 w-full font-medium',
                   {
-                    'border-r-primary-400 bg-gray-800/50 text-primary dark:bg-gray-800/40':
+                    'text-foreground hover:text-foreground dark:hover:text-foreground bg-layer-3':
                       pathname === link.href,
-                    'text-gray-100': pathname !== link.href,
+                    '': pathname !== link.href,
                   }
                 )}
               >
                 {link.icon}
-                <span className='ml-2 text-gray-100 first-letter:uppercase'>
-                  {t(`pages.dashboard.${link.text}.title`)}
-                </span>
+                <span className='first-letter:uppercase'>{link.text}</span>
               </Link>
             </li>
           ))}
         </ul>
+
         <div className='mt-10 flex w-full justify-center gap-3 px-5 sm:hidden'>
           <LanguageSwitcher />
           <ThemeSwitcher />

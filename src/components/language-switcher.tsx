@@ -5,7 +5,7 @@ import { Fragment } from 'react';
 
 import cn from '@/lib/cn';
 
-import { IconButton } from '@/components/ui/icon-button';
+import { iconButtonVariants } from '@/components/ui/icon-button';
 
 export default function LanguageSwitcher() {
   const {
@@ -19,15 +19,16 @@ export default function LanguageSwitcher() {
   return (
     <Menu as='div' className='relative inline-block text-left'>
       <div>
-        <Menu.Button as='div'>
-          <IconButton
-            variant='outline'
-            size='lg'
-            className='relative hidden p-3.5 sm:block'
-          >
-            {/* {currentLocale} */}
-            <LanguageIcon className='w-6' />
-          </IconButton>
+        <Menu.Button
+          as='button'
+          className={cn(
+            iconButtonVariants({
+              variant: 'ghost',
+            }),
+            'hidden sm:flex'
+          )}
+        >
+          <LanguageIcon className='w-[22px] text-foreground-light' />
         </Menu.Button>
       </div>
       <Transition
@@ -39,7 +40,7 @@ export default function LanguageSwitcher() {
         leaveFrom='transform opacity-100 scale-100'
         leaveTo='transform opacity-0 scale-95'
       >
-        <Menu.Items className='absolute right-0 mt-2 w-32 origin-top-right divide-y divide-gray-100 overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
+        <Menu.Items className='absolute right-0 mt-2 w-32 origin-top-right divide-y divide-gray-100 overflow-hidden rounded-md bg-layer-2 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
           <div className='relative'>
             {locales?.map((locale) => (
               <Menu.Item key={locale}>
@@ -54,7 +55,7 @@ export default function LanguageSwitcher() {
                       'flex w-full items-center px-2 py-2 font-medium',
                       {
                         'bg-primary-500 text-white': locale === currentLocale,
-                        'text-gray-900 hover:bg-primary-100':
+                        'text-foreground hover:bg-accent':
                           locale !== currentLocale,
                       }
                     )}

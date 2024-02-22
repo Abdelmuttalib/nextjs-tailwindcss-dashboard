@@ -71,6 +71,9 @@
       },
       "settings": {
         "title": "Settings"
+      },
+      "design-system": {
+        "title": "Design System"
       }
     },
     "404": {
