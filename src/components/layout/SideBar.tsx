@@ -5,7 +5,7 @@ import {
   Squares2X2Icon,
   XMarkIcon,
 } from '@heroicons/react/20/solid';
-import { FigmaIcon } from 'lucide-react';
+import { FigmaIcon, Framer } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
@@ -79,13 +79,14 @@ const SideBar = ({
             <XMarkIcon className='w-6' aria-hidden='true' />
           </IconButton>
         )}
-        <div className='text-foreground'>
-          {/* <Typography as='h5' variant='lg/regular'>
+        <div className='mt-1'>
+          <Framer className='w-9 h-9 bg-primary-200/70 dark:bg-gray-hover rounded p-1.5' />
+        </div>
+        {/* <Typography as='h5' variant='lg/regular'>
             Dashboard
             <span className='ml-0.5 text-3xl text-primary'>.</span>
           </Typography> */}
-        </div>
-        <ul className='mt-20 flex flex-col md:mb-44'>
+        <ul className='mt-10 flex flex-col md:mb-44'>
           {dashboardLinks.map((link) => (
             <li key={link.text}>
               <Link

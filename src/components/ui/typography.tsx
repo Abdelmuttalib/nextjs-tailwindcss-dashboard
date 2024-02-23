@@ -22,7 +22,18 @@ type FontWeight = 'regular' | 'medium' | 'semibold' | 'bold';
 export interface TypographyProps
   extends React.HTMLAttributes<HTMLElement>,
     VariantProps<typeof typographyVariants> {
-  as: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span' | 'label';
+  as:
+    | 'h1'
+    | 'h2'
+    | 'h3'
+    | 'h4'
+    | 'h5'
+    | 'h6'
+    | 'p'
+    | 'span'
+    | 'label'
+    | 'dt'
+    | 'dd';
   variant: `${FontSize}/${FontWeight}`;
 }
 

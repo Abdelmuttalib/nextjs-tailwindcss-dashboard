@@ -8,7 +8,7 @@ interface BadgeProps extends React.BaseHTMLAttributes<HTMLSpanElement> {
   color?: string;
   children: React.ReactNode;
   size?: 'default' | 'sm';
-  variant?: 'default' | 'outline' | 'secondary';
+  variant?: 'default' | 'outline' | 'secondary' | 'bordered';
 }
 
 const Badge = ({

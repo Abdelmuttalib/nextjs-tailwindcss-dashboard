@@ -37,6 +37,17 @@ import Typography from '@/components/ui/typography';
 //   'Team',
 // ];
 
+export function Customization() {
+  return (
+    <div className='flex items-center gap-x-2'>
+      <ThemeSelect />
+      <ThemeColorSelect />
+      <FontSelect />
+      <FontSizeSelect />
+    </div>
+  );
+}
+
 function ThemeSelect() {
   const { theme, setTheme } = useTheme();
 
@@ -201,59 +212,59 @@ const SettingsPage = () => {
 
             <div className='mt-6 border-t border-border'>
               <dl className='divide-y divide-border'>
-                <div className='px-4 py-9 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0'>
-                  <dt className='text-sm font-medium leading-6 text-foreground'>
+                <div className='px-4 py-9 sm:flex sm:justify-between sm:items-center sm:gap-4 sm:px-0'>
+                  <Typography as='dt' variant='sm/medium'>
                     Theme
-                  </dt>
-                  <dd className='mt-1 text-sm leading-6 text-foreground-light sm:col-span-2 sm:mt-0'>
+                  </Typography>
+                  <dd className='mt-1 text-sm leading-6 text-foreground-light sm:mt-0'>
                     <ThemeSelect />
                   </dd>
                 </div>
-                <div className='px-4 py-9 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0'>
-                  <dt className='text-sm font-medium leading-6 text-foreground'>
+                <div className='px-4 py-9 sm:flex sm:justify-between sm:gap-4 sm:px-0 sm:items-center'>
+                  <Typography as='dt' variant='sm/medium'>
                     Interface theme color
-                  </dt>
-                  <dd className='mt-1 text-sm leading-6 text-foreground-light sm:col-span-2 sm:mt-0'>
+                  </Typography>
+                  <dd className='mt-1 text-sm leading-6 text-foreground-light sm:col-span-1 sm:mt-0'>
                     <ThemeColorSelect />
                   </dd>
                 </div>
-                <div className='px-4 py-9 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0'>
-                  <dt className='text-sm font-medium leading-6 text-foreground'>
+                <div className='px-4 py-9 sm:flex sm:justify-between sm:gap-4 sm:px-0 sm:items-center'>
+                  <Typography as='dt' variant='sm/medium'>
                     Interface font
-                  </dt>
-                  <dd className='mt-1 text-sm leading-6 text-foreground-light sm:col-span-2 sm:mt-0'>
+                  </Typography>
+                  <dd className='mt-1 text-sm leading-6 text-foreground-light sm:col-span-1 sm:mt-0'>
                     <FontSelect />
                   </dd>
                 </div>
-                <div className='px-4 py-9 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0'>
-                  <dt className='text-sm font-medium leading-6 text-foreground'>
+                <div className='px-4 py-9 sm:flex sm:justify-between sm:gap-4 sm:px-0 sm:items-center'>
+                  <Typography as='dt' variant='sm/medium'>
                     Font size
-                  </dt>
-                  <dd className='mt-1 text-sm leading-6 text-foreground-light sm:col-span-2 sm:mt-0'>
+                  </Typography>
+                  <dd className='mt-1 text-sm leading-6 text-foreground-light sm:col-span-1 sm:mt-0'>
                     <FontSizeSelect />
                   </dd>
                 </div>
-                {/* <div className='px-4 py-9 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0'>
-                  <dt className='text-sm font-medium leading-6 text-foreground'>
+                {/* <div className='px-4 py-9 sm:flex sm:justify-between sm:gap-4 sm:px-0 sm:items-center'>
+                  <Typography as="dt" variant="sm/medium">
                     Email address
-                  </dt>
-                  <dd className='mt-1 text-sm leading-6 text-foreground-light sm:col-span-2 sm:mt-0'>
+                  </Typography>
+                  <dd className='mt-1 text-sm leading-6 text-foreground-light sm:col-span-1 sm:mt-0'>
                     margotfoster@example.com
                   </dd>
                 </div>
-                <div className='px-4 py-9 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0'>
-                  <dt className='text-sm font-medium leading-6 text-foreground'>
+                <div className='px-4 py-9 sm:flex sm:justify-between sm:gap-4 sm:px-0 sm:items-center'>
+                  <Typography as="dt" variant="sm/medium">
                     Salary expectation
-                  </dt>
-                  <dd className='mt-1 text-sm leading-6 text-foreground-light sm:col-span-2 sm:mt-0'>
+                  </Typography>
+                  <dd className='mt-1 text-sm leading-6 text-foreground-light sm:col-span-1 sm:mt-0'>
                     $120,000
                   </dd>
                 </div>
-                <div className='px-4 py-9 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0'>
-                  <dt className='text-sm font-medium leading-6 text-foreground'>
+                <div className='px-4 py-9 sm:flex sm:justify-between sm:gap-4 sm:px-0 sm:items-center'>
+                  <Typography as="dt" variant="sm/medium">
                     About
-                  </dt>
-                  <dd className='mt-1 text-sm leading-6 text-foreground-light sm:col-span-2 sm:mt-0'>
+                  </Typography>
+                  <dd className='mt-1 text-sm leading-6 text-foreground-light sm:col-span-1 sm:mt-0'>
                     Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim
                     incididunt cillum culpa consequat. Excepteur qui ipsum
                     aliquip consequat sint. Sit id mollit nulla mollit nostrud
@@ -261,11 +272,11 @@ const SettingsPage = () => {
                     adipisicing reprehenderit deserunt qui eu.
                   </dd>
                 </div>
-                <div className='px-4 py-9 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0'>
-                  <dt className='text-sm font-medium leading-6 text-foreground'>
+                <div className='px-4 py-9 sm:flex sm:justify-between sm:gap-4 sm:px-0 sm:items-center'>
+                  <Typography as="dt" variant="sm/medium">
                     Attachments
-                  </dt>
-                  <dd className='mt-2 text-sm text-foreground sm:col-span-2 sm:mt-0'>
+                  </Typography>
+                  <dd className='mt-2 text-sm text-foreground sm:col-span-1 sm:mt-0'>
                     <ul
                       role='list'
                       className='divide-y divide-border-light rounded-md border border-gray-200'

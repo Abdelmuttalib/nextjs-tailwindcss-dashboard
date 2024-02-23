@@ -18,7 +18,7 @@ function DashboardPage() {
       <Seo title={`${t('pages.dashboard.home.title')}`} />
       <Layout pageTitle={t('pages.dashboard.home.title')} className='lg:px-8'>
         <div className='w-full h-full'>
-          <div className='flex flex-col'>
+          <div className='flex flex-col gap-y-20'>
             <div className='w-full flex justify-end items-center'>
               <Button
                 variant='ghost'

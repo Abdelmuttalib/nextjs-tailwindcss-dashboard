@@ -1,3 +1,4 @@
+import { CheckCircle2, Circle, CircleDashed, Radius } from 'lucide-react';
 import { useState } from 'react';
 import {
   DragDropContext,
@@ -12,7 +13,7 @@ import { useMounted } from '@/hooks/use-mounted';
 import Badge from '@/components/ui/badge';
 import Typography from '@/components/ui/typography';
 
-type Status = 'todo' | 'in progress' | 'done';
+type Status = 'backlog' | 'todo' | 'in progress' | 'done';
 
 interface TTask {
   id: string;
@@ -84,6 +85,26 @@ const initialTasks: TTask[] = [
     assigneeAvatarUrl:
       'https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzd8fGF2YXRhcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
     status: 'done',
+    orderIndex: 1,
+  },
+  {
+    id: '7',
+    title: 'Test the application',
+    description: 'Add unit tests for the application using Jest and Enzyme.',
+    assigneeName: 'John Doe',
+    assigneeAvatarUrl:
+      'https://images.unsplash.com/photo-1568822617270-2c1579f8dfe2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzJ8fGF2YXRhcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
+    status: 'backlog',
+    orderIndex: 0,
+  },
+  {
+    id: '8',
+    title: 'Prepare for deployment',
+    description: 'Deploy the application to AWS using EC2 and S3.',
+    assigneeName: 'Jane Smith',
+    assigneeAvatarUrl:
+      'https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzd8fGF2YXRhcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
+    status: 'backlog',
     orderIndex: 1,
   },
 ];
@@ -220,27 +241,48 @@ export default function Board() {
               return (
                 <div
                   key={status}
-                  className='w-full h-full min-h-screen flex flex-col gap-y-4'
+                  className='w-full h-full min-h-screen flex flex-col gap-y-3'
                 >
-                  <Typography
-                    as='h3'
-                    variant='sm/medium'
-                    className='capitalize'
-                  >
-                    {status}{' '}
-                    <Badge
-                      color='gray'
-                      className='text-sm text-current p-1 px-1.5 ml-4 dark:bg-layer'
+                  {/* <XCircle className='w-8 h-8 text-red-500 dark:text-red-400' /> */}
+                  {/* <Circle className='w-8 h-8 text-gray-500 dark:text-gray-400' />
+
+                  <Radius className='w-8 h-8 text-blue-500 dark:text-blue-400' />
+                  <CheckCircle2 className='w-8 h-8 text-green-500 dark:text-green-400' /> */}
+                  <div className='inline-flex px-3 items-center gap-x-2'>
+                    {status === 'backlog' && (
+                      <CircleDashed className='w-[18px] h-[18px] text-foreground-light' />
+                    )}
+                    {status === 'todo' && (
+                      <Circle className='w-[18px] h-[18px] text-foreground-light' />
+                    )}
+                    {status === 'in progress' && (
+                      <Radius className='w-[18px] h-[18px] text-foreground-light' />
+                    )}
+                    {status === 'done' && (
+                      <CheckCircle2 className='w-[18px] h-[18px] text-foreground-light' />
+                    )}
+                    <Typography
+                      as='h3'
+                      variant='sm/medium'
+                      className='capitalize'
                     >
-                      {tasksByStatus.length}
-                    </Badge>
-                  </Typography>
+                      {status}
+                      <Badge
+                        color='white'
+                        className='text-xs border border-border text-current p-1 px-1.5 ml-4 dark:bg-layer'
+                      >
+                        {tasksByStatus.length}
+                      </Badge>
+                    </Typography>
+                  </div>
 
                   <Droppable droppableId={status}>
                     {(provided, snapshot) => (
                       <div
-                        className={`space-y-4 h-full rounded ${
-                          snapshot.isDraggingOver ? 'bg-white' : ''
+                        className={`space-y-3 h-full min-h-full flex-1 rounded bg-layer-2 dark:bg-background ${
+                          snapshot.isDraggingOver
+                            ? 'bg-layer-3/50 dark:bg-gray-hover/50'
+                            : ''
                         }`}
                         {...provided.droppableProps}
                         ref={provided.innerRef}
@@ -257,22 +299,38 @@ export default function Board() {
                                 {...provided.draggableProps}
                                 {...provided.dragHandleProps}
                                 ref={provided.innerRef}
-                                className='border border-border-lighter rounded-lg p-4 flex flex-col gap-y-2 bg-layer'
+                                className='border border-border rounded p-4 py-3 flex flex-col gap-y-2 bg-layer'
                               >
+                                <div className='inline-flex items-center justify-between'>
+                                  <Typography
+                                    as='span'
+                                    variant='xs/medium'
+                                    className='capitalize text-foreground-muted-light dark:text-foreground-lighter'
+                                  >
+                                    CYB-246
+                                  </Typography>
+                                  <Typography
+                                    as='span'
+                                    variant='xs/medium'
+                                    className='capitalize text-foreground-muted-light dark:text-foreground-lighter'
+                                  >
+                                    Mar 15
+                                  </Typography>
+                                </div>
                                 <Typography
                                   as='h3'
-                                  variant='md/medium'
+                                  variant='sm/regular'
                                   className='capitalize text-foreground'
                                 >
                                   {task.title}
                                 </Typography>
-                                <Typography
+                                {/* <Typography
                                   as='p'
                                   variant='sm/medium'
                                   className='capitalize text-foreground-lighter'
                                 >
                                   {task.description}
-                                </Typography>
+                                </Typography> */}
                                 <div className='flex justify-between items-center gap-2'>
                                   <Badge
                                     color={
@@ -280,16 +338,18 @@ export default function Board() {
                                         ? 'green'
                                         : task.status === 'in progress'
                                         ? 'yellow'
-                                        : 'blue'
+                                        : task.status === 'todo'
+                                        ? 'blue'
+                                        : 'gray'
                                     }
-                                    className='capitalize text-xs px-2 py-0.5'
+                                    className='capitalize border text-xs px-2 py-0.5'
                                   >
                                     {task.status}
                                   </Badge>
                                   <div className='flex items-center'>
                                     {/* eslint-disable-next-line @next/next/no-img-element */}
                                     <img
-                                      className='w-8 h-8 rounded-full mr-2 object-cover'
+                                      className='w-6 h-6 rounded-full mr-2 object-cover'
                                       src={task.assigneeAvatarUrl}
                                       alt='Assignee avatar'
                                     />

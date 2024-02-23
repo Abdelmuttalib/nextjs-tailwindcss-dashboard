@@ -115,9 +115,9 @@ export default function DesignSystemGuide() {
             className='text-foreground-light'
           >
             Building beautiful and consistent web applications requires a
-            well-structured design system. In this blog post, we will delve into
-            the design system implemented in a Next.js application using
-            Tailwind CSS. The design system focuses on defining colors,
+            well-structured design system. In this guide, I will delve into the
+            design system implemented in a Next.js application using Tailwind
+            CSS and CSS variables. The design system focuses on defining colors,
             typography, spacing, and other key elements to ensure a cohesive and
             visually appealing user interface.
           </Typography>
