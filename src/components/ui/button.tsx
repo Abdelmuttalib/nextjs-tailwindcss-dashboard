@@ -1,37 +1,40 @@
 import { cva, VariantProps } from 'class-variance-authority';
+import Link, { LinkProps } from 'next/link';
 import * as React from 'react';
-import { ImSpinner2 } from 'react-icons/im';
 
 import cn from '@/lib/cn';
 
 const buttonVariants = cva(
-  'relative inline-flex items-center justify-center rounded-full font-medium border-2 border-transparent transition-colors focus:outline-transparent disabled:opacity-50 disabled:pointer-events-none disabled:opacity-40 disabled:hover:opacity-40 disabled:cursor-not-allowed disabled:shadow-none',
+  'relative inline-flex items-center justify-center w-full text-sm sm:w-auto rounded font-medium border-0 transition-colors transition duration-150 ease-linear focus:outline-transparent disabled:opacity-50 disabled:pointer-events-none disabled:opacity-60 disabled:hover:opacity-60 disabled:cursor-not-allowed disabled:shadow-none ring-1 ring-transparent ring-inset focus:ring-2 focus:ring-inset outline-none focus:outline-none',
   {
     variants: {
       variant: {
-        default:
-          'text-white bg-primary dark:bg-primary/80 hover:bg-primary-600 focus:border-primary-200 dark:focus:border-primary-300 focus:bg-primary',
         primary:
-          'text-white bg-primary dark:bg-primary/80 hover:bg-primary-600 focus:border-primary-200 dark:focus:border-primary-300 focus:bg-primary',
+          'text-white bg-primary shadow-sm dark:bg-primary hover:bg-primary-600 focus:ring-primary-200 dark:focus:ring-primary-300 active:bg-primary focus:bg-primary',
+        'primary-outline':
+          'text-primary bg-background ring-primary-400 hover:bg-primary-100/40 dark:hover:bg-layer-3 focus:ring-primary',
         outline:
-          'text-gray-900 bg-white border-gray-200/100 hover:bg-gray-50 focus:border-primary',
+          'text-foreground bg-background ring-border hover:bg-layer-2 focus:ring-primary',
         secondary:
-          'text-gray-900 dark:text-gray-200 bg-gray-100/70 dark:bg-gray-800/50 dark:hover:bg-gray-800/60 dark:border-gray-700 hover:bg-gray-100 focus:bg-gray-100/70 dark:focus:bg-gray-800/70',
+          'text-primary-800 dark:text-gray-200 bg-primary-100/50 hover:bg-primary-100/70 focus:bg-primary-100/80 dark:bg-gray-800/50 dark:hover:bg-gray-800/60 dark:ring-gray-700  dark:focus:bg-gray-800/70',
         destructive:
-          'bg-red-500 text-white hover:bg-red-600 dark:hover:bg-red-600',
+          'bg-error text-white hover:bg-red-600 dark:hover:bg-red-600',
         'destructive-outline':
-          'border-red-500 text-red-500 hover:bg-red-500 hover:text-white focus:bg-red-500 focus:border-2 focus:border-red-200 focus:text-white dark:text-red-400 dark:border-red-400 dark:hover:border-red-500 dark:hover:bg-red-500 dark:hover:text-white dark:focus:bg-red-500 dark:focus:border-red-400 dark:focus:text-white',
-        dark: 'bg-gray-900 text-white duration-150 ease-linear hover:bg-gray-900/90 active:bg-gray-700 disabled:bg-gray-700 focus:border-primary-300',
+          'ring-red-500 text-red-500 hover:bg-red-500 hover:text-white focus:bg-red-500 focus:ring-red-200 focus:text-white dark:text-red-400 dark:ring-red-400 dark:hover:ring-red-500 dark:hover:bg-error dark:hover:text-white dark:focus:bg-red-500 dark:focus:ring-red-400 dark:focus:text-white',
+        dark: 'bg-gray-900 text-white duration-150 ease-linear hover:bg-gray-900/90 active:bg-gray-700 disabled:bg-gray-700 focus:ring-primary-300',
+        ghost:
+          'hover:bg-gray-hover dark:hover:bg-layer-2 text-foreground-light',
+        link: 'text-primary underline-offset-4 hover:underline',
       },
       size: {
-        default: 'label-md px-5 py-2.5',
-        sm: 'label-sm px-4 py-2',
-        md: 'label-sm px-5 py-2.5',
-        lg: 'label-md px-5 py-2.5',
+        default: 'px-4 py-2.5',
+        xs: 'px-2.5 py-1',
+        sm: 'px-3 py-1.5',
+        lg: 'px-5 py-3.5 text-base',
       },
     },
     defaultVariants: {
-      variant: 'default',
+      variant: 'primary',
       size: 'default',
     },
   }
@@ -42,10 +45,15 @@ export interface ButtonProps
     VariantProps<typeof buttonVariants> {
   isLoading?: boolean;
   children?: React.ReactNode;
+  iconLeft?: React.ReactNode;
+  iconRight?: React.ReactNode;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, children, isLoading, ...props }, ref) => {
+  (
+    { className, variant, size, children, iconLeft, iconRight, ...props },
+    ref
+  ) => {
     return (
       <button
         className={cn(
@@ -54,18 +62,21 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             size,
             className,
           }),
+          // {
+          //   isLoading:
+          //     'relative text-transparent transition-none hover:text-transparent disabled:cursor-wait',
+          // },
           {
-            isLoading:
-              'relative text-transparent transition-none hover:text-transparent disabled:cursor-wait',
+            'gap-x-1.5': iconLeft || iconRight,
           }
         )}
         ref={ref}
         {...props}
       >
-        {isLoading && (
+        {/* {isLoading && (
           <div
             className={cn(
-              'absolute top-0 left-0 right-0 bottom-0 cursor-wait rounded-full bg-gray-900 transition-none hover:text-transparent disabled:cursor-wait'
+              'absolute top-0 left-0 right-0 bottom-0 cursor-wait rounded-full transition-none hover:text-transparent disabled:cursor-wait'
             )}
           >
             <div
@@ -76,12 +87,44 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
               <ImSpinner2 className='h-5 w-5 animate-spin text-primary-300' />
             </div>
           </div>
-        )}
+        )} */}
+        {iconLeft ? <>{iconLeft}</> : null}
         {children}
+        {iconRight ? <>{iconRight}</> : null}
       </button>
     );
   }
 );
 Button.displayName = 'Button';
 
-export { Button, buttonVariants };
+export interface ButtonLinkProps
+  extends LinkProps,
+    VariantProps<typeof buttonVariants> {
+  className?: string;
+  children?: React.ReactNode;
+  leftIcon?: React.ReactNode;
+  rightIcon?: React.ReactNode;
+}
+
+const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
+  ({ className, variant, leftIcon, rightIcon, size, ...props }, ref) => {
+    return (
+      <Link
+        className={cn(buttonVariants({ variant, size, className }), {
+          'inline-flex items-center justify-center gap-x-2':
+            leftIcon || rightIcon,
+        })}
+        ref={ref}
+        {...props}
+      >
+        {leftIcon ? <>{leftIcon}</> : null}
+        {props.children}
+        {rightIcon ? <>{rightIcon}</> : null}
+      </Link>
+    );
+  }
+);
+
+ButtonLink.displayName = 'ButtonLink';
+
+export { Button, ButtonLink, buttonVariants };

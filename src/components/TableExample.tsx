@@ -5,9 +5,10 @@ import { withTranslation } from 'react-i18next';
 
 import { getMeetingStatusBadgeColor } from '@/lib/get-badge-status-color';
 
-import DialogExample from '@/components/DialogExample';
+import CustomDialog from '@/components/ui/animated-dialog';
 import Badge from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import Typography from '@/components/ui/typography';
 
 export type MeetingStatus =
   | 'Scheduled'
@@ -80,50 +81,36 @@ interface Props {
 const TableExample: FC<Props> = ({ t }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const [selectedMeeting, setSelectedMeeting] = useState<Meeting | null>(null);
-
-  function closeModal() {
-    setIsOpen(false);
-  }
-
   return (
     <>
-      {selectedMeeting && (
-        <DialogExample
-          isOpen={isOpen}
-          closeModal={closeModal}
-          meeting={selectedMeeting}
-        />
-      )}
-
       {/* table */}
       <div className='-mx-4 overflow-x-auto px-4 pb-10 sm:-mx-8 sm:px-8'>
-        <div className='inline-block min-w-full overflow-hidden rounded-lg rounded-t-none shadow'>
-          <table className='min-w-full'>
-            <thead className='bg-gray-50 dark:bg-gray-800/60'>
-              <tr className='border-b-2 border-gray-200 text-left text-gray-600 dark:border-gray-800 dark:text-gray-200'>
-                <th className='label-sm whitespace-nowrap px-5 py-4'>
+        <div className='inline-block min-w-full overflow-hidden rounded-lg shadow'>
+          <table className='min-w-full bg-layer'>
+            <thead className='bg-layer-2'>
+              <tr className='border-b border-border text-left text-foreground-light'>
+                <th className='text-sm font-medium whitespace-nowrap px-5 py-4'>
                   <span>{t('pages.dashboard.home.table.meeting_id')}</span>
                 </th>
-                <th className='label-sm whitespace-nowrap px-5 py-4'>
+                <th className='text-sm font-medium whitespace-nowrap px-5 py-4'>
                   <span>{t('pages.dashboard.home.table.meeting_title')}</span>
                 </th>
-                <th className='label-sm whitespace-nowrap px-5 py-4'>
+                <th className='text-sm font-medium whitespace-nowrap px-5 py-4'>
                   <span>{t('pages.dashboard.home.table.date')}</span>
                 </th>
-                <th className='label-sm whitespace-nowrap px-5 py-4'>
+                <th className='text-sm font-medium whitespace-nowrap px-5 py-4'>
                   <span>{t('pages.dashboard.home.table.time')}</span>
                 </th>
-                <th className='label-sm whitespace-nowrap px-5 py-4'>
+                <th className='text-sm font-medium whitespace-nowrap px-5 py-4'>
                   <span>{t('pages.dashboard.home.table.organizer')}</span>
                 </th>
-                <th className='label-sm whitespace-nowrap px-5 py-4'>
+                <th className='text-sm font-medium whitespace-nowrap px-5 py-4'>
                   <span>{t('pages.dashboard.home.table.attendees')}</span>
                 </th>
-                <th className='label-sm whitespace-nowrap px-5 py-4'>
+                <th className='text-sm font-medium whitespace-nowrap px-5 py-4'>
                   <span>{t('pages.dashboard.home.table.status')}</span>
                 </th>
-                <th className='label-sm whitespace-nowrap px-5 py-4'>
+                <th className='text-sm font-medium whitespace-nowrap px-5 py-4'>
                   <span>{t('components.buttons.view_details')}</span>
                 </th>
               </tr>
@@ -133,7 +120,7 @@ const TableExample: FC<Props> = ({ t }) => {
                 ({ id, title, date, time, organizer, attendees, status }) => (
                   <tr
                     key={id}
-                    className='body-sm whitespace-nowrap border-b border-gray-200 bg-white text-gray-900 dark:border-gray-800/50 dark:bg-gray-800/40 dark:text-gray-200'
+                    className='whitespace-nowrap border-b border-border text-foreground'
                   >
                     <td className='px-5 py-5'>{id}</td>
                     <td className='px-5 py-5'>{title}</td>
@@ -153,23 +140,209 @@ const TableExample: FC<Props> = ({ t }) => {
                       </Badge>
                     </td>
                     <td className='px-5 py-4'>
-                      <Button
-                        size='sm'
-                        onClick={() => {
-                          setSelectedMeeting({
-                            id,
-                            title,
-                            date,
-                            time,
-                            organizer,
-                            attendees,
-                            status,
-                          });
-                          setIsOpen(true);
-                        }}
+                      <CustomDialog
+                        open={isOpen}
+                        onClose={() => setIsOpen(false)}
+                        triggerButton={
+                          <Button
+                            type='button'
+                            size='sm'
+                            onClick={() => setIsOpen(true)}
+                          >
+                            {t('components.buttons.view_details')}
+                          </Button>
+                        }
+                        title='Meeting Details'
+                        fullScreen
                       >
-                        {t('components.buttons.view_details')}
-                      </Button>
+                        <div>
+                          <div className='flex flex-col gap-4 divide-y'>
+                            <div className='flex flex-col gap-y-5 py-3 text-sm'>
+                              <div className='flex gap-x-6'>
+                                <Typography
+                                  as='p'
+                                  variant='sm/regular'
+                                  className='text-foreground-lighter'
+                                >
+                                  Status
+                                </Typography>
+                                <Badge
+                                  color='blue'
+                                  className='capitalize'
+                                  size='sm'
+                                >
+                                  {status}
+                                </Badge>
+                              </div>
+                              <div className='flex gap-x-6'>
+                                <div className='inline-flex gap-x-2'>
+                                  <Typography
+                                    as='p'
+                                    variant='sm/regular'
+                                    className='text-foreground-lighter'
+                                  >
+                                    Label
+                                  </Typography>
+                                </div>
+                                <Badge color='green' size='sm'>
+                                  label
+                                </Badge>
+                              </div>
+                              <div className='flex gap-x-6'>
+                                <Typography
+                                  as='p'
+                                  variant='sm/regular'
+                                  className='text-foreground-lighter'
+                                >
+                                  Organizer
+                                </Typography>
+                                <div className='inline-flex items-center gap-x-2'>
+                                  <p>{organizer}</p>
+                                </div>
+                              </div>
+                              <div className='flex gap-x-6'>
+                                <Typography
+                                  as='p'
+                                  variant='sm/regular'
+                                  className='text-foreground-lighter'
+                                >
+                                  Time
+                                </Typography>
+                                <div className='inline-flex items-center gap-x-2'>
+                                  <p>
+                                    {date} at {time}
+                                  </p>
+                                </div>
+                              </div>
+                              <div className='flex gap-x-6'>
+                                <Typography
+                                  as='p'
+                                  variant='sm/regular'
+                                  className='text-foreground-lighter'
+                                >
+                                  Attendees
+                                </Typography>
+                                <div className='inline-flex items-center gap-x-2'>
+                                  <p>{attendees}</p>
+                                </div>
+                              </div>
+                            </div>
+                            {/*  */}
+                            {/* <div className='flex flex-col gap-y-2 pt-4'>
+                              <h3 className='font-semibold'>Description</h3>
+                              <p className='text-gray-600'>description</p>
+                            </div> */}
+                            {/* Comments */}
+                            <div className='flex flex-col gap-y-2 pt-4'>
+                              {/* <div className="inline-flex items-center gap-x-2">
+                <h3 className="font-semibold">Comments</h3>
+                <span className="block rounded-full bg-gray-200 px-1.5 py-0.5 text-sm font-medium dark:bg-gray-800">
+                  {taskComments?.length}{" "}
+                </span>
+              </div> */}
+                              {/* <div className="flex flex-col gap-y-2 divide-y">
+                {taskComments?.map(
+                  ({ id, comment, author, createdAt, authorId }, index) => (
+                    <div
+                      key={id}
+                      className={cn("relative flex gap-3", {
+                        "pt-3": index !== 0,
+                      })}
+                    >
+                      <UserAvatar
+                        user={author}
+                        size="lg"
+                        triggerClassName="w-12 h-12"
+                      />
+                      <div className="flex flex-col">
+                        <p className="inline text-sm font-medium">
+                          {author.firstName} {author.lastName}
+                        </p>
+                        <span className="text-xs text-gray-500">
+                          {formatFullDate(createdAt)}
+                        </span>
+                        <p className="inline pt-2 font-semibold">{comment}</p>
+                      </div>
+                      {authorId === user?.id && (
+                        <button
+                          className="absolute right-2 top-2 outline-none focus:outline-none disabled:pointer-events-none"
+                          onClick={() => onDeleteComment(id, authorId)}
+                          disabled={deleteCommentMuation.isLoading}
+                        >
+                          <Trash2 className="w-5 text-error-500 dark:text-error-400" />
+                        </button>
+                      )}
+                    </div>
+                  )
+                )}
+              </div> */}
+                            </div>
+                          </div>
+                        </div>
+                      </CustomDialog>
+                      {/* <CustomDialog
+                        open={isOpen}
+                        onClose={() => setIsOpen(false)}
+                        triggerButton={
+                          <Button
+                            type='button'
+                            size='sm'
+                            onClick={() => setIsOpen(true)}
+                          >
+                            {t('components.buttons.view_details')}
+                          </Button>
+                        }
+                        title='Meeting Details'
+                        fullScreen
+                      >
+                        <div className='mt-2'>
+                          <div>
+                            <div className='mb-6'>
+                              <div className='flex flex-col gap-4 md:gap-5'>
+                                <div className='flex items-center gap-1 text-gray-500'>
+                                  <CalendarDaysIcon className='w-7 text-gray-500' />
+                                  <p className='label-md inline-block'>
+                                    {date} at {time}
+                                  </p>
+                                </div>
+                                <hr className='dark:border-t dark:border-gray-800' />
+                                <div className='label-md flex flex-col gap-1'>
+                                  <p className=' inline-block dark:text-gray-200'>
+                                    Meeting ID
+                                  </p>
+                                  <p className='body-sm md:body-md ml-1 inline-block text-gray-500'>
+                                    {id}
+                                  </p>
+                                </div>
+                                <div className='label-md flex flex-col gap-2'>
+                                  <p className=' inline-block dark:text-gray-200'>
+                                    Meeting Title
+                                  </p>
+                                  <p className='inline-block text-gray-500'>
+                                    {title}
+                                  </p>
+                                </div>
+                                <div className='label-md flex flex-col gap-1'>
+                                  <p className='inline-block dark:text-gray-200'>
+                                    Organizer:
+                                  </p>{' '}
+                                  <p className='body-sm md:body-md inline-block text-gray-500'>
+                                    {organizer}
+                                  </p>
+                                </div>
+                                <div className='label-md flex flex-col gap-1'>
+                                  <p className='inline-block dark:text-gray-200'>
+                                    Attendees:
+                                  </p>{' '}
+                                  <p className='body-sm md:body-md inline-block text-gray-500'>
+                                    {attendees}
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </CustomDialog> */}
                     </td>
                   </tr>
                 )
@@ -177,31 +350,30 @@ const TableExample: FC<Props> = ({ t }) => {
             </tbody>
           </table>
           {/* Pagination */}
-          <div className='flex flex-col items-start gap-2 border-t border-gray-200 bg-gray-50/20 px-5 py-8 dark:border-gray-800 dark:bg-gray-800/40 sm:items-center'>
-            <p className='label-sm lg:label-md text-gray-700 dark:text-gray-300'>
+          <div className='flex flex-col items-start gap-2  px-5 py-8 dark:border-gray-800 sm:items-center'>
+            {/* <p className='label-sm lg:label-md text-gray-700 dark:text-gray-300'>
               {t('pages.dashboard.home.table.showing_page')}{' '}
               <span className='text-primary dark:text-primary-400'>1</span>{' '}
               {t('pages.dashboard.home.table.of')}{' '}
               <span className='text-primary dark:text-primary-400'>1 page</span>
-            </p>
-            <div className='xs:mt-0 mt-2 grid grid-cols-2 sm:w-full sm:max-w-xs'>
+            </p> */}
+            <div className='grid grid-cols-2 sm:w-full sm:max-w-xs'>
               <Button
                 size='sm'
                 variant='primary'
-                className='rounded-r-none focus:border-primary-700'
+                className='rounded-r-none'
                 disabled
+                iconLeft={<ChevronLeftIcon className='w-5' />}
               >
-                <ChevronLeftIcon className='mr-2 inline w-5' />
                 {t('components.buttons.previous')}
               </Button>
-
               <Button
                 size='sm'
                 variant='primary'
-                className='rounded-l-none focus:border-primary-700'
+                className='rounded-l-none'
+                iconRight={<ChevronRightIcon className='w-5' />}
               >
                 {t('components.buttons.next')}
-                <ChevronRightIcon className='ml-2 inline w-5' />
               </Button>
             </div>
           </div>

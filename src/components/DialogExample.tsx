@@ -2,10 +2,18 @@ import { Dialog, Transition } from '@headlessui/react';
 import { CalendarDaysIcon } from '@heroicons/react/24/outline';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 import { TFunction } from 'next-i18next';
-import { FC, Fragment } from 'react';
+import { FC, Fragment, useState } from 'react';
 import { withTranslation } from 'react-i18next';
 
+import cn from '@/lib/cn';
+
 import { Meeting } from '@/components/TableExample';
+import {
+  DialogContent,
+  DialogPortal,
+  DialogRoot,
+  DialogTitle,
+} from '@/components/ui/animated-dialog';
 import Badge from '@/components/ui/badge';
 import { IconButton } from '@/components/ui/icon-button';
 
@@ -70,7 +78,7 @@ const DialogExample: FC<Props> = ({ t, isOpen, closeModal, meeting }) => {
                   <IconButton
                     className='absolute top-2 right-2 focus:border-2 focus:border-gray-800'
                     variant='outline'
-                    size='sm'
+                    size='xs'
                     onClick={() => closeModal(isOpen)}
                   >
                     <XMarkIcon className='w-6' aria-hidden='true' />
@@ -131,3 +139,69 @@ const DialogExample: FC<Props> = ({ t, isOpen, closeModal, meeting }) => {
 };
 
 export default withTranslation()(DialogExample);
+
+export function D({ meeting }: { meeting: Meeting }) {
+  const [open, setOpen] = useState(false);
+  const { id, title, date, time, organizer, attendees, status } = meeting;
+  return (
+    <>
+      <DialogRoot open={open} onClose={() => setOpen(false)}>
+        <DialogPortal>
+          <DialogContent className={cn('bg-white')} fullScreen>
+            <DialogTitle as='h3'>
+              <h3>Meeting Details</h3>
+            </DialogTitle>
+            <Badge color='green'>{status}</Badge>
+            <p className='body-sm inline text-gray-600'>dialog description</p>
+
+            <div className='mt-2'>
+              <div>
+                <div className='mb-6 px-5 lg:px-6'>
+                  <div className='flex flex-col gap-4 md:gap-5'>
+                    <div className='flex items-center gap-1 text-gray-500'>
+                      <CalendarDaysIcon className='w-7 text-gray-500' />
+                      <p className='label-md inline-block'>
+                        {date} at {time}
+                      </p>
+                    </div>
+                    <hr className='dark:border-t dark:border-gray-800' />
+                    <div className='label-md flex flex-col gap-1'>
+                      <p className=' inline-block dark:text-gray-200'>
+                        Meeting ID
+                      </p>
+                      <p className='body-sm md:body-md ml-1 inline-block text-gray-500'>
+                        {id}
+                      </p>
+                    </div>
+                    <div className='label-md flex flex-col gap-2'>
+                      <p className=' inline-block dark:text-gray-200'>
+                        Meeting Title
+                      </p>
+                      <p className='inline-block text-gray-500'>{title}</p>
+                    </div>
+                    <div className='label-md flex flex-col gap-1'>
+                      <p className='inline-block dark:text-gray-200'>
+                        Organizer:
+                      </p>{' '}
+                      <p className='body-sm md:body-md inline-block text-gray-500'>
+                        {organizer}
+                      </p>
+                    </div>
+                    <div className='label-md flex flex-col gap-1'>
+                      <p className='inline-block dark:text-gray-200'>
+                        Attendees:
+                      </p>{' '}
+                      <p className='body-sm md:body-md inline-block text-gray-500'>
+                        {attendees}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </DialogContent>
+        </DialogPortal>
+      </DialogRoot>
+    </>
+  );
+}

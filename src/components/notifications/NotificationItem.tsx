@@ -1,11 +1,12 @@
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline';
 import { ArrowPathIcon, XMarkIcon } from '@heroicons/react/24/solid';
-import { TFunction } from 'next-i18next';
 import React from 'react';
 import { withTranslation } from 'react-i18next';
 
 import cn from '@/lib/cn';
 import { formatDate } from '@/lib/date';
+
+import Typography from '@/components/ui/typography';
 
 export interface Notification {
   id: string;
@@ -15,21 +16,15 @@ export interface Notification {
   date: Date;
 }
 
-const NotificationItem = ({
-  notification,
-  t,
-}: {
-  notification: Notification;
-  t: TFunction;
-}) => {
+const NotificationItem = ({ notification }: { notification: Notification }) => {
   const { id, isRead, date, type, description } = notification;
   return (
     <li
       key={id}
       className={cn(
-        'relative flex w-full gap-4 border-l-4 border-b border-l-transparent bg-white px-3 py-2 hover:bg-primary-100/20 focus:bg-primary-100/30 dark:border-gray-800/50 dark:border-l-transparent dark:bg-gray-900 dark:hover:bg-gray-800/50 sm:py-4',
+        'relative flex w-full gap-4 border-b border-border/50 px-5 py-3 hover:bg-primary-100/20 dark:hover:bg-layer/70 focus:bg-primary-100/30 sm:py-4',
         {
-          'bg-primary-100/40 dark:bg-gray-800/40': !isRead,
+          'bg-primary-50 dark:bg-background/80': !isRead,
         }
       )}
     >
@@ -51,24 +46,24 @@ const NotificationItem = ({
           </div>
         )}
         {type === 'warning' && (
-          <div className='block w-fit rounded-full bg-yellow-600/20 p-2 dark:bg-blue-500/20'>
-            <ExclamationTriangleIcon className='h-6 w-6 text-amber-700' />
+          <div className='block w-fit rounded-full bg-yellow-600/20 p-2 dark:bg-yellow-500/10'>
+            <ExclamationTriangleIcon className='h-6 w-6 text-amber-700 dark:text-amber-500' />
           </div>
         )}
       </div>
       <div className='w-full'>
-        <h4 className='body-sm font-medium dark:text-gray-200'>
+        <Typography as='p' variant='base/medium' className='text-foreground'>
           {description}
-        </h4>
+        </Typography>
 
-        <div className='mt-1.5 flex w-full justify-between'>
-          <p className='text-sm font-medium text-gray-400 dark:text-gray-500'>
+        <div className='mt-1.5 flex w-full'>
+          <Typography
+            as='p'
+            variant='sm/medium'
+            className='text-foreground-lighter'
+          >
             {formatDate(date)}
-          </p>
-
-          <p className='label-sm ml-auto cursor-pointer font-medium text-primary-600 hover:text-primary-700 focus:text-primary-500 dark:text-primary-400'>
-            {t('notifications.view_notification')}
-          </p>
+          </Typography>
         </div>
       </div>
     </li>

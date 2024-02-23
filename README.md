@@ -8,7 +8,9 @@
 
 
 ### Components
+
 ![Screenshot 2023-07-21 at 03-18-18 Home](https://github.com/Abdelmuttalib/nextjs-tailwindcss-dashboard/assets/54845047/bf61ed7d-773a-4ddb-8bc2-8c435ac49d22)
 
 ### Notifications
+
 ![Screenshot 2023-07-21 at 03-18-31 Home](https://github.com/Abdelmuttalib/nextjs-tailwindcss-dashboard/assets/54845047/50c14f89-8459-40c6-91ef-05d4fd75495f)
