@@ -157,7 +157,7 @@ const TableExample: FC<Props> = ({ t }) => {
                       >
                         <div>
                           <div className='flex flex-col gap-4 divide-y'>
-                            <div className='flex flex-col gap-y-4 py-3 text-sm'>
+                            <div className='flex flex-col gap-y-5 py-3 text-sm'>
                               <div className='flex gap-x-6'>
                                 <Typography
                                   as='p'
@@ -228,10 +228,10 @@ const TableExample: FC<Props> = ({ t }) => {
                               </div>
                             </div>
                             {/*  */}
-                            <div className='flex flex-col gap-y-2 pt-4'>
+                            {/* <div className='flex flex-col gap-y-2 pt-4'>
                               <h3 className='font-semibold'>Description</h3>
                               <p className='text-gray-600'>description</p>
-                            </div>
+                            </div> */}
                             {/* Comments */}
                             <div className='flex flex-col gap-y-2 pt-4'>
                               {/* <div className="inline-flex items-center gap-x-2">

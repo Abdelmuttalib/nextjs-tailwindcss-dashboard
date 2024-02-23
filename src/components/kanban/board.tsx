@@ -331,7 +331,7 @@ export default function Board() {
                                 >
                                   {task.description}
                                 </Typography> */}
-                                <div className='flex justify-between items-center gap-2'>
+                                <div className='flex justify-between items-center gap-2 mt-2'>
                                   <Badge
                                     color={
                                       task.status === 'done'

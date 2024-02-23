@@ -35,7 +35,7 @@ export function FontSelect() {
         leaveFrom='transform opacity-100 scale-100'
         leaveTo='transform opacity-0 scale-95'
       >
-        <Menu.Items className='absolute right-0 mt-2 p-1.5 w-40 origin-top-right divide-y divide-gray-100 overflow-hidden rounded-md text-sm dark:bg-layer-3 text-foreground shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
+        <Menu.Items className='absolute right-0 mt-2 p-1.5 w-40 origin-top-right divide-y divide-gray-100 overflow-hidden rounded-md text-sm bg-white dark:bg-layer-3 text-foreground shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
           <div className='relative'>
             {FONTS?.map(({ name, value }) => {
               const fontClass = `font-${value}`;

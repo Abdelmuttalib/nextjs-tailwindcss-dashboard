@@ -6,6 +6,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import { dashboardLinks } from '@/components/layout/SideBar';
 import Seo from '@/components/Seo';
+import Badge from '@/components/ui/badge';
 import Typography from '@/components/ui/typography';
 
 import { Customization } from '@/pages/dashboard/settings';
@@ -18,9 +19,14 @@ export default function HomePage() {
       <Seo title={`${t('app.name')}`} />
       <main className=' min-h-[100svh] w-full h-full relative grid lg:grid-cols-3 gap-x-8'>
         <div className='space-y-2 flex flex-col justify-center h-full lg:col-span-2 px-6 lg:px-8'>
-          <h1 className='bg-gradient-to-br from-gray-800 to-primary-700 bg-clip-text text-transparent dark:from-primary-700 text-display-xl font-semibold dark:via-primary-600 dark:to-primary-400'>
-            Dashboard 2.0
-          </h1>
+          <div className='flex items-center gap-x-2'>
+            <h1 className='bg-gradient-to-br from-gray-800 to-primary-700 bg-clip-text text-transparent dark:from-primary-700 text-display-xl font-semibold dark:via-primary-600 dark:to-primary-400'>
+              Dashboard
+            </h1>
+            <Badge color='blue' className='text-xl mt-5'>
+              2.0
+            </Badge>
+          </div>
           <Typography
             as='p'
             variant='lg/medium'
@@ -44,19 +50,16 @@ export default function HomePage() {
               <Link
                 key={link.href}
                 href={link.href}
-                className='group w-full inline-flex font-medium items-center justify-between rounded border bg-white dark:bg-background border-border px-5 py-6 hover:text-primary'
+                className='group max-w-sm mx-auto w-full inline-flex tems-center justify-between rounded border bg-white dark:bg-background border-border px-5 py-6 hover:text-primary'
                 // className='group inline-flex items-center justify-between rounded-lg border-2 bg-gradient-to-br from-white to-primary-100/50 px-5 py-6 text-gray-800 hover:border-primary-100 hover:text-primary-700 dark:border-gray-800/50 dark:from-gray-900 dark:to-gray-900 dark:text-primary-200 hover:dark:text-primary-400'
               >
-                <span className='inline-flex items-center gap-x-2'>
-                  {link.icon && link.icon}
-                  <Typography
-                    as='span'
-                    variant='base/regular'
-                    className='capitalize'
-                  >
-                    {link.text}
-                  </Typography>
-                </span>
+                <Typography
+                  as='span'
+                  variant='base/medium'
+                  className='capitalize'
+                >
+                  {link.text}
+                </Typography>
                 <ArrowRight className='w-[18px] h-[18px] transform group-hover:translate-x-1 transition-transform' />
               </Link>
             ))}

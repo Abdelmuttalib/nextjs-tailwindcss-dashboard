@@ -109,11 +109,7 @@ export default function DesignSystemGuide() {
           <Typography as='h2' variant='display-xs/medium'>
             Introduction
           </Typography>
-          <Typography
-            as='p'
-            variant='base/regular'
-            className='text-foreground-light'
-          >
+          <Typography as='p' variant='base/regular' className='text-foreground'>
             Building beautiful and consistent web applications requires a
             well-structured design system. In this guide, I will delve into the
             design system implemented in a Next.js application using Tailwind
@@ -127,11 +123,7 @@ export default function DesignSystemGuide() {
           <Typography as='h2' variant='display-xs/medium'>
             Color Palette
           </Typography>
-          <Typography
-            as='p'
-            variant='base/regular'
-            className='text-foreground-light'
-          >
+          <Typography as='p' variant='base/regular' className='text-foreground'>
             The color palette serves as the foundation for the visual identity
             of the application. Here, we define primary, secondary, and accent
             colors using HSL values. Tailwind CSS utilities are leveraged to
@@ -244,11 +236,7 @@ export default function DesignSystemGuide() {
           <Typography as='h2' variant='display-xs/medium'>
             Fonts
           </Typography>
-          <Typography
-            as='p'
-            variant='base/regular'
-            className='text-foreground-light'
-          >
+          <Typography as='p' variant='base/regular' className='text-foreground'>
             {/* explain sections for defining locally served fonts with css */}
             We define font families and weights to ensure consistent typography
             across the application. The fonts are served locally to optimize
@@ -309,11 +297,7 @@ export default function DesignSystemGuide() {
           <Typography as='h2' variant='display-xs/medium'>
             Typography
           </Typography>
-          <Typography
-            as='p'
-            variant='base/regular'
-            className='text-foreground-light'
-          >
+          <Typography as='p' variant='base/regular' className='text-foreground'>
             Typography plays a crucial role in conveying information
             effectively. We define font families, sizes, weights, and line
             heights to establish a harmonious text hierarchy.
@@ -379,11 +363,7 @@ export default function DesignSystemGuide() {
           <Typography as='h3' variant='xl/medium'>
             Typography Component
           </Typography>
-          <Typography
-            as='p'
-            variant='base/regular'
-            className='text-foreground-light'
-          >
+          <Typography as='p' variant='base/regular' className='text-foreground'>
             In order to ensure consistent typography across our application,
             I&apos;ve implemented a robust Typography component. This component
             serves as a pivotal tool in our development process, promoting both
@@ -395,7 +375,7 @@ export default function DesignSystemGuide() {
           <Typography
             as='h4'
             variant='base/regular'
-            className='text-foreground-light'
+            className='text-foreground'
           >
             {' '}
             - Consistency for a Unified Look and Feel
@@ -404,7 +384,7 @@ export default function DesignSystemGuide() {
           <Typography
             as='h4'
             variant='base/regular'
-            className='text-foreground-light'
+            className='text-foreground'
           >
             {' '}
             - Flexible Variant System
@@ -413,7 +393,7 @@ export default function DesignSystemGuide() {
           <Typography
             as='h4'
             variant='base/regular'
-            className='text-foreground-light'
+            className='text-foreground'
           >
             {' '}
             - Direct Integration with Design System
@@ -422,7 +402,7 @@ export default function DesignSystemGuide() {
           <Typography
             as='h4'
             variant='base/regular'
-            className='text-foreground-light'
+            className='text-foreground'
           >
             {' '}
             - Improved Readability and Maintenance
@@ -431,7 +411,7 @@ export default function DesignSystemGuide() {
           <Typography
             as='h4'
             variant='base/regular'
-            className='text-foreground-light'
+            className='text-foreground'
           >
             {' '}
             - Adherence to Design System Standards
@@ -536,11 +516,7 @@ export default function DesignSystemGuide() {
           <Typography as='h2' variant='display-xs/medium'>
             Spacing and Layout
           </Typography>
-          <Typography
-            as='p'
-            variant='base/regular'
-            className='text-foreground-light'
-          >
+          <Typography as='p' variant='base/regular' className='text-foreground'>
             Consistent spacing and layout contribute to a visually appealing and
             user-friendly interface. We define spacing variables for margins,
             padding, and layout dimensions to maintain a balanced design system.
@@ -565,11 +541,7 @@ export default function DesignSystemGuide() {
           <Typography as='h2' variant='display-xs/medium'>
             Borders
           </Typography>
-          <Typography
-            as='p'
-            variant='base/regular'
-            className='text-foreground-light'
-          >
+          <Typography as='p' variant='base/regular' className='text-foreground'>
             The border-related variables define border radii and colors,
             providing consistent styling for elements.
           </Typography>
@@ -634,11 +606,7 @@ export default function DesignSystemGuide() {
           <Typography as='h2' variant='display-xs/medium'>
             Shadows
           </Typography>
-          <Typography
-            as='p'
-            variant='base/regular'
-            className='text-foreground-light'
-          >
+          <Typography as='p' variant='base/regular' className='text-foreground'>
             Shadow variables define different shadow effects to be applied to
             elements, providing depth and visual hierarchy.
           </Typography>
@@ -668,11 +636,7 @@ export default function DesignSystemGuide() {
           <Typography as='h2' variant='display-xs/medium'>
             Layers
           </Typography>
-          <Typography
-            as='p'
-            variant='base/regular'
-            className='text-foreground-light'
-          >
+          <Typography as='p' variant='base/regular' className='text-foreground'>
             Layer variables define different layers for UI elements, helping to
             establish visual hierarchy and elevation.
           </Typography>
@@ -711,11 +675,7 @@ export default function DesignSystemGuide() {
           <Typography as='h2' variant='display-xs/medium'>
             Dark Mode
           </Typography>
-          <Typography
-            as='p'
-            variant='base/regular'
-            className='text-foreground-light'
-          >
+          <Typography as='p' variant='base/regular' className='text-foreground'>
             Dark mode enhances user experience, and we provide a set of
             variables to adapt the design system for dark mode. Colors, text,
             and background properties are adjusted to ensure readability and
@@ -736,11 +696,7 @@ export default function DesignSystemGuide() {
           <Typography as='h2' variant='display-xs/medium'>
             Dynamic Theme Primary Color
           </Typography>
-          <Typography
-            as='p'
-            variant='base/regular'
-            className='text-foreground-light'
-          >
+          <Typography as='p' variant='base/regular' className='text-foreground'>
             The dynamic theme primary color allows for customization of the
             primary color scheme. Below are examples of different theme options
             with their respective primary color variables.
@@ -984,11 +940,7 @@ export default function DesignSystemGuide() {
           <Typography as='h2' variant='display-xs/medium'>
             Text Colors
           </Typography>
-          <Typography
-            as='p'
-            variant='base/regular'
-            className='text-foreground-light'
-          >
+          <Typography as='p' variant='base/regular' className='text-foreground'>
             The text colors of the interface define the color scheme for text
             elements. Here are the key text color variables used in the design
             system.
@@ -1062,11 +1014,7 @@ export default function DesignSystemGuide() {
           <Typography as='h2' variant='display-xs/medium'>
             Transitions
           </Typography>
-          <Typography
-            as='p'
-            variant='base/regular'
-            className='text-foreground-light'
-          >
+          <Typography as='p' variant='base/regular' className='text-foreground'>
             Consistent animation transitions can enhance the overall user
             experience. The design system provides the following transition
             variables for defining the duration of animations.
@@ -1083,21 +1031,13 @@ export default function DesignSystemGuide() {
           <Typography as='h2' variant='display-xs/medium'>
             Color Theory and Gray Colors
           </Typography>
-          <Typography
-            as='p'
-            variant='base/regular'
-            className='text-foreground-light'
-          >
+          <Typography as='p' variant='base/regular' className='text-foreground'>
             Color theory plays a crucial role in UI/UX design, influencing the
             overall look and feel of an application. In this design system, the
             gray color palette has been thoughtfully selected to ensure a
             harmonious and visually pleasing user interface.
           </Typography>
-          <Typography
-            as='p'
-            variant='base/regular'
-            className='text-foreground-light'
-          >
+          <Typography as='p' variant='base/regular' className='text-foreground'>
             The shades of gray are chosen based on HSL (Hue, Saturation,
             Lightness) values, providing a balanced and subtle appearance. These
             shades are carefully crafted to enhance readability and user
@@ -1133,11 +1073,7 @@ export default function DesignSystemGuide() {
             })}
           </div>
 
-          <Typography
-            as='p'
-            variant='base/regular'
-            className='text-foreground-light'
-          >
+          <Typography as='p' variant='base/regular' className='text-foreground'>
             In dark mode, the primary color has been adjusted to reduce contrast
             and enhance visual comfort. This thoughtful modification aims to
             provide a seamless experience for users in low-light environments.
@@ -1169,7 +1105,7 @@ export default function DesignSystemGuide() {
           </Typography>
 
           {/* Buttons */}
-          <div className='flex flex-col gap-y-4 p-10 bg-layer-2 rounded'>
+          <div className='flex flex-col gap-y-4'>
             {[
               'primary',
               'primary-outline',
@@ -1244,21 +1180,22 @@ export default function DesignSystemGuide() {
           </div>
         </section>
 
-        <section className='space-y-6'>
-          <Typography as='h2' variant='display-xs/medium'>
+        <section className='space-y-6 mt-20'>
+          {/* <Typography as='h2' variant='display-xs/medium'>
             Conclusion
-          </Typography>
-          <Typography
-            as='p'
-            variant='base/regular'
-            className='text-foreground-light'
-          >
-            By establishing a robust design system with Tailwind CSS in a
+          </Typography> */}
+          <Typography as='p' variant='base/medium' className='text-foreground'>
+            {/* By establishing a robust design system with Tailwind CSS in a
             Next.js application, developers can ensure consistency, scalability,
             and maintainability in their projects. This design system serves as
             a solid foundation for building beautiful and user-friendly web
             applications. Feel free to explore and adapt these variables to suit
-            the specific needs and branding of your project.
+            the specific needs and branding of your project. */}
+            Note: The design system is a work in progress and will be updated in
+            terms of the UI as development continue and refine and expand the
+            system, this does not represent the final version and all the
+            components but it establishes a solid foundation for building
+            beautiful and user-friendly web applications.
           </Typography>
         </section>
       </div>
